@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Aphidex",
+    "tagline": "High-Performance Data Tool",
+    "description": "A specialized indexing engine built for rapid retrieval of nested datasets, optimized for large-scale enterprise infrastructures.",
+    "stack": ["Rust", "PostgreSQL", "Redis"],
+    "repoUrl": "https://github.com/ByteShark-dev/Aphidex",
+    "image": "./assets/images/project-aphidex.webp",
+    "imageAlt": "Modern server infrastructure with glowing blue cables and clean high-tech hardware in a dark data center.",
+    "icon": "open_in_new",
+    "imageWidth": 512,
+    "imageHeight": 512
+  },
+  {
+    "name": "Homelab",
+    "tagline": "Self-Hosted Ecosystem",
+    "description": "A personal cloud infrastructure featuring automated CI/CD pipelines, container orchestration, and real-time monitoring.",
+    "stack": ["Docker", "Kubernetes", "Ansible"],
+    "repoUrl": "https://github.com/ByteShark-dev/homelab-nextcloud",
+    "image": "./assets/images/project-homelab.webp",
+    "imageAlt": "Close-up of an integrated circuit board with glowing light traces and small microchips in a dark neon environment.",
+    "icon": "dns",
+    "imageWidth": 512,
+    "imageHeight": 512
+  }
+]

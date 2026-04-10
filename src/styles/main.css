@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #0e0e0e;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: #0e0e0e;
+    color: #e5e2e1;
+    font-family: Manrope, sans-serif;
+  }
+
+  a,
+  button,
+  input,
+  textarea {
+    @apply outline-none;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    @apply ring-2 ring-primary-container ring-offset-2 ring-offset-surface;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: rgb(53 53 52 / 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .site-navbar {
+    background:
+      linear-gradient(to bottom, rgb(32 31 31 / 0.9), transparent),
+      rgb(19 19 19 / 0.6);
+    box-shadow: 0 0 40px rgb(0 245 255 / 0.06);
+    transition:
+      background-color 200ms ease,
+      box-shadow 200ms ease,
+      backdrop-filter 200ms ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .site-navbar.is-scrolled {
+    background:
+      linear-gradient(to bottom, rgb(32 31 31 / 0.98), rgb(19 19 19 / 0.9)),
+      rgb(19 19 19 / 0.92);
+    box-shadow: 0 0 40px rgb(0 245 255 / 0.12);
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+  }
+}
