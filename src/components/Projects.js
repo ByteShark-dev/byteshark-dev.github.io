@@ -1,4 +1,12 @@
 function renderProjectCard(project) {
+  const sizeAttributes =
+    project.imageWidth && project.imageHeight
+      ? `width="${project.imageWidth}" height="${project.imageHeight}"`
+      : '';
+  const imageClasses =
+    project.imageFit === 'contain'
+      ? 'h-full w-full object-contain p-10 transition-transform duration-500 group-hover:scale-105'
+      : 'h-full w-full object-cover opacity-40 grayscale transition-all duration-500 group-hover:scale-105 group-hover:opacity-60 group-hover:grayscale-0';
   const techStack = project.stack
     .map(
       (item) => `
@@ -11,13 +19,12 @@ function renderProjectCard(project) {
 
   return `
     <article class="group relative overflow-hidden rounded-lg border border-outline-variant/5 bg-surface-container">
-      <div class="aspect-video overflow-hidden bg-surface-container-highest">
+      <div class="aspect-video overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.22),_rgba(4,13,26,0.95)_62%)]">
         <img
           src="${project.image}"
           alt="${project.imageAlt}"
-          class="h-full w-full object-cover opacity-40 grayscale transition-all duration-500 group-hover:scale-105 group-hover:opacity-60 group-hover:grayscale-0"
-          width="${project.imageWidth}"
-          height="${project.imageHeight}"
+          class="${imageClasses}"
+          ${sizeAttributes}
           loading="lazy"
           decoding="async"
         />
@@ -40,7 +47,7 @@ function renderProjectCard(project) {
         </div>
         <div class="pt-4">
           <a
-            class="inline-flex items-center gap-2 font-headline font-bold text-primary transition-colors hover:text-primary-container"
+            class="inline-flex items-center gap-2 font-headline font-bold text-primary-container transition-colors hover:text-primary"
             href="${project.repoUrl}"
             target="_blank"
             rel="noreferrer"

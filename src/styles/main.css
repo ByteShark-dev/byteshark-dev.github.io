@@ -5,14 +5,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #0e0e0e;
+    background-color: #040d1a;
   }
 
   body {
     overflow-x: hidden;
-    background-color: #0e0e0e;
-    color: #e5e2e1;
-    font-family: Manrope, sans-serif;
+    background-color: #040d1a;
+    color: #ffffff;
+    font-family: Montserrat, Inter, Manrope, sans-serif;
   }
 
   a,
@@ -47,16 +47,16 @@
 
 @layer components {
   .glass-panel {
-    background: rgb(53 53 52 / 0.4);
+    background: rgb(8 27 52 / 0.58);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
 
   .site-navbar {
     background:
-      linear-gradient(to bottom, rgb(32 31 31 / 0.9), transparent),
-      rgb(19 19 19 / 0.6);
-    box-shadow: 0 0 40px rgb(0 245 255 / 0.06);
+      linear-gradient(to bottom, rgb(18 41 80 / 0.95), transparent),
+      rgb(4 13 26 / 0.72);
+    box-shadow: 0 0 40px rgb(30 90 168 / 0.12);
     transition:
       background-color 200ms ease,
       box-shadow 200ms ease,
@@ -67,9 +67,9 @@
 
   .site-navbar.is-scrolled {
     background:
-      linear-gradient(to bottom, rgb(32 31 31 / 0.98), rgb(19 19 19 / 0.9)),
-      rgb(19 19 19 / 0.92);
-    box-shadow: 0 0 40px rgb(0 245 255 / 0.12);
+      linear-gradient(to bottom, rgb(18 41 80 / 0.98), rgb(4 13 26 / 0.9)),
+      rgb(4 13 26 / 0.94);
+    box-shadow: 0 0 40px rgb(30 90 168 / 0.2);
   }
 
   .material-symbols-outlined {

@@ -1,4 +1,9 @@
 export function renderHero({ brand, hero, links }) {
+  const highlightedDescription = hero.description.replace(
+    'builder mindset',
+    '<span class="text-primary-container">builder mindset</span>',
+  );
+
   return `
     <section
       id="home"
@@ -7,7 +12,7 @@ export function renderHero({ brand, hero, links }) {
     >
       <div aria-hidden="true" class="absolute inset-0 z-0">
         <div class="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-primary-container/10 blur-[120px]"></div>
-        <div class="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-tertiary-container/5 blur-[120px]"></div>
+        <div class="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-primary-container/10 blur-[140px]"></div>
         <div class="absolute inset-0 opacity-[0.03]">
           <img
             src="./assets/images/hero-grid.png"
@@ -28,11 +33,11 @@ export function renderHero({ brand, hero, links }) {
             </h1>
           </div>
           <p class="max-w-xl font-body text-xl leading-relaxed text-on-surface-variant md:text-2xl">
-            ${hero.description.replace('builder mindset', '<span class="text-tertiary">builder mindset</span>')}
+            ${highlightedDescription}
           </p>
           <div class="flex flex-wrap justify-center gap-4 md:justify-start">
             <a
-              class="bg-primary px-8 py-4 font-headline font-bold tracking-tight text-on-primary transition-all hover:bg-primary-container hover:text-on-primary-container active:scale-95"
+              class="bg-primary-container px-8 py-4 font-headline font-bold tracking-tight text-on-primary-container transition-all hover:brightness-110 active:scale-95"
               href="${links.primaryCta}"
             >
               View Projects
@@ -52,8 +57,8 @@ export function renderHero({ brand, hero, links }) {
             </div>
             <div class="space-y-4">
               <div class="flex gap-2" aria-hidden="true">
-                <div class="h-3 w-3 rounded-full bg-error/50"></div>
-                <div class="h-3 w-3 rounded-full bg-tertiary-container/50"></div>
+                <div class="h-3 w-3 rounded-full bg-primary/50"></div>
+                <div class="h-3 w-3 rounded-full bg-secondary/50"></div>
                 <div class="h-3 w-3 rounded-full bg-primary-container/50"></div>
               </div>
               <div class="space-y-1 font-label text-sm text-primary-container/80">
@@ -64,7 +69,15 @@ export function renderHero({ brand, hero, links }) {
               </div>
             </div>
             <div class="flex items-end justify-between">
-              <div class="font-headline text-4xl font-bold text-on-surface">${brand.initials}</div>
+              <img
+                src="${brand.logoMark}"
+                alt="${brand.name} logo"
+                class="h-14 w-14 object-contain"
+                width="56"
+                height="56"
+                loading="eager"
+                decoding="async"
+              />
               <div class="font-label text-xs uppercase tracking-widest text-outline">${brand.established}</div>
             </div>
           </div>

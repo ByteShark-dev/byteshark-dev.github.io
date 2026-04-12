@@ -5,19 +5,21 @@ export const siteConfig = {
     initials: 'AA',
     established: 'EST. 2024',
     footerTagline: 'Built for the obsidian era.',
+    logoIcon: '/assets/images/byteshark_graphic_logo_google.png',
+    logoMark: '/assets/images/byteshark_graphic_logo.png',
   },
   seo: {
     title: 'ByteShark | Angel Arenas Pati\u00f1o',
     description:
       'ByteShark portfolio focused on systems, apps, and digital experiences built with a builder mindset.',
     siteUrl: 'https://byteshark.dev/',
-    ogImagePath: '/assets/social/og-image.png',
+    ogImagePath: '/assets/images/byteshark_graphic_logo_google.png',
   },
   links: {
     primaryCta: '#projects',
     hireMe: '#contact',
     github: 'https://github.com/byteshark-dev',
-    linkedin: 'https://linkedin.com/in/byteshark',
+    playStore: 'https://play.google.com/store/apps/dev?id=7017575535426186313',
     email: 'mailto:byteshark098@gmail.com',
   },
   navigation: [
@@ -42,6 +44,7 @@ export const siteConfig = {
   contact: {
     email: 'byteshark098@gmail.com',
     githubLabel: 'github.com/byteshark-dev',
+    playStoreLabel: 'Play Store',
     intro: 'Open for collaborations, system designs, or complex technical challenges.',
   },
   footer: {
