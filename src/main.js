@@ -7,34 +7,48 @@ import { renderFooter } from './components/Footer.js';
 import { renderHero } from './components/Hero.js';
 import { renderNavbar } from './components/Navbar.js';
 import { renderProjects } from './components/Projects.js';
-import { siteConfig } from './config/site.js';
+import { defaultLocale, getSiteContent, supportedLocales } from './config/site.js';
 
-function renderApp() {
+const app = document.querySelector('#app');
+const languageStorageKey = 'byteshark-locale';
+
+let currentLocale = getInitialLocale();
+let navbarScrollBound = false;
+
+function getInitialLocale() {
+  const savedLocale = window.localStorage.getItem(languageStorageKey);
+  return supportedLocales.includes(savedLocale) ? savedLocale : defaultLocale;
+}
+
+function renderApp(locale) {
+  const content = getSiteContent(locale);
+
   return `
-    ${renderNavbar(siteConfig)}
+    ${renderNavbar(content)}
     <main id="main-content">
-      ${renderHero(siteConfig)}
-      ${renderAbout(siteConfig)}
-      ${renderProjects(projects)}
-      ${renderContact(siteConfig)}
+      ${renderHero(content)}
+      ${renderAbout(content)}
+      ${renderProjects(projects, content.projects, content.locale)}
+      ${renderContact(content)}
     </main>
-    ${renderFooter(siteConfig)}
+    ${renderFooter(content)}
   `;
 }
 
-function syncSeo() {
-  document.title = siteConfig.seo.title;
+function syncSeo(content) {
+  document.title = content.seo.title;
+  document.documentElement.lang = content.locale;
 
-  const absoluteOgImage = new URL(siteConfig.seo.ogImagePath, siteConfig.seo.siteUrl).toString();
+  const absoluteOgImage = new URL(content.seo.ogImagePath, content.seo.siteUrl).toString();
   const metaSelectors = [
-    ['meta[name="description"]', siteConfig.seo.description, 'content'],
-    ['link[rel="canonical"]', siteConfig.seo.siteUrl, 'href'],
-    ['meta[property="og:url"]', siteConfig.seo.siteUrl, 'content'],
-    ['meta[property="og:title"]', siteConfig.seo.title, 'content'],
-    ['meta[property="og:description"]', siteConfig.seo.description, 'content'],
+    ['meta[name="description"]', content.seo.description, 'content'],
+    ['link[rel="canonical"]', content.seo.siteUrl, 'href'],
+    ['meta[property="og:url"]', content.seo.siteUrl, 'content'],
+    ['meta[property="og:title"]', content.seo.title, 'content'],
+    ['meta[property="og:description"]', content.seo.description, 'content'],
     ['meta[property="og:image"]', absoluteOgImage, 'content'],
-    ['meta[name="twitter:title"]', siteConfig.seo.title, 'content'],
-    ['meta[name="twitter:description"]', siteConfig.seo.description, 'content'],
+    ['meta[name="twitter:title"]', content.seo.title, 'content'],
+    ['meta[name="twitter:description"]', content.seo.description, 'content'],
     ['meta[name="twitter:image"]', absoluteOgImage, 'content'],
   ];
 
@@ -47,21 +61,43 @@ function syncSeo() {
 }
 
 function initNavbarScroll() {
-  const navbar = document.querySelector('[data-navbar]');
-
-  if (!navbar) {
-    return;
-  }
-
   const updateNavbar = () => {
+    const navbar = document.querySelector('[data-navbar]');
+
+    if (!navbar) {
+      return;
+    }
+
     navbar.classList.toggle('is-scrolled', window.scrollY > 12);
   };
 
   updateNavbar();
-  window.addEventListener('scroll', updateNavbar, { passive: true });
+
+  if (!navbarScrollBound) {
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+    navbarScrollBound = true;
+  }
 }
 
-function initContactForm() {
+function initLanguageToggle() {
+  const localeButtons = document.querySelectorAll('[data-locale-target]');
+
+  localeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const nextLocale = button.getAttribute('data-locale-target');
+
+      if (!supportedLocales.includes(nextLocale) || nextLocale === currentLocale) {
+        return;
+      }
+
+      currentLocale = nextLocale;
+      window.localStorage.setItem(languageStorageKey, currentLocale);
+      mountApp();
+    });
+  });
+}
+
+function initContactForm(content) {
   const contactForm = document.querySelector('[data-contact-form]');
 
   if (!contactForm) {
@@ -80,18 +116,29 @@ function initContactForm() {
     const email = formData.get('email')?.toString().trim() ?? '';
     const message = formData.get('message')?.toString().trim() ?? '';
 
-    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    const subject = encodeURIComponent(`${content.contact.mailto.subjectPrefix} ${name}`);
+    const body = encodeURIComponent(
+      `${content.contact.mailto.bodyName}: ${name}\n${content.contact.mailto.bodyEmail}: ${email}\n\n${message}`,
+    );
 
-    window.location.href = `mailto:${siteConfig.contact.email}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${content.contact.email}?subject=${subject}&body=${body}`;
   });
 }
 
-const app = document.querySelector('#app');
+function mountApp() {
+  if (!app) {
+    return;
+  }
+
+  const content = getSiteContent(currentLocale);
+
+  app.innerHTML = renderApp(currentLocale);
+  syncSeo(content);
+  initNavbarScroll();
+  initLanguageToggle();
+  initContactForm(content);
+}
 
 if (app) {
-  app.innerHTML = renderApp();
-  syncSeo();
-  initNavbarScroll();
-  initContactForm();
+  mountApp();
 }

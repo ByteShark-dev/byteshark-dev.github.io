@@ -1,8 +1,11 @@
 export function renderHero({ brand, hero, links }) {
   const highlightedDescription = hero.description.replace(
-    'builder mindset',
-    '<span class="text-primary-container">builder mindset</span>',
+    /builder mindset|mentalidad de builder/i,
+    '<span class="text-primary-container">$&</span>',
   );
+  const terminalLines = hero.terminalLines
+    .map((line, index) => `<p class="${index === hero.terminalLines.length - 1 ? 'text-on-surface' : ''}">${line}</p>`)
+    .join('');
 
   return `
     <section
@@ -40,13 +43,13 @@ export function renderHero({ brand, hero, links }) {
               class="bg-primary-container px-8 py-4 font-headline font-bold tracking-tight text-on-primary-container transition-all hover:brightness-110 active:scale-95"
               href="${links.primaryCta}"
             >
-              View Projects
+              ${hero.primaryCta}
             </a>
             <a
               class="border border-outline-variant px-8 py-4 font-headline font-bold tracking-tight text-primary transition-all hover:bg-surface-container active:scale-95"
               href="${links.hireMe}"
             >
-              Contact
+              ${hero.secondaryCta}
             </a>
           </div>
         </div>
@@ -62,10 +65,7 @@ export function renderHero({ brand, hero, links }) {
                 <div class="h-3 w-3 rounded-full bg-primary-container/50"></div>
               </div>
               <div class="space-y-1 font-label text-sm text-primary-container/80">
-                <p>&gt; INITIALIZING PORTFOLIO_V4.0</p>
-                <p>&gt; LOADING ASSETS...</p>
-                <p>&gt; SYSTEMS ONLINE</p>
-                <p class="text-on-surface">&gt; WELCOME, USER</p>
+                ${terminalLines}
               </div>
             </div>
             <div class="flex items-end justify-between">

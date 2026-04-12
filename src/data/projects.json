@@ -1,23 +1,41 @@
 [
   {
     "name": "Aphidex",
-    "tagline": "High-Performance Data Tool",
-    "description": "A specialized indexing engine built for rapid retrieval of nested datasets, optimized for large-scale enterprise infrastructures.",
+    "tagline": {
+      "es": "Herramienta de Datos de Alto Rendimiento",
+      "en": "High-Performance Data Tool"
+    },
+    "description": {
+      "es": "Un motor de indexacion especializado para recuperar datasets anidados con rapidez, optimizado para infraestructuras empresariales a gran escala.",
+      "en": "A specialized indexing engine built for rapid retrieval of nested datasets, optimized for large-scale enterprise infrastructures."
+    },
     "stack": ["Rust", "PostgreSQL", "Redis"],
     "repoUrl": "https://github.com/ByteShark-dev/Aphidex",
     "image": "./assets/images/Aphidex_logo.webp",
-    "imageAlt": "Aphidex logo.",
+    "imageAlt": {
+      "es": "Logo de Aphidex.",
+      "en": "Aphidex logo."
+    },
     "icon": "open_in_new",
     "imageFit": "contain"
   },
   {
     "name": "Homelab",
-    "tagline": "Self-Hosted Ecosystem",
-    "description": "A personal cloud infrastructure featuring automated CI/CD pipelines, container orchestration, and real-time monitoring.",
+    "tagline": {
+      "es": "Ecosistema Autoalojado",
+      "en": "Self-Hosted Ecosystem"
+    },
+    "description": {
+      "es": "Una infraestructura cloud personal con pipelines de CI/CD automatizados, orquestacion de contenedores y monitoreo en tiempo real.",
+      "en": "A personal cloud infrastructure featuring automated CI/CD pipelines, container orchestration, and real-time monitoring."
+    },
     "stack": ["Docker", "Kubernetes", "Ansible"],
     "repoUrl": "https://github.com/ByteShark-dev/homelab-nextcloud",
     "image": "./assets/images/nextcloud.png",
-    "imageAlt": "Nextcloud logo.",
+    "imageAlt": {
+      "es": "Logo de Nextcloud.",
+      "en": "Nextcloud logo."
+    },
     "icon": "dns",
     "imageFit": "contain",
     "imageWidth": 1200,

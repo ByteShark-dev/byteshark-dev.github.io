@@ -1,14 +1,15 @@
 import { defineConfig } from 'vite';
 
-import { siteConfig } from './src/config/site.js';
+import { defaultLocale, getSiteContent } from './src/config/site.js';
 
-const createAbsoluteUrl = (path) => new URL(path, siteConfig.seo.siteUrl).toString();
+const defaultContent = getSiteContent(defaultLocale);
+const createAbsoluteUrl = (path) => new URL(path, defaultContent.seo.siteUrl).toString();
 
 const metaTokens = {
-  '%SITE_TITLE%': siteConfig.seo.title,
-  '%SITE_DESCRIPTION%': siteConfig.seo.description,
-  '%SITE_URL%': siteConfig.seo.siteUrl,
-  '%SITE_OG_IMAGE%': createAbsoluteUrl(siteConfig.seo.ogImagePath),
+  '%SITE_TITLE%': defaultContent.seo.title,
+  '%SITE_DESCRIPTION%': defaultContent.seo.description,
+  '%SITE_URL%': defaultContent.seo.siteUrl,
+  '%SITE_OG_IMAGE%': createAbsoluteUrl(defaultContent.seo.ogImagePath),
 };
 
 export default defineConfig({
