@@ -188,12 +188,12 @@ export const siteConfig = {
     owner: 'Angel Arenas Pati\u00f1o',
     initials: 'AA',
     established: 'EST. 2024',
-    logoIcon: '/assets/images/byteshark_graphic_logo_google.png',
-    logoMark: '/assets/images/byteshark_graphic_logo.png',
+    logoIcon: '/assets/images/byteshark_graphic_logo.png',
+    logoMark: '/assets/images/byteshark_graphic_logo_white.svg',
   },
   seo: {
     siteUrl: 'https://byteshark.dev/',
-    ogImagePath: '/assets/images/byteshark_graphic_logo_google.png',
+    ogImagePath: '/assets/images/byteshark_graphic_logo.png',
   },
   links: {
     primaryCta: '#projects',
