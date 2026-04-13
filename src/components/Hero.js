@@ -28,11 +28,11 @@ export function renderHero({ brand, hero, links }) {
       <div class="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-8 text-center md:grid-cols-2 md:text-left">
         <div class="space-y-8">
           <div>
-            <span class="mb-4 inline-block bg-surface-container-highest px-3 py-1 font-label text-xs tracking-[0.2em] text-primary-container">
+            <span class="mb-4 inline-block bg-surface-container-highest px-3 py-1 font-label text-xs tracking-[0.2em] text-primary">
               ${hero.eyebrow}
             </span>
             <h1 id="hero-title" class="font-headline text-6xl font-bold leading-none tracking-tighter text-primary md:text-8xl">
-              ${hero.title}<span class="text-primary-container">.</span>
+              ${hero.title}
             </h1>
           </div>
           <p class="max-w-xl font-body text-xl leading-relaxed text-on-surface-variant md:text-2xl">
