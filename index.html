@@ -5,21 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>%SITE_TITLE%</title>
     <meta name="description" content="%SITE_DESCRIPTION%" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="%SITE_AUTHOR%" />
     <meta name="theme-color" content="#081B34" />
     <link rel="canonical" href="%SITE_URL%" />
     <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/byteshark_graphic_logo.png" />
     <link rel="apple-touch-icon" href="/assets/images/byteshark_graphic_logo.png" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="%SITE_NAME%" />
+    <meta property="og:locale" content="es_MX" />
     <meta property="og:url" content="%SITE_URL%" />
     <meta property="og:title" content="%SITE_TITLE%" />
     <meta property="og:description" content="%SITE_DESCRIPTION%" />
     <meta property="og:image" content="%SITE_OG_IMAGE%" />
+    <meta property="og:image:alt" content="%SITE_TITLE%" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="%SITE_TITLE%" />
     <meta name="twitter:description" content="%SITE_DESCRIPTION%" />
     <meta name="twitter:image" content="%SITE_OG_IMAGE%" />
+    <meta name="twitter:image:alt" content="%SITE_TITLE%" />
+
+    <script id="structured-data" type="application/ld+json">
+      %STRUCTURED_DATA%
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

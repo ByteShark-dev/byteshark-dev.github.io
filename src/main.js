@@ -40,16 +40,22 @@ function syncSeo(content) {
   document.documentElement.lang = content.locale;
 
   const absoluteOgImage = new URL(content.seo.ogImagePath, content.seo.siteUrl).toString();
+  const ogLocale = content.locale === 'es' ? 'es_MX' : 'en_US';
   const metaSelectors = [
     ['meta[name="description"]', content.seo.description, 'content'],
+    ['meta[name="author"]', content.brand.owner, 'content'],
     ['link[rel="canonical"]', content.seo.siteUrl, 'href'],
+    ['meta[property="og:site_name"]', content.brand.name, 'content'],
+    ['meta[property="og:locale"]', ogLocale, 'content'],
     ['meta[property="og:url"]', content.seo.siteUrl, 'content'],
     ['meta[property="og:title"]', content.seo.title, 'content'],
     ['meta[property="og:description"]', content.seo.description, 'content'],
     ['meta[property="og:image"]', absoluteOgImage, 'content'],
+    ['meta[property="og:image:alt"]', content.seo.title, 'content'],
     ['meta[name="twitter:title"]', content.seo.title, 'content'],
     ['meta[name="twitter:description"]', content.seo.description, 'content'],
     ['meta[name="twitter:image"]', absoluteOgImage, 'content'],
+    ['meta[name="twitter:image:alt"]', content.seo.title, 'content'],
   ];
 
   metaSelectors.forEach(([selector, value, attribute]) => {
@@ -58,6 +64,50 @@ function syncSeo(content) {
       element.setAttribute(attribute, value);
     }
   });
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        name: content.brand.name,
+        url: content.seo.siteUrl,
+        description: content.seo.description,
+        inLanguage: content.locale,
+      },
+      {
+        '@type': 'Person',
+        name: content.brand.owner,
+        url: content.seo.siteUrl,
+        image: absoluteOgImage,
+        sameAs: [
+          content.links.github,
+          content.links.linkedin,
+          content.links.playStore,
+        ],
+      },
+      {
+        '@type': 'Organization',
+        name: content.brand.name,
+        url: content.seo.siteUrl,
+        logo: absoluteOgImage,
+        founder: {
+          '@type': 'Person',
+          name: content.brand.owner,
+        },
+        sameAs: [
+          content.links.github,
+          content.links.linkedin,
+          content.links.playStore,
+        ],
+      },
+    ],
+  };
+
+  const structuredDataElement = document.querySelector('#structured-data');
+  if (structuredDataElement) {
+    structuredDataElement.textContent = JSON.stringify(structuredData, null, 2);
+  }
 }
 
 function initNavbarScroll() {
