@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r(e){let{hero:t}=e.page;return`
+import{n as e,r as t,t as n}from"./SiteChrome-Clih99ls.js";function r(e){let{hero:t}=e.page;return`
     <section id="home" class="relative overflow-hidden pt-28 sm:pt-32">
       <div aria-hidden="true" class="hero-grid absolute inset-0 opacity-[0.16]"></div>
       <div aria-hidden="true" class="absolute left-1/2 top-10 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full radial-ring blur-3xl"></div>
@@ -54,30 +54,28 @@ import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r(e){let{her
         </aside>
       </div>
     </section>
-  `}function i(e){let{overview:t,problem:n}=e.page;return`
+  `}function i(e){let{overview:t,problem:n}=e.page,{labels:r}=e.page;return`
     <section class="py-16 sm:py-20">
       <div class="section-shell grid gap-6 lg:grid-cols-2">
         <article class="info-card">
-          <span class="eyebrow">OVERVIEW</span>
+          <span class="eyebrow">${r.overview}</span>
           <h2 class="mt-5 text-3xl font-bold text-on-surface">${t.title}</h2>
           <p class="mt-4 text-base leading-8 text-on-surface-variant">${t.body}</p>
         </article>
         <article class="info-card">
-          <span class="eyebrow">PLAYER VALUE</span>
+          <span class="eyebrow">${r.playerValue}</span>
           <h2 class="mt-5 text-3xl font-bold text-on-surface">${n.title}</h2>
           <p class="mt-4 text-base leading-8 text-on-surface-variant">${n.body}</p>
         </article>
       </div>
     </section>
-  `}function a(e){return`
+  `}function a(e){let{labels:t}=e.page;return`
     <section class="bg-surface-container-lowest/45 py-24 sm:py-28">
       <div class="section-shell">
         <div class="mb-12 space-y-5">
-          <span class="eyebrow">SEO LANDING CONTENT</span>
-          <h2 class="section-title">Useful content for players searching for Grounded help</h2>
-          <p class="section-copy">
-            The page is structured to rank with natural language while still explaining what the app actually does.
-          </p>
+          <span class="eyebrow">${t.searchContent}</span>
+          <h2 class="section-title">${t.searchTitle}</h2>
+          <p class="section-copy">${t.searchIntro}</p>
         </div>
         <div class="grid gap-6 lg:grid-cols-2">
           ${e.page.searchSections.map(e=>`
@@ -89,11 +87,11 @@ import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function o(e){return`
+  `}function o(e){let{labels:t}=e.page;return`
     <section class="py-24 sm:py-28">
       <div class="section-shell">
         <div class="mb-12 space-y-5">
-          <span class="eyebrow">FEATURES</span>
+          <span class="eyebrow">${t.features}</span>
           <h2 class="section-title">${e.page.features.title}</h2>
         </div>
         <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
@@ -108,11 +106,11 @@ import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function s(e){return`
+  `}function s(e){let{labels:t}=e.page;return`
     <section class="bg-surface-container-lowest/45 py-24 sm:py-28">
       <div class="section-shell">
         <div class="mb-12 space-y-5">
-          <span class="eyebrow">SCREENSHOTS</span>
+          <span class="eyebrow">${t.screenshots}</span>
           <h2 class="section-title">${e.page.screenshots.title}</h2>
           <p class="section-copy">${e.page.screenshots.intro}</p>
         </div>
@@ -134,11 +132,11 @@ import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function c(e){return`
+  `}function c(e){let{labels:t}=e.page;return`
     <section class="py-24 sm:py-28">
       <div class="section-shell">
         <div class="mb-12 space-y-5">
-          <span class="eyebrow">STACK</span>
+          <span class="eyebrow">${t.stack}</span>
           <h2 class="section-title">${e.page.architecture.title}</h2>
           <p class="section-copy">${e.page.architecture.intro}</p>
         </div>
@@ -152,16 +150,16 @@ import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function l(e){return`
+  `}function l(e){let{labels:t}=e.page;return`
     <section class="bg-surface-container-lowest/45 py-24 sm:py-28">
       <div class="section-shell grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
         <article class="info-card">
-          <span class="eyebrow">MONETIZATION</span>
+          <span class="eyebrow">${t.monetization}</span>
           <h2 class="mt-5 text-3xl font-bold text-on-surface">${e.page.monetization.title}</h2>
           <p class="mt-4 text-base leading-8 text-on-surface-variant">${e.page.monetization.body}</p>
         </article>
         <article class="info-card">
-          <span class="eyebrow">PROOF</span>
+          <span class="eyebrow">${t.proof}</span>
           <h2 class="mt-5 text-3xl font-bold text-on-surface">${e.page.proof.title}</h2>
           <ul class="mt-5 space-y-3 text-sm leading-7 text-on-surface-variant">
             ${e.page.proof.items.map(e=>`
@@ -174,22 +172,22 @@ import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r(e){let{her
         </article>
       </div>
     </section>
-  `}function u(e){return`
+  `}function u(e){let{labels:t}=e.page;return`
     <section class="py-16">
       <div class="section-shell">
         <div class="rounded-[28px] border border-outline-variant/30 bg-surface-container-low/80 p-6 text-sm leading-7 text-on-surface-variant">
-          <span class="font-label text-xs uppercase tracking-[0.2em] text-secondary">Legal disclaimer</span>
+          <span class="font-label text-xs uppercase tracking-[0.2em] text-secondary">${t.legal}</span>
           <p class="mt-4">${e.page.disclaimer}</p>
         </div>
       </div>
     </section>
-  `}function d(e){return`
+  `}function d(e){let{labels:t}=e.page;return`
     <section class="pb-24 pt-8 sm:pb-28">
       <div class="section-shell">
         <div class="glass-panel overflow-hidden rounded-[32px] border border-outline-variant/30 p-8 sm:p-10 lg:p-12">
           <div class="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(260px,0.8fr)] lg:items-center">
             <div class="space-y-5">
-              <span class="eyebrow">BYTE SHARK</span>
+              <span class="eyebrow">${t.finalCta}</span>
               <h2 class="max-w-3xl font-headline text-4xl font-bold tracking-tight text-on-surface sm:text-5xl">
                 ${e.page.finalCta.title}
               </h2>

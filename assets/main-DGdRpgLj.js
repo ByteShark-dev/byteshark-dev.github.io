@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r(e){let{hero:t}=e.page,{links:n,brand:r}=e,i=t.bullets.map(e=>`
+import{n as e,r as t,t as n}from"./SiteChrome-Clih99ls.js";function r(e){let{hero:t}=e.page,{links:n,brand:r}=e,i=t.bullets.map(e=>`
         <li class="flex items-start gap-3">
           <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary-container/15 text-primary-container">
             <span class="material-symbols-outlined text-sm" aria-hidden="true">bolt</span>
@@ -131,21 +131,23 @@ import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r(e){let{her
       </div>
     </section>
   `}function o({proof:e}){let t=e.items.map(e=>`
-        <article class="overflow-hidden rounded-[28px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_24px_90px_rgba(0,0,0,0.22)]">
-          <div class="relative aspect-[16/10] overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.28),_rgba(7,17,31,0.95)_62%)]">
-            <img
-              src="${e.image}"
-              alt="${e.imageAlt}"
-              class="h-full w-full object-contain p-6 transition duration-500 hover:scale-[1.03]"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div class="space-y-6 p-7">
+        <article class="overflow-hidden rounded-[24px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
+          ${e.image?`
+                <div class="relative flex min-h-[180px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.28),_rgba(7,17,31,0.95)_62%)] p-6">
+                  <img
+                    src="${e.image}"
+                    alt="${e.imageAlt}"
+                    class="h-28 w-28 object-contain transition duration-500 hover:scale-[1.03] sm:h-32 sm:w-32"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              `:``}
+          <div class="space-y-5 p-6">
             <div class="space-y-3">
               <span class="signal-chip">${e.eyebrow}</span>
               <div>
-                <h3 class="text-3xl font-bold text-on-surface">${e.name}</h3>
+                <h3 class="text-2xl font-bold text-on-surface">${e.name}</h3>
                 <p class="mt-3 text-sm leading-7 text-on-surface-variant">${e.description}</p>
               </div>
             </div>
@@ -165,13 +167,15 @@ import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r(e){let{her
       `).join(``);return`
     <section id="proof" class="scroll-mt-28 py-24 sm:py-28">
       <div class="section-shell">
+        <div class="mx-auto max-w-6xl">
         <div class="mb-12 space-y-5">
           <span class="eyebrow">PROOF OF WORK</span>
           <h2 class="section-title">${e.title}</h2>
           <p class="section-copy">${e.intro}</p>
         </div>
-        <div class="grid gap-7 xl:grid-cols-2">
+        <div class="grid gap-6 lg:grid-cols-2">
           ${t}
+        </div>
         </div>
       </div>
     </section>
