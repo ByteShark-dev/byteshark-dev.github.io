@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./SiteChrome-Clih99ls.js";function r(e){let{hero:t}=e.page,{links:n,brand:r}=e,i=t.bullets.map(e=>`
+import{n as e,r as t,t as n}from"./SiteChrome-DbIM2IaK.js";function r(e){let{hero:t}=e.page,{links:n,brand:r}=e,i=t.bullets.map(e=>`
         <li class="flex items-start gap-3">
           <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary-container/15 text-primary-container">
             <span class="material-symbols-outlined text-sm" aria-hidden="true">bolt</span>

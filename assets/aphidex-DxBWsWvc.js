@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./SiteChrome-Clih99ls.js";function r(e){let{hero:t}=e.page;return`
+import{n as e,r as t,t as n}from"./SiteChrome-DbIM2IaK.js";function r(e){let{hero:t}=e.page;return`
     <section id="home" class="relative overflow-hidden pt-28 sm:pt-32">
       <div aria-hidden="true" class="hero-grid absolute inset-0 opacity-[0.16]"></div>
       <div aria-hidden="true" class="absolute left-1/2 top-10 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full radial-ring blur-3xl"></div>
@@ -112,7 +112,6 @@ import{n as e,r as t,t as n}from"./SiteChrome-Clih99ls.js";function r(e){let{her
         <div class="mb-12 space-y-5">
           <span class="eyebrow">${t.screenshots}</span>
           <h2 class="section-title">${e.page.screenshots.title}</h2>
-          <p class="section-copy">${e.page.screenshots.intro}</p>
         </div>
         <div class="grid gap-6 lg:grid-cols-3">
           ${e.page.screenshots.items.map(e=>`
