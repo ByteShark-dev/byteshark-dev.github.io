@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r({hero:e,links:t,brand:n}){let r=e.bullets.map(e=>`
+import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r(e){let{hero:t}=e.page,{links:n,brand:r}=e,i=t.bullets.map(e=>`
         <li class="flex items-start gap-3">
           <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary-container/15 text-primary-container">
             <span class="material-symbols-outlined text-sm" aria-hidden="true">bolt</span>
@@ -12,36 +12,36 @@ import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r({hero:e,li
       <div class="section-shell relative grid gap-14 pb-20 pt-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:items-center lg:pb-28">
         <div class="space-y-8">
           <div class="space-y-5">
-            <span class="eyebrow">${e.eyebrow}</span>
+            <span class="eyebrow">${t.eyebrow}</span>
             <h1 class="max-w-4xl font-headline text-5xl font-bold leading-[0.95] tracking-tight text-on-surface sm:text-6xl lg:text-7xl">
-              ${e.title}
+              ${t.title}
             </h1>
             <p class="max-w-2xl text-lg leading-8 text-on-surface-variant sm:text-xl">
-              ${e.description}
+              ${t.description}
             </p>
           </div>
           <div class="flex flex-wrap gap-4">
-            <a class="cta-primary" href="${t.whatsappQuote}" target="_blank" rel="noreferrer">
-              ${e.primaryCta}
+            <a class="cta-primary" href="${n.whatsappQuote}" target="_blank" rel="noreferrer">
+              ${t.primaryCta}
             </a>
             <a class="cta-secondary" href="#proof">
-              ${e.secondaryCta}
+              ${t.secondaryCta}
             </a>
           </div>
           <ul class="grid gap-4 text-sm leading-6 text-on-surface-variant sm:grid-cols-2">
-            ${r}
+            ${i}
           </ul>
         </div>
         <aside class="glass-panel relative overflow-hidden rounded-[28px] border border-outline-variant/30 p-7 shadow-[0_24px_90px_rgba(0,0,0,0.28)]">
           <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-container via-white/70 to-primary-container"></div>
           <div class="flex items-start justify-between gap-6">
             <div>
-              <p class="font-label text-xs uppercase tracking-[0.22em] text-primary-container">${n.name}</p>
-              <h2 class="mt-3 text-2xl font-bold text-on-surface">${e.statusCardTitle}</h2>
+              <p class="font-label text-xs uppercase tracking-[0.22em] text-primary-container">${r.name}</p>
+              <h2 class="mt-3 text-2xl font-bold text-on-surface">${t.statusCardTitle}</h2>
             </div>
             <img
-              src="${n.logoMark}"
-              alt="${n.name} logo"
+              src="${r.logoMark}"
+              alt="${r.name} logo"
               class="h-14 w-14 object-contain"
               width="56"
               height="56"
@@ -49,7 +49,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-Dxi2MMBs.js";function r({hero:e,li
             />
           </div>
           <p class="mt-5 max-w-sm text-base leading-7 text-on-surface-variant">
-            ${e.statusCardBody}
+            ${t.statusCardBody}
           </p>
           <div class="mt-8 grid gap-4 sm:grid-cols-2">
             <div class="info-card bg-surface-container-low/80 p-5">
