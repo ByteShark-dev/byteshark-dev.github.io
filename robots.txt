@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://byteshark-dev.github.io/sitemap.xml
+Sitemap: https://byteshark-dev.github.io/aphidex/sitemap.xml
