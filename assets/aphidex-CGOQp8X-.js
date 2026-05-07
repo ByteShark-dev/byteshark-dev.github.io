@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./SiteChrome-DbIM2IaK.js";function r(e){let{hero:t}=e.page;return`
+import{n as e,r as t,t as n}from"./SiteChrome-D1li-aEa.js";function r(e){let{hero:t}=e.page;return`
     <section id="home" class="relative overflow-hidden pt-28 sm:pt-32">
       <div aria-hidden="true" class="hero-grid absolute inset-0 opacity-[0.16]"></div>
       <div aria-hidden="true" class="absolute left-1/2 top-10 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full radial-ring blur-3xl"></div>
@@ -15,25 +15,42 @@ import{n as e,r as t,t as n}from"./SiteChrome-DbIM2IaK.js";function r(e){let{her
             <a class="cta-primary" href="${e.links.aphidexPlay}" target="_blank" rel="noreferrer">
               ${t.primaryCta}
             </a>
+            <a class="cta-secondary" href="${e.links.aphidexIos}" target="_blank" rel="noreferrer">
+              ${t.storeCta}
+            </a>
             <a class="cta-secondary" href="../#contact">
               ${t.secondaryCta}
             </a>
           </div>
-          <a
-            class="inline-flex max-w-[220px] rounded-2xl border border-outline-variant/35 bg-black/30 p-2 transition hover:border-primary-container/60"
-            href="${e.links.aphidexPlay}"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="${e.assets.playBadge}"
-              alt="${t.badgeAlt}"
-              class="h-auto w-full"
-              width="220"
-              height="66"
-              decoding="async"
-            />
-          </a>
+          <p class="text-sm font-medium text-secondary">${t.storeNote}</p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              class="inline-flex max-w-[220px] rounded-2xl border border-outline-variant/35 bg-black/30 p-2 transition hover:border-primary-container/60"
+              href="${e.links.aphidexPlay}"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src="${e.assets.playBadge}"
+                alt="${t.badgeAlt}"
+                class="h-auto w-full"
+                width="220"
+                height="66"
+                decoding="async"
+              />
+            </a>
+            <a
+              class="inline-flex min-h-[82px] min-w-[220px] items-center justify-center rounded-2xl border border-outline-variant/35 bg-black/30 px-6 py-4 text-left transition hover:border-primary-container/60"
+              href="${e.links.aphidexIos}"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>
+                <span class="block text-[0.72rem] uppercase tracking-[0.22em] text-secondary">Available on</span>
+                <span class="mt-1 block text-xl font-semibold text-on-surface">App Store</span>
+              </span>
+            </a>
+          </div>
         </div>
         <aside class="glass-panel overflow-hidden rounded-[28px] border border-outline-variant/30 p-7 shadow-[0_24px_90px_rgba(0,0,0,0.28)]">
           <div class="relative aspect-[4/3] overflow-hidden rounded-[24px] border border-outline-variant/20 bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.24),_rgba(7,17,31,0.96)_64%)] p-8">
