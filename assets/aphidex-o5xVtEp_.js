@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./SiteChrome-D1li-aEa.js";function r(e){let{hero:t}=e.page;return`
+import{n as e,r as t,t as n}from"./SiteChrome-LMMz5ymc.js";function r(e){let{hero:t}=e.page;return`
     <section id="home" class="relative overflow-hidden pt-28 sm:pt-32">
       <div aria-hidden="true" class="hero-grid absolute inset-0 opacity-[0.16]"></div>
       <div aria-hidden="true" class="absolute left-1/2 top-10 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full radial-ring blur-3xl"></div>
@@ -40,15 +40,19 @@ import{n as e,r as t,t as n}from"./SiteChrome-D1li-aEa.js";function r(e){let{her
               />
             </a>
             <a
-              class="inline-flex min-h-[82px] min-w-[220px] items-center justify-center rounded-2xl border border-outline-variant/35 bg-black/30 px-6 py-4 text-left transition hover:border-primary-container/60"
+              class="inline-flex max-w-[220px] rounded-2xl border border-outline-variant/35 bg-black/30 p-2 transition hover:border-primary-container/60"
               href="${e.links.aphidexIos}"
               target="_blank"
               rel="noreferrer"
             >
-              <span>
-                <span class="block text-[0.72rem] uppercase tracking-[0.22em] text-secondary">Available on</span>
-                <span class="mt-1 block text-xl font-semibold text-on-surface">App Store</span>
-              </span>
+              <img
+                src="${e.assets.appStoreBadge}"
+                alt="${t.storeBadgeAlt}"
+                class="h-auto w-full"
+                width="220"
+                height="66"
+                decoding="async"
+              />
             </a>
           </div>
         </div>
