@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./SiteChrome-LMMz5ymc.js";function r(e){let{hero:t}=e.page;return`
+import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{hero:t}=e.page;return`
     <section id="home" class="relative overflow-hidden pt-28 sm:pt-32">
       <div aria-hidden="true" class="hero-grid absolute inset-0 opacity-[0.16]"></div>
       <div aria-hidden="true" class="absolute left-1/2 top-10 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full radial-ring blur-3xl"></div>
