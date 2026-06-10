@@ -106,16 +106,24 @@ function initLocaleToggle(mount) {
 function initMobileMenu() {
   const toggle = document.querySelector('[data-nav-toggle]');
   const panel = document.querySelector('[data-nav-panel]');
+  const icon = document.querySelector('[data-nav-icon]');
 
   if (!toggle || !panel) {
     return;
   }
 
   const navLinks = panel.querySelectorAll('a');
+  const openLabel = toggle.getAttribute('data-nav-open-label') ?? 'Open navigation';
+  const closeLabel = toggle.getAttribute('data-nav-close-label') ?? 'Close navigation';
 
   const setOpen = (isOpen) => {
     panel.classList.toggle('hidden', !isOpen);
     toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? closeLabel : openLabel);
+
+    if (icon) {
+      icon.textContent = isOpen ? 'close' : 'menu';
+    }
   };
 
   toggle.addEventListener('click', () => {

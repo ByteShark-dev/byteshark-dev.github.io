@@ -8,9 +8,9 @@ function renderHero(content) {
       <div aria-hidden="true" class="hero-grid absolute inset-0 opacity-[0.16]"></div>
       <div aria-hidden="true" class="absolute left-1/2 top-10 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full radial-ring blur-3xl"></div>
       <div class="section-shell relative grid gap-10 pb-20 pt-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(300px,0.95fr)] lg:items-center lg:pb-24">
-        <div class="space-y-7">
+        <div class="min-w-0 space-y-7">
           <span class="eyebrow">${hero.eyebrow}</span>
-          <h1 class="max-w-4xl font-headline text-5xl font-bold leading-[0.96] tracking-tight text-on-surface sm:text-6xl">
+          <h1 class="max-w-4xl font-headline text-[clamp(2.9rem,10.5vw,4.5rem)] font-bold leading-[0.96] tracking-tight text-on-surface sm:text-6xl">
             ${hero.title}
           </h1>
           <p class="max-w-3xl text-lg leading-8 text-on-surface-variant sm:text-xl">
@@ -61,7 +61,7 @@ function renderHero(content) {
             </a>
           </div>
         </div>
-        <aside class="glass-panel overflow-hidden rounded-[28px] border border-outline-variant/30 p-7 shadow-[0_24px_90px_rgba(0,0,0,0.28)]">
+        <aside class="glass-panel min-w-0 overflow-hidden rounded-[28px] border border-outline-variant/30 p-6 sm:p-7 shadow-[0_24px_90px_rgba(0,0,0,0.28)]">
           <div class="relative aspect-[4/3] overflow-hidden rounded-[24px] border border-outline-variant/20 bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.24),_rgba(7,17,31,0.96)_64%)] p-8">
             <img
               src="/assets/images/Aphidex_logo.webp"
@@ -90,12 +90,12 @@ function renderIntro(content) {
   return `
     <section class="py-16 sm:py-20">
       <div class="section-shell grid gap-6 lg:grid-cols-2">
-        <article class="info-card">
+        <article class="info-card min-w-0">
           <span class="eyebrow">${labels.overview}</span>
           <h2 class="mt-5 text-3xl font-bold text-on-surface">${overview.title}</h2>
           <p class="mt-4 text-base leading-8 text-on-surface-variant">${overview.body}</p>
         </article>
-        <article class="info-card">
+        <article class="info-card min-w-0">
           <span class="eyebrow">${labels.playerValue}</span>
           <h2 class="mt-5 text-3xl font-bold text-on-surface">${problem.title}</h2>
           <p class="mt-4 text-base leading-8 text-on-surface-variant">${problem.body}</p>
@@ -120,7 +120,7 @@ function renderSearchSections(content) {
           ${content.page.searchSections
             .map(
               (section) => `
-                <article class="info-card">
+                <article class="info-card min-w-0">
                   <h3 class="text-2xl font-bold text-on-surface">${section.title}</h3>
                   <p class="mt-4 text-sm leading-7 text-on-surface-variant">${section.body}</p>
                 </article>
@@ -147,7 +147,7 @@ function renderFeatures(content) {
           ${content.page.features.items
             .map(
               (item) => `
-                <article class="info-card">
+                <article class="info-card min-w-0">
                   <div class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-primary-container/15 text-primary-container">
                     <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
                   </div>
@@ -212,7 +212,7 @@ function renderArchitecture(content) {
           ${content.page.architecture.items
             .map(
               (item) => `
-                <article class="info-card">
+                <article class="info-card min-w-0">
                   <span class="signal-chip">${item.title}</span>
                   <p class="mt-5 text-sm leading-7 text-on-surface-variant">${item.body}</p>
                 </article>
@@ -231,12 +231,12 @@ function renderMonetization(content) {
   return `
     <section class="bg-surface-container-lowest/45 py-24 sm:py-28">
       <div class="section-shell grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
-        <article class="info-card">
+        <article class="info-card min-w-0">
           <span class="eyebrow">${labels.monetization}</span>
           <h2 class="mt-5 text-3xl font-bold text-on-surface">${content.page.monetization.title}</h2>
           <p class="mt-4 text-base leading-8 text-on-surface-variant">${content.page.monetization.body}</p>
         </article>
-        <article class="info-card">
+        <article class="info-card min-w-0">
           <span class="eyebrow">${labels.proof}</span>
           <h2 class="mt-5 text-3xl font-bold text-on-surface">${content.page.proof.title}</h2>
           <ul class="mt-5 space-y-3 text-sm leading-7 text-on-surface-variant">
@@ -278,11 +278,11 @@ function renderFinalCta(content) {
   return `
     <section class="pb-24 pt-8 sm:pb-28">
       <div class="section-shell">
-        <div class="glass-panel overflow-hidden rounded-[32px] border border-outline-variant/30 p-8 sm:p-10 lg:p-12">
+        <div class="glass-panel overflow-hidden rounded-[32px] border border-outline-variant/30 p-6 sm:p-10 lg:p-12">
           <div class="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(260px,0.8fr)] lg:items-center">
-            <div class="space-y-5">
+            <div class="min-w-0 space-y-5">
               <span class="eyebrow">${labels.finalCta}</span>
-              <h2 class="max-w-3xl font-headline text-4xl font-bold tracking-tight text-on-surface sm:text-5xl">
+              <h2 class="max-w-3xl font-headline text-[clamp(2.4rem,9vw,3.4rem)] font-bold tracking-tight text-on-surface sm:text-5xl">
                 ${content.page.finalCta.title}
               </h2>
               <p class="max-w-2xl text-lg leading-8 text-on-surface-variant">

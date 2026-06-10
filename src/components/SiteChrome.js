@@ -6,14 +6,14 @@ function getAphidexHref(currentPage) {
   return currentPage === 'home' ? './aphidex.html' : '../aphidex.html';
 }
 
-function renderNavigationLinks(navigation, currentPage) {
+function renderNavigationLinks(navigation, currentPage, linkClass = '') {
   return navigation
     .map((item) => {
       const href = item.page === 'aphidex' ? getAphidexHref(currentPage) : getHomeHref(item.section, currentPage);
 
       return `
         <a
-          class="text-on-surface/72 transition hover:text-primary-container hover:opacity-100"
+          class="${linkClass}"
           href="${href}"
         >
           ${item.label}
@@ -24,15 +24,24 @@ function renderNavigationLinks(navigation, currentPage) {
 }
 
 export function renderNavbar(content, currentPage) {
-  const navItems = renderNavigationLinks(content.navigation, currentPage);
+  const desktopNavItems = renderNavigationLinks(
+    content.navigation,
+    currentPage,
+    'rounded-full px-3 py-2 text-on-surface/74 transition hover:bg-white/5 hover:text-on-surface',
+  );
+  const mobileNavItems = renderNavigationLinks(
+    content.navigation,
+    currentPage,
+    'rounded-2xl border border-outline-variant/25 bg-surface-container-low/55 px-4 py-3 text-base font-semibold tracking-tight text-on-surface transition hover:border-primary-container/35 hover:bg-surface-container',
+  );
   const localeButtons = content.supportedLocales
     .map(
       (item) => `
         <button
-          class="rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] transition-colors ${
+          class="rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] transition-colors ${
             item === content.locale
               ? 'bg-primary-container text-on-primary-container'
-              : 'text-on-surface/65 hover:text-primary'
+              : 'text-on-surface/62 hover:text-on-surface'
           }"
           type="button"
           data-locale-target="${item}"
@@ -45,6 +54,7 @@ export function renderNavbar(content, currentPage) {
     .join('');
   const homeHref = currentPage === 'home' ? '#home' : '../#home';
   const quoteHref = currentPage === 'home' ? '#contact' : '../#contact';
+  const desktopCtaLabel = currentPage === 'home' ? content.page.contact.primaryCta : content.page.finalCta.primary;
 
   return `
     <header class="site-navbar fixed inset-x-0 top-0 z-50" data-navbar>
@@ -54,9 +64,9 @@ export function renderNavbar(content, currentPage) {
       >
         ${content.ui.skipToContent}
       </a>
-      <nav class="section-shell flex items-center justify-between gap-4 py-4" aria-label="Primary">
+      <nav class="section-shell flex items-center justify-between gap-3 py-3.5 sm:gap-4 sm:py-4" aria-label="Primary">
         <a
-          class="flex items-center gap-3 font-headline text-xl font-bold tracking-tight text-primary sm:text-2xl"
+          class="flex min-w-0 items-center gap-2.5 font-headline text-lg font-bold tracking-tight text-primary sm:gap-3 sm:text-2xl"
           href="${homeHref}"
           aria-label="${content.ui.homeAria}"
         >
@@ -69,46 +79,56 @@ export function renderNavbar(content, currentPage) {
             height="40"
             decoding="async"
           />
-          <span>${content.brand.name}</span>
+          <span class="truncate">${content.brand.name}</span>
         </a>
-        <div class="hidden items-center gap-8 font-label text-sm tracking-tight lg:flex">
-          ${navItems}
+        <div class="hidden items-center gap-2 font-label text-sm tracking-tight lg:flex">
+          ${desktopNavItems}
         </div>
         <div class="hidden items-center gap-3 lg:flex">
           <div
-            class="flex items-center gap-1 rounded-full border border-outline-variant/40 bg-surface-container-high/70 p-1"
+            class="flex items-center gap-1 rounded-full border border-outline-variant/30 bg-surface-container-high/45 p-1"
             aria-label="${content.ui.languageLabel}"
           >
             ${localeButtons}
           </div>
           <a class="cta-primary px-5 py-2.5 text-xs" href="${quoteHref}">
-            ${currentPage === 'home' ? content.page.contact.primaryCta : content.page.finalCta.primary}
+            ${desktopCtaLabel}
           </a>
         </div>
         <div class="flex items-center gap-3 lg:hidden">
-          <div
-            class="flex items-center gap-1 rounded-full border border-outline-variant/40 bg-surface-container-high/70 p-1"
-            aria-label="${content.ui.languageLabel}"
-          >
-            ${localeButtons}
-          </div>
+          <a class="cta-primary px-4 py-2.5 text-[11px]" href="${quoteHref}">
+            ${content.ui.mobileHeaderCta}
+          </a>
           <button
             class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-outline-variant/40 bg-surface-container-high/70 text-on-surface"
             type="button"
             data-nav-toggle
             aria-expanded="false"
             aria-label="${content.ui.menuLabel}"
+            data-nav-open-label="${content.ui.menuLabel}"
+            data-nav-close-label="${content.ui.closeMenuLabel}"
           >
-            <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+            <span class="material-symbols-outlined" aria-hidden="true" data-nav-icon>menu</span>
           </button>
         </div>
       </nav>
       <div class="section-shell hidden pb-4 lg:hidden" data-nav-panel>
-        <div class="glass-panel rounded-2xl border border-outline-variant/30 p-4">
-          <div class="flex flex-col gap-3 font-label text-sm uppercase tracking-[0.16em] text-on-surface">
-            ${navItems}
-            <a class="cta-primary mt-2" href="${quoteHref}">
-              ${currentPage === 'home' ? content.page.contact.primaryCta : content.page.finalCta.primary}
+        <div class="glass-panel rounded-[26px] border border-outline-variant/30 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+          <div class="flex items-center justify-between gap-4">
+            <p class="font-label text-xs font-bold uppercase tracking-[0.22em] text-secondary">
+              ${content.ui.menuPanelTitle}
+            </p>
+            <div
+              class="flex items-center gap-1 rounded-full border border-outline-variant/30 bg-surface-container-high/45 p-1"
+              aria-label="${content.ui.languageLabel}"
+            >
+              ${localeButtons}
+            </div>
+          </div>
+          <div class="mt-4 flex flex-col gap-3 font-label text-sm text-on-surface">
+            ${mobileNavItems}
+            <a class="cta-primary mt-1" href="${quoteHref}">
+              ${desktopCtaLabel}
             </a>
           </div>
         </div>
@@ -121,7 +141,7 @@ export function renderFooter(content, currentPage) {
   const homeHref = currentPage === 'home' ? '#home' : '../#home';
 
   return `
-    <footer class="border-t border-outline-variant/20 bg-surface-container-lowest/80 py-12">
+    <footer class="border-t border-outline-variant/20 bg-surface-container-lowest/80 pb-28 pt-12 sm:py-12">
       <div class="section-shell flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
         <a class="flex items-center gap-3 font-headline text-lg font-bold text-on-surface" href="${homeHref}">
           <img
@@ -135,10 +155,10 @@ export function renderFooter(content, currentPage) {
           />
           <span>${content.brand.name}</span>
         </a>
-        <p class="max-w-md text-sm uppercase tracking-[0.18em] text-on-surface/55">
+        <p class="max-w-md text-sm uppercase tracking-[0.18em] text-on-surface/55 text-wrap-anywhere">
           ${content.footer.copyright} ${content.footer.tagline}
         </p>
-        <div class="flex flex-wrap gap-x-6 gap-y-3 font-label text-sm uppercase tracking-[0.18em]">
+        <div class="grid grid-cols-2 gap-x-6 gap-y-3 font-label text-sm uppercase tracking-[0.18em] sm:flex sm:flex-wrap">
           <a class="text-on-surface/58 transition hover:text-primary-container" href="${content.links.github}" target="_blank" rel="noreferrer">
             ${content.footer.links.github}
           </a>

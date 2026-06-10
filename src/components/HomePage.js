@@ -3,6 +3,16 @@ import { renderFooter, renderNavbar, renderWhatsAppShortcut } from './SiteChrome
 function renderHero(content) {
   const { hero } = content.page;
   const { links, brand } = content;
+  const statusHighlights = hero.statusHighlights
+    .map(
+      (item, index) => `
+        <div class="info-card bg-surface-container-low/80 p-5 ${index === hero.statusHighlights.length - 1 ? 'sm:col-span-2' : ''}">
+          <p class="font-label text-xs uppercase tracking-[0.18em] text-secondary">${item.label}</p>
+          <p class="mt-3 text-lg font-semibold text-on-surface text-wrap-anywhere">${item.value}</p>
+        </div>
+      `,
+    )
+    .join('');
 
   const bullets = hero.bullets
     .map(
@@ -22,10 +32,10 @@ function renderHero(content) {
       <div aria-hidden="true" class="hero-grid absolute inset-0 opacity-[0.18]"></div>
       <div aria-hidden="true" class="absolute left-1/2 top-12 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full radial-ring blur-3xl"></div>
       <div class="section-shell relative grid gap-14 pb-20 pt-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:items-center lg:pb-28">
-        <div class="space-y-8">
+        <div class="min-w-0 space-y-8">
           <div class="space-y-5">
             <span class="eyebrow">${hero.eyebrow}</span>
-            <h1 class="max-w-4xl font-headline text-5xl font-bold leading-[0.95] tracking-tight text-on-surface sm:text-6xl lg:text-7xl">
+            <h1 class="max-w-4xl font-headline text-[clamp(3rem,11vw,4.75rem)] font-bold leading-[0.95] tracking-tight text-on-surface lg:text-7xl">
               ${hero.title}
             </h1>
             <p class="max-w-2xl text-lg leading-8 text-on-surface-variant sm:text-xl">
@@ -44,10 +54,10 @@ function renderHero(content) {
             ${bullets}
           </ul>
         </div>
-        <aside class="glass-panel relative overflow-hidden rounded-[28px] border border-outline-variant/30 p-7 shadow-[0_24px_90px_rgba(0,0,0,0.28)]">
+        <aside class="glass-panel relative min-w-0 overflow-hidden rounded-[28px] border border-outline-variant/30 p-6 sm:p-7 shadow-[0_24px_90px_rgba(0,0,0,0.28)]">
           <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-container via-white/70 to-primary-container"></div>
           <div class="flex items-start justify-between gap-6">
-            <div>
+            <div class="min-w-0">
               <p class="font-label text-xs uppercase tracking-[0.22em] text-primary-container">${brand.name}</p>
               <h2 class="mt-3 text-2xl font-bold text-on-surface">${hero.statusCardTitle}</h2>
             </div>
@@ -64,18 +74,7 @@ function renderHero(content) {
             ${hero.statusCardBody}
           </p>
           <div class="mt-8 grid gap-4 sm:grid-cols-2">
-            <div class="info-card bg-surface-container-low/80 p-5">
-              <p class="font-label text-xs uppercase tracking-[0.18em] text-secondary">Focus</p>
-              <p class="mt-3 text-lg font-semibold text-on-surface">Commercial clarity</p>
-            </div>
-            <div class="info-card bg-surface-container-low/80 p-5">
-              <p class="font-label text-xs uppercase tracking-[0.18em] text-secondary">Build</p>
-              <p class="mt-3 text-lg font-semibold text-on-surface">Web, app and systems</p>
-            </div>
-            <div class="info-card bg-surface-container-low/80 p-5 sm:col-span-2">
-              <p class="font-label text-xs uppercase tracking-[0.18em] text-secondary">Approach</p>
-              <p class="mt-3 text-lg font-semibold text-on-surface">Design that looks premium. Engineering that survives real use.</p>
-            </div>
+            ${statusHighlights}
           </div>
         </aside>
       </div>
@@ -83,7 +82,7 @@ function renderHero(content) {
   `;
 }
 
-function renderProblems({ problems }) {
+function renderProblems({ problems, sectionEyebrows }) {
   const items = problems.items
     .map(
       (item) => `
@@ -102,7 +101,7 @@ function renderProblems({ problems }) {
     <section id="problems" class="scroll-mt-28 py-24 sm:py-28">
       <div class="section-shell">
         <div class="mb-12 space-y-5">
-          <span class="eyebrow">PROBLEMS WE FIX</span>
+          <span class="eyebrow">${sectionEyebrows.problems}</span>
           <h2 class="section-title">${problems.title}</h2>
           <p class="section-copy">${problems.intro}</p>
         </div>
@@ -115,7 +114,7 @@ function renderProblems({ problems }) {
 }
 
 function renderServices(content) {
-  const { services } = content.page;
+  const { services, sectionEyebrows } = content.page;
   const { links } = content;
 
   const cards = services.items
@@ -126,7 +125,7 @@ function renderServices(content) {
             <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-container/16 text-primary-container">
               <span class="material-symbols-outlined" aria-hidden="true">${item.icon}</span>
             </div>
-            <span class="signal-chip">Service</span>
+            <span class="signal-chip">${services.chipLabel}</span>
           </div>
           <h3 class="mt-6 text-2xl font-bold text-on-surface">${item.title}</h3>
           <p class="mt-3 text-sm leading-7 text-on-surface-variant">${item.description}</p>
@@ -160,7 +159,7 @@ function renderServices(content) {
     <section id="services" class="scroll-mt-28 bg-surface-container-lowest/45 py-24 sm:py-28">
       <div class="section-shell">
         <div class="mb-12 space-y-5">
-          <span class="eyebrow">SERVICES</span>
+          <span class="eyebrow">${sectionEyebrows.services}</span>
           <h2 class="section-title">${services.title}</h2>
           <p class="section-copy">${services.intro}</p>
         </div>
@@ -224,7 +223,7 @@ function renderProof({ proof }) {
       <div class="section-shell">
         <div class="mx-auto max-w-6xl">
         <div class="mb-12 space-y-5">
-          <span class="eyebrow">PROOF OF WORK</span>
+          <span class="eyebrow">${proof.sectionEyebrow}</span>
           <h2 class="section-title">${proof.title}</h2>
           <p class="section-copy">${proof.intro}</p>
         </div>
@@ -238,7 +237,7 @@ function renderProof({ proof }) {
 }
 
 function renderContact(content) {
-  const { contact } = content.page;
+  const { contact, sectionEyebrows } = content.page;
   const { links } = content;
 
   const checklist = contact.checklist
@@ -257,11 +256,11 @@ function renderContact(content) {
   return `
     <section id="contact" class="scroll-mt-28 pb-24 pt-10 sm:pb-28">
       <div class="section-shell">
-        <div class="glass-panel overflow-hidden rounded-[32px] border border-outline-variant/30 p-8 sm:p-10 lg:p-12">
+        <div class="glass-panel overflow-hidden rounded-[32px] border border-outline-variant/30 p-6 sm:p-10 lg:p-12">
           <div class="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] lg:items-start">
-            <div class="space-y-6">
-              <span class="eyebrow">CONTACT</span>
-              <h2 class="max-w-3xl font-headline text-4xl font-bold tracking-tight text-on-surface sm:text-5xl">
+            <div class="min-w-0 space-y-6">
+              <span class="eyebrow">${sectionEyebrows.contact}</span>
+              <h2 class="max-w-3xl font-headline text-[clamp(2.6rem,10vw,3.6rem)] font-bold leading-[0.96] tracking-tight text-on-surface sm:text-5xl">
                 ${contact.title}
               </h2>
               <p class="max-w-2xl text-lg leading-8 text-on-surface-variant">
@@ -282,37 +281,37 @@ function renderContact(content) {
                 </ul>
               </div>
             </div>
-            <aside class="space-y-6 rounded-[28px] border border-outline-variant/25 bg-surface-container-low/80 p-6">
-              <div>
+            <aside class="min-w-0 space-y-6 rounded-[28px] border border-outline-variant/25 bg-surface-container-low/80 p-6">
+              <div class="min-w-0">
                 <p class="font-label text-xs uppercase tracking-[0.2em] text-secondary">${contact.supportTitle}</p>
-                <p class="mt-4 text-sm leading-7 text-on-surface-variant">${contact.supportCopy}</p>
+                <p class="mt-4 text-sm leading-7 text-on-surface-variant text-wrap-anywhere">${contact.supportCopy}</p>
               </div>
               <div class="space-y-4">
-                <a class="info-card flex items-center gap-4 p-5 transition hover:border-primary-container/40" href="${links.email}">
+                <a class="info-card flex min-w-0 items-center gap-4 p-5 transition hover:border-primary-container/40" href="${links.email}">
                   <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-container/15 text-primary-container">
                     <span class="material-symbols-outlined" aria-hidden="true">mail</span>
                   </span>
-                  <span>
+                  <span class="min-w-0">
                     <span class="block font-label text-xs uppercase tracking-[0.18em] text-secondary">${contact.touchpoints.emailLabel}</span>
-                    <span class="mt-1 block font-semibold text-on-surface">${links.emailAddress}</span>
+                    <span class="mt-1 block font-semibold text-on-surface text-wrap-anywhere">${links.emailAddress}</span>
                   </span>
                 </a>
-                <a class="info-card flex items-center gap-4 p-5 transition hover:border-primary-container/40" href="${links.github}" target="_blank" rel="noreferrer">
+                <a class="info-card flex min-w-0 items-center gap-4 p-5 transition hover:border-primary-container/40" href="${links.github}" target="_blank" rel="noreferrer">
                   <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-container/15 text-primary-container">
                     <span class="material-symbols-outlined" aria-hidden="true">code</span>
                   </span>
-                  <span>
+                  <span class="min-w-0">
                     <span class="block font-label text-xs uppercase tracking-[0.18em] text-secondary">${contact.touchpoints.githubLabel}</span>
-                    <span class="mt-1 block font-semibold text-on-surface">github.com/byteshark-dev</span>
+                    <span class="mt-1 block font-semibold text-on-surface text-wrap-anywhere">${contact.touchpoints.githubValue}</span>
                   </span>
                 </a>
-                <a class="info-card flex items-center gap-4 p-5 transition hover:border-primary-container/40" href="${links.linkedin}" target="_blank" rel="noreferrer">
+                <a class="info-card flex min-w-0 items-center gap-4 p-5 transition hover:border-primary-container/40" href="${links.linkedin}" target="_blank" rel="noreferrer">
                   <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-container/15 text-primary-container">
                     <span class="material-symbols-outlined" aria-hidden="true">business_center</span>
                   </span>
-                  <span>
+                  <span class="min-w-0">
                     <span class="block font-label text-xs uppercase tracking-[0.18em] text-secondary">${contact.touchpoints.linkedinLabel}</span>
-                    <span class="mt-1 block font-semibold text-on-surface">Angel Arenas Patino</span>
+                    <span class="mt-1 block font-semibold text-on-surface text-wrap-anywhere">${contact.touchpoints.linkedinValue}</span>
                   </span>
                 </a>
               </div>
@@ -325,13 +324,18 @@ function renderContact(content) {
 }
 
 export function renderHomePage(content) {
+  const proofContent = {
+    ...content.page.proof,
+    sectionEyebrow: content.page.sectionEyebrows.proof,
+  };
+
   return `
     ${renderNavbar(content, 'home')}
     <main id="main-content">
       ${renderHero(content)}
       ${renderProblems(content.page)}
       ${renderServices(content)}
-      ${renderProof(content.page)}
+      ${renderProof({ proof: proofContent })}
       ${renderContact(content)}
     </main>
     ${renderFooter(content, 'home')}

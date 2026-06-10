@@ -17,7 +17,7 @@ const localizedContent = {
       { label: 'Contacto', section: 'contact' },
     ],
     footer: {
-      tagline: 'Software built for the next era',
+      tagline: 'Software para la siguiente era',
       links: {
         github: 'GitHub',
         linkedin: 'LinkedIn',
@@ -31,6 +31,8 @@ const localizedContent = {
       languageLabel: 'Idioma',
       menuLabel: 'Abrir navegacion',
       closeMenuLabel: 'Cerrar navegacion',
+      menuPanelTitle: 'Menu',
+      mobileHeaderCta: 'Contacto',
       whatsappShortcut: 'WhatsApp',
       whatsappShortcutAria: 'Enviar mensaje por WhatsApp a ByteShark',
       localeLabels: {
@@ -41,25 +43,45 @@ const localizedContent = {
     },
     home: {
       seo: {
-        title: 'ByteShark | Websites, Apps & Digital Systems',
+        title: 'ByteShark | Sitios web, apps y sistemas digitales',
         description:
-          'ByteShark builds modern websites, mobile apps and digital systems for businesses that want to look professional, sell more and operate better.',
+          'ByteShark crea sitios web, apps y sistemas digitales para negocios que quieren verse profesionales, vender mas y operar mejor.',
       },
       hero: {
-        eyebrow: 'DIGITAL STUDIO FOR GROWING BUSINESSES',
-        title: 'Websites, apps y sistemas que hacen que tu negocio se vea serio.',
+        eyebrow: 'ESTUDIO DIGITAL PARA NEGOCIOS EN CRECIMIENTO',
+        title: 'Sitios web, apps y sistemas que hacen que tu negocio se vea serio.',
         description:
-          'ByteShark crea websites, apps y sistemas digitales para negocios que quieren verse profesionales, vender mas y operar mejor.',
+          'ByteShark crea sitios web, apps y sistemas digitales para negocios que quieren verse profesionales, vender mas y operar mejor.',
         primaryCta: 'Solicitar cotizacion',
         secondaryCta: 'Ver casos reales',
         bullets: [
-          'Webs comerciales y landing pages listas para vender.',
+          'Sitios web comerciales y landing pages listas para vender.',
           'Apps y MVPs con arquitectura real, no demos de portafolio.',
           'Sistemas internos para citas, pedidos, dashboards y operaciones.',
         ],
-        statusCardTitle: 'Delivery stack',
+        statusCardTitle: 'Capacidad de entrega',
         statusCardBody:
           'Diseno, frontend, arquitectura y publicaciones reales para negocios que necesitan velocidad sin verse improvisados.',
+        statusHighlights: [
+          {
+            label: 'Enfoque',
+            value: 'Claridad comercial',
+          },
+          {
+            label: 'Desarrollo',
+            value: 'Sitios web, apps y sistemas',
+          },
+          {
+            label: 'Metodo',
+            value: 'Diseno premium. Ingenieria lista para uso real.',
+          },
+        ],
+      },
+      sectionEyebrows: {
+        problems: 'PROBLEMAS QUE RESOLVEMOS',
+        services: 'SERVICIOS',
+        proof: 'CASOS REALES',
+        contact: 'CONTACTO',
       },
       problems: {
         title: 'Problemas que ByteShark resuelve',
@@ -97,6 +119,7 @@ const localizedContent = {
         title: 'Servicios',
         intro:
           'Cada servicio parte del mismo principio: resolver un problema comercial con una experiencia clara y una base tecnica mantenible.',
+        chipLabel: 'Servicio',
         items: [
           {
             icon: 'rocket_launch',
@@ -194,7 +217,7 @@ const localizedContent = {
       contact: {
         title: 'Tu negocio necesita una presencia que venda y una operacion que escale.',
         intro:
-          'ByteShark trabaja en websites, apps y sistemas con criterio de producto, ejecucion limpia y foco en resultados reales.',
+          'ByteShark trabaja en sitios web, apps y sistemas con criterio de producto, ejecucion limpia y foco en resultados reales.',
         checklistTitle: 'Ideal para negocios que necesitan:',
         checklist: [
           'Lanzar rapido sin verse improvisados',
@@ -205,19 +228,21 @@ const localizedContent = {
         primaryCta: 'Solicitar cotizacion',
         secondaryCta: 'Ver casos reales',
         supportTitle: 'Canales directos',
-        supportCopy: 'WhatsApp configurable, correo directo y perfiles publicos para validar trabajo real.',
+        supportCopy: 'WhatsApp directo, correo y perfiles publicos para validar trabajo real.',
         touchpoints: {
           emailLabel: 'Correo',
           githubLabel: 'GitHub',
           linkedinLabel: 'LinkedIn',
+          githubValue: '@byteshark-dev',
+          linkedinValue: 'Angel Arenas Patino',
         },
       },
     },
     aphidex: {
       seo: {
-        title: 'Aphidex | App companion de Grounded',
+        title: 'Aphidex | App complementaria de Grounded',
         description:
-          'Descarga Aphidex, una app companion no oficial de Grounded con debilidades, resistencias, ataques, efectos y datos offline para Grounded y Grounded 2.',
+          'Descarga Aphidex, una app complementaria no oficial de Grounded con debilidades, resistencias, ataques, efectos y datos offline para Grounded y Grounded 2.',
       },
       labels: {
         overview: 'RESUMEN',
@@ -235,15 +260,15 @@ const localizedContent = {
         finalCta: 'BYTE SHARK',
       },
       hero: {
-        eyebrow: 'GROUNDED COMPANION APP · ANDROID + IOS',
-        title: 'Aphidex - App companion de Grounded',
+        eyebrow: 'APP COMPLEMENTARIA DE GROUNDED \u00B7 ANDROID + IOS',
+        title: 'Aphidex - App complementaria de Grounded',
         description:
-          'Una app companion movil para Grounded y Grounded 2, ahora disponible en Android y iPhone, con debilidades, resistencias, ataques, efectos y datos de supervivencia disponibles offline.',
+          'Una app complementaria movil para Grounded y Grounded 2, ahora disponible en Android y iPhone, con debilidades, resistencias, ataques, efectos y datos de supervivencia disponibles offline.',
         primaryCta: 'Descargar en Google Play',
         storeCta: 'Descargar en App Store',
         secondaryCta: 'Quieres una app como Aphidex?',
-        badgeAlt: 'Badge de Google Play para Aphidex',
-        storeBadgeAlt: 'Badge de App Store para Aphidex',
+        badgeAlt: 'Insignia de Google Play para Aphidex',
+        storeBadgeAlt: 'Insignia de App Store para Aphidex',
         storeNote: 'Ahora disponible en Android y iOS.',
         sideCardTitle: 'Construida y publicada por ByteShark',
         sideCardBody:
@@ -252,7 +277,7 @@ const localizedContent = {
       overview: {
         title: 'Que es Aphidex?',
         body:
-          'Aphidex es una app companion no oficial para jugadores de Grounded. Te ayuda a consultar debilidades, resistencias, tipos de ataque, niveles, efectos e informacion util de combate sin tener que buscar en multiples paginas.',
+          'Aphidex es una app complementaria no oficial para jugadores de Grounded. Te ayuda a consultar debilidades, resistencias, tipos de ataque, niveles, efectos e informacion util de combate sin tener que buscar en multiples paginas.',
       },
       problem: {
         title: 'Que problema resuelve?',
@@ -362,7 +387,7 @@ const localizedContent = {
         ],
       },
       disclaimer:
-        'Aphidex es una app companion fan-made no oficial y no esta afiliada, avalada ni patrocinada por Obsidian Entertainment, Xbox Game Studios o Microsoft.',
+        'Aphidex es una app complementaria no oficial hecha por fans y no esta afiliada, avalada ni patrocinada por Obsidian Entertainment, Xbox Game Studios o Microsoft.',
       finalCta: {
         title: 'Quieres una app como Aphidex?',
         body:
@@ -395,6 +420,8 @@ const localizedContent = {
       languageLabel: 'Language',
       menuLabel: 'Open navigation',
       closeMenuLabel: 'Close navigation',
+      menuPanelTitle: 'Menu',
+      mobileHeaderCta: 'Contact',
       whatsappShortcut: 'WhatsApp',
       whatsappShortcutAria: 'Send a WhatsApp message to ByteShark',
       localeLabels: {
@@ -424,6 +451,26 @@ const localizedContent = {
         statusCardTitle: 'Delivery stack',
         statusCardBody:
           'Design, frontend, architecture and real releases for businesses that need speed without looking improvised.',
+        statusHighlights: [
+          {
+            label: 'Focus',
+            value: 'Commercial clarity',
+          },
+          {
+            label: 'Build',
+            value: 'Websites, apps and systems',
+          },
+          {
+            label: 'Approach',
+            value: 'Design that looks premium. Engineering that survives real use.',
+          },
+        ],
+      },
+      sectionEyebrows: {
+        problems: 'PROBLEMS WE FIX',
+        services: 'SERVICES',
+        proof: 'PROOF OF WORK',
+        contact: 'CONTACT',
       },
       problems: {
         title: 'Problems ByteShark solves',
@@ -461,6 +508,7 @@ const localizedContent = {
         title: 'Services',
         intro:
           'Every service starts from the same principle: solve a business problem with a clear experience and a maintainable technical foundation.',
+        chipLabel: 'Service',
         items: [
           {
             icon: 'rocket_launch',
@@ -569,11 +617,13 @@ const localizedContent = {
         primaryCta: 'Request a quote',
         secondaryCta: 'View real projects',
         supportTitle: 'Direct channels',
-        supportCopy: 'Configurable WhatsApp, direct email and public profiles so prospects can validate real work.',
+        supportCopy: 'Direct WhatsApp, email and public profiles so prospects can validate real work.',
         touchpoints: {
           emailLabel: 'Email',
           githubLabel: 'GitHub',
           linkedinLabel: 'LinkedIn',
+          githubValue: '@byteshark-dev',
+          linkedinValue: 'Angel Arenas Patino',
         },
       },
     },
@@ -599,7 +649,7 @@ const localizedContent = {
         finalCta: 'BYTE SHARK',
       },
       hero: {
-        eyebrow: 'GROUNDED COMPANION APP · ANDROID + IOS',
+        eyebrow: 'GROUNDED COMPANION APP \u00B7 ANDROID + IOS',
         title: 'Aphidex - Grounded Handbook App',
         description:
           'A mobile companion app for Grounded and Grounded 2, now available on Android and iPhone, with creature weaknesses, resistances, attacks, effects and survival data available offline.',
@@ -901,6 +951,10 @@ export function getPageContent(pageKey, locale = defaultLocale) {
 
   return {
     ...siteConfig,
+    brand: {
+      ...siteConfig.brand,
+      slogan: copy.footer.tagline,
+    },
     locale: activeLocale,
     navigation: copy.navigation,
     footer: {
