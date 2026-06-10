@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{hero:t}=e.page;return`
+import{i as e,n as t,r as n,t as r}from"./SiteChrome-BJAMKo5m.js";function i(e){let{hero:t}=e.page;return`
     <section id="home" class="relative overflow-hidden pt-28 sm:pt-32">
       <div aria-hidden="true" class="hero-grid absolute inset-0 opacity-[0.16]"></div>
       <div aria-hidden="true" class="absolute left-1/2 top-10 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full radial-ring blur-3xl"></div>
@@ -75,7 +75,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </aside>
       </div>
     </section>
-  `}function i(e){let{overview:t,problem:n}=e.page,{labels:r}=e.page;return`
+  `}function a(e){let{overview:t,problem:n}=e.page,{labels:r}=e.page;return`
     <section class="py-16 sm:py-20">
       <div class="section-shell grid gap-6 lg:grid-cols-2">
         <article class="info-card">
@@ -90,7 +90,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </article>
       </div>
     </section>
-  `}function a(e){let{labels:t}=e.page;return`
+  `}function o(e){let{labels:t}=e.page;return`
     <section class="bg-surface-container-lowest/45 py-24 sm:py-28">
       <div class="section-shell">
         <div class="mb-12 space-y-5">
@@ -108,7 +108,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function o(e){let{labels:t}=e.page;return`
+  `}function s(e){let{labels:t}=e.page;return`
     <section class="py-24 sm:py-28">
       <div class="section-shell">
         <div class="mb-12 space-y-5">
@@ -127,7 +127,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function s(e){let{labels:t}=e.page;return`
+  `}function c(e){let{labels:t}=e.page;return`
     <section class="bg-surface-container-lowest/45 py-24 sm:py-28">
       <div class="section-shell">
         <div class="mb-12 space-y-5">
@@ -152,7 +152,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function c(e){let{labels:t}=e.page;return`
+  `}function l(e){let{labels:t}=e.page;return`
     <section class="py-24 sm:py-28">
       <div class="section-shell">
         <div class="mb-12 space-y-5">
@@ -170,7 +170,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function l(e){let{labels:t}=e.page;return`
+  `}function u(e){let{labels:t}=e.page;return`
     <section class="bg-surface-container-lowest/45 py-24 sm:py-28">
       <div class="section-shell grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
         <article class="info-card">
@@ -192,7 +192,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </article>
       </div>
     </section>
-  `}function u(e){let{labels:t}=e.page;return`
+  `}function d(e){let{labels:t}=e.page;return`
     <section class="py-16">
       <div class="section-shell">
         <div class="rounded-[28px] border border-outline-variant/30 bg-surface-container-low/80 p-6 text-sm leading-7 text-on-surface-variant">
@@ -201,7 +201,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function d(e){let{labels:t}=e.page;return`
+  `}function f(e){let{labels:t}=e.page;return`
     <section class="pb-24 pt-8 sm:pb-28">
       <div class="section-shell">
         <div class="glass-panel overflow-hidden rounded-[32px] border border-outline-variant/30 p-8 sm:p-10 lg:p-12">
@@ -227,18 +227,19 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function f(t){return`
-    ${e(t,`aphidex`)}
+  `}function p(e){return`
+    ${t(e,`aphidex`)}
     <main id="main-content">
-      ${r(t)}
-      ${i(t)}
-      ${a(t)}
-      ${o(t)}
-      ${s(t)}
-      ${c(t)}
-      ${l(t)}
-      ${u(t)}
-      ${d(t)}
+      ${i(e)}
+      ${a(e)}
+      ${o(e)}
+      ${s(e)}
+      ${c(e)}
+      ${l(e)}
+      ${u(e)}
+      ${d(e)}
+      ${f(e)}
     </main>
-    ${n(t,`aphidex`)}
-  `}t({pageKey:`aphidex`,render:f});
+    ${r(e,`aphidex`)}
+    ${n(e)}
+  `}e({pageKey:`aphidex`,render:p});

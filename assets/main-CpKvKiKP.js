@@ -1,4 +1,4 @@
-import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{hero:t}=e.page,{links:n,brand:r}=e,i=t.bullets.map(e=>`
+import{i as e,n as t,r as n,t as r}from"./SiteChrome-BJAMKo5m.js";function i(e){let{hero:t}=e.page,{links:n,brand:r}=e,i=t.bullets.map(e=>`
         <li class="flex items-start gap-3">
           <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary-container/15 text-primary-container">
             <span class="material-symbols-outlined text-sm" aria-hidden="true">bolt</span>
@@ -68,7 +68,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </aside>
       </div>
     </section>
-  `}function i({problems:e}){let t=e.items.map(e=>`
+  `}function a({problems:e}){let t=e.items.map(e=>`
         <article class="info-card">
           <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-container/15 text-primary-container">
             <span class="material-symbols-outlined" aria-hidden="true">${e.icon}</span>
@@ -89,7 +89,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function a(e){let{services:t}=e.page,{links:n}=e,r=t.items.map(e=>`
+  `}function o(e){let{services:t}=e.page,{links:n}=e,r=t.items.map(e=>`
         <article class="glass-panel rounded-[24px] border border-outline-variant/28 p-6">
           <div class="flex items-start justify-between gap-4">
             <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-container/16 text-primary-container">
@@ -130,7 +130,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function o({proof:e}){let t=e.items.map(e=>`
+  `}function s({proof:e}){let t=e.items.map(e=>`
         <article class="overflow-hidden rounded-[24px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
           ${e.image?`
                 <div class="relative flex min-h-[180px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.28),_rgba(7,17,31,0.95)_62%)] p-6">
@@ -179,7 +179,7 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function s(e){let{contact:t}=e.page,{links:n}=e,r=t.checklist.map(e=>`
+  `}function c(e){let{contact:t}=e.page,{links:n}=e,r=t.checklist.map(e=>`
         <li class="flex items-start gap-3">
           <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary-container/15 text-primary-container">
             <span class="material-symbols-outlined text-sm" aria-hidden="true">check</span>
@@ -253,14 +253,15 @@ import{n as e,r as t,t as n}from"./SiteChrome-CNT5BKNT.js";function r(e){let{her
         </div>
       </div>
     </section>
-  `}function c(t){return`
-    ${e(t,`home`)}
+  `}function l(e){return`
+    ${t(e,`home`)}
     <main id="main-content">
-      ${r(t)}
-      ${i(t.page)}
-      ${a(t)}
-      ${o(t.page)}
-      ${s(t)}
+      ${i(e)}
+      ${a(e.page)}
+      ${o(e)}
+      ${s(e.page)}
+      ${c(e)}
     </main>
-    ${n(t,`home`)}
-  `}t({pageKey:`home`,render:c});
+    ${r(e,`home`)}
+    ${n(e)}
+  `}e({pageKey:`home`,render:l});
