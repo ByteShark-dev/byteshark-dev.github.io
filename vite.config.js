@@ -1,68 +1,69 @@
+import { resolve } from 'node:path';
+
 import { defineConfig } from 'vite';
 
-import { defaultLocale, getSiteContent } from './src/config/site.js';
+import {
+  getPageSeo,
+  getPageStructuredData,
+  getStaticLocale,
+  siteConfig,
+} from './src/config/site.js';
 
-const defaultContent = getSiteContent(defaultLocale);
-const createAbsoluteUrl = (path) => new URL(path, defaultContent.seo.siteUrl).toString();
-const structuredData = JSON.stringify(
-  {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebSite',
-        name: defaultContent.brand.name,
-        url: defaultContent.seo.siteUrl,
-        description: defaultContent.seo.description,
-        inLanguage: defaultLocale,
-      },
-      {
-        '@type': 'Person',
-        name: defaultContent.brand.owner,
-        url: defaultContent.seo.siteUrl,
-        image: createAbsoluteUrl(defaultContent.brand.logoIcon),
-        sameAs: [
-          defaultContent.links.github,
-          defaultContent.links.linkedin,
-          defaultContent.links.playStore,
-        ],
-      },
-      {
-        '@type': 'Organization',
-        name: defaultContent.brand.name,
-        url: defaultContent.seo.siteUrl,
-        logo: createAbsoluteUrl(defaultContent.brand.logoIcon),
-        founder: {
-          '@type': 'Person',
-          name: defaultContent.brand.owner,
-        },
-        sameAs: [
-          defaultContent.links.github,
-          defaultContent.links.linkedin,
-          defaultContent.links.playStore,
-        ],
-      },
-    ],
-  },
-  null,
-  2,
-);
+function getPageKeyFromContext(context) {
+  const filename = context?.filename?.replaceAll('\\', '/');
+  const path = context?.path?.replaceAll('\\', '/');
 
-const metaTokens = {
-  '%SITE_TITLE%': defaultContent.seo.title,
-  '%SITE_DESCRIPTION%': defaultContent.seo.description,
-  '%SITE_URL%': defaultContent.seo.siteUrl,
-  '%SITE_OG_IMAGE%': createAbsoluteUrl(defaultContent.seo.ogImagePath),
-  '%SITE_AUTHOR%': defaultContent.brand.owner,
-  '%SITE_NAME%': defaultContent.brand.name,
-  '%STRUCTURED_DATA%': structuredData,
-};
+  if (
+    filename?.endsWith('/aphidex/index.html') ||
+    filename?.endsWith('/aphidex.html') ||
+    path?.includes('/aphidex/') ||
+    path?.endsWith('/aphidex.html')
+  ) {
+    return 'aphidex';
+  }
+
+  return 'home';
+}
+
+function buildMetaTokens(pageKey) {
+  const locale = getStaticLocale(pageKey);
+  const seo = getPageSeo(pageKey, locale);
+  const structuredData = JSON.stringify(getPageStructuredData(pageKey, locale), null, 2);
+  const ogImage = new URL(seo.ogImagePath, seo.siteUrl).toString();
+  const ogLocale = locale === 'es' ? 'es_MX' : 'en_US';
+
+  return {
+    '%PAGE_TITLE%': seo.title,
+    '%PAGE_DESCRIPTION%': seo.description,
+    '%PAGE_URL%': seo.pageUrl,
+    '%PAGE_OG_IMAGE%': ogImage,
+    '%SITE_NAME%': siteConfig.brand.name,
+    '%PAGE_AUTHOR%': siteConfig.brand.owner,
+    '%OG_TYPE%': seo.ogType,
+    '%PAGE_LOCALE%': ogLocale,
+    '%TWITTER_CARD%': seo.twitterCard,
+    '%STRUCTURED_DATA%': structuredData,
+  };
+}
 
 export default defineConfig({
   base: './',
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        aphidexFile: resolve(__dirname, 'aphidex.html'),
+        aphidex: resolve(__dirname, 'aphidex/index.html'),
+      },
+    },
+  },
   plugins: [
     {
       name: 'byteshark-meta',
-      transformIndexHtml(html) {
+      transformIndexHtml(html, context) {
+        const pageKey = getPageKeyFromContext(context);
+        const metaTokens = buildMetaTokens(pageKey);
+
         return Object.entries(metaTokens).reduce(
           (output, [token, value]) => output.replaceAll(token, value),
           html,
