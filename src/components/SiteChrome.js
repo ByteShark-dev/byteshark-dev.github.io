@@ -24,11 +24,6 @@ function renderNavigationLinks(navigation, currentPage, linkClass = '') {
 }
 
 export function renderNavbar(content, currentPage) {
-  const desktopNavItems = renderNavigationLinks(
-    content.navigation,
-    currentPage,
-    'rounded-full px-3 py-2 text-on-surface/74 transition hover:bg-white/5 hover:text-on-surface',
-  );
   const mobileNavItems = renderNavigationLinks(
     content.navigation,
     currentPage,
@@ -81,22 +76,8 @@ export function renderNavbar(content, currentPage) {
           />
           <span class="truncate">${content.brand.name}</span>
         </a>
-        <div class="hidden items-center gap-2 font-label text-sm tracking-tight lg:flex">
-          ${desktopNavItems}
-        </div>
-        <div class="hidden items-center gap-3 lg:flex">
-          <div
-            class="flex items-center gap-1 rounded-full border border-outline-variant/30 bg-surface-container-high/45 p-1"
-            aria-label="${content.ui.languageLabel}"
-          >
-            ${localeButtons}
-          </div>
-          <a class="cta-primary px-5 py-2.5 text-xs" href="${quoteHref}">
-            ${desktopCtaLabel}
-          </a>
-        </div>
-        <div class="flex items-center gap-3 lg:hidden">
-          <a class="cta-primary px-4 py-2.5 text-[11px]" href="${quoteHref}">
+        <div class="flex items-center gap-3">
+          <a class="cta-primary px-4 py-2.5 text-[11px] sm:px-5 sm:text-xs" href="${quoteHref}">
             ${content.ui.mobileHeaderCta}
           </a>
           <button
@@ -112,8 +93,8 @@ export function renderNavbar(content, currentPage) {
           </button>
         </div>
       </nav>
-      <div class="section-shell hidden pb-4 lg:hidden" data-nav-panel>
-        <div class="glass-panel rounded-[26px] border border-outline-variant/30 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
+      <div class="section-shell hidden pb-4" data-nav-panel>
+        <div class="ml-auto w-full max-w-md glass-panel rounded-[26px] border border-outline-variant/30 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.24)]">
           <div class="flex items-center justify-between gap-4">
             <p class="font-label text-xs font-bold uppercase tracking-[0.22em] text-secondary">
               ${content.ui.menuPanelTitle}
