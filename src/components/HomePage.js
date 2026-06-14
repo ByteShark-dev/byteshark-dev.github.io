@@ -171,6 +171,65 @@ function renderServices(content) {
   `;
 }
 
+function renderDemos(content) {
+  const { demos, sectionEyebrows } = content.page;
+  const { links, locale } = content;
+  const cardCta = locale === 'es' ? 'Ver demo' : 'View demo';
+
+  const cards = demos.items
+    .map(
+      (item) => `
+        <article class="glass-panel rounded-[24px] border border-outline-variant/28 p-6">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <span class="signal-chip">${item.category}</span>
+              <h3 class="mt-5 text-2xl font-bold text-on-surface">${item.name}</h3>
+            </div>
+            <span class="inline-flex h-14 w-14 rounded-2xl border border-outline-variant/35 bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.42),_rgba(8,21,40,0.92))]"></span>
+          </div>
+          <p class="mt-4 text-sm leading-7 text-on-surface-variant">${item.description}</p>
+          <div class="mt-6 flex flex-wrap gap-2">
+            ${item.highlights
+              .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
+              .join('')}
+          </div>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a class="cta-primary px-5 py-3 text-xs" href="${item.href}">
+              ${cardCta}
+            </a>
+          </div>
+        </article>
+      `,
+    )
+    .join('');
+
+  return `
+    <section id="demos" class="scroll-mt-28 py-24 sm:py-28">
+      <div class="section-shell">
+        <div class="mb-12 space-y-5">
+          <span class="eyebrow">${sectionEyebrows.demos}</span>
+          <h2 class="section-title">${demos.title}</h2>
+          <p class="section-copy">${demos.intro}</p>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-2">
+          ${cards}
+        </div>
+        <div class="mt-8 rounded-[24px] border border-outline-variant/25 bg-surface-container-low/80 p-6">
+          <p class="text-sm leading-7 text-on-surface-variant">${demos.note}</p>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a class="cta-primary" href="${links.demosCatalog}">
+            ${demos.primaryCta}
+          </a>
+          <a class="cta-secondary" href="${links.whatsappQuote}" target="_blank" rel="noreferrer">
+            ${demos.secondaryCta}
+          </a>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
 function renderProof({ proof }) {
   const cards = proof.items
     .map(
@@ -348,6 +407,7 @@ export function renderHomePage(content) {
       ${renderHero(content)}
       ${renderProblems(content.page)}
       ${renderServices(content)}
+      ${renderDemos(content)}
       ${renderProof({ proof: proofContent })}
       ${renderContact(content)}
     </main>

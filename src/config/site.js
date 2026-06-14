@@ -17,6 +17,7 @@ const localizedContent = {
     navigation: [
       { label: 'Inicio', section: 'home' },
       { label: 'Servicios', section: 'services' },
+      { label: 'Demos', section: 'demos' },
       { label: 'Casos reales', section: 'proof' },
       { label: 'Contacto', section: 'contact' },
     ],
@@ -83,6 +84,7 @@ const localizedContent = {
       sectionEyebrows: {
         problems: 'PROBLEMAS QUE RESOLVEMOS',
         services: 'SERVICIOS',
+        demos: 'DEMOS ADAPTABLES',
         proof: 'CASOS REALES',
         contact: 'CONTACTO',
       },
@@ -167,6 +169,49 @@ const localizedContent = {
               'Publicacion y mantenimiento',
             ],
             cta: 'Cotizar app',
+          },
+        ],
+      },
+      demos: {
+        title: 'Demos adaptables para negocios',
+        intro:
+          'Antes de construir una pagina totalmente a medida, ByteShark puede aterrizar tu giro sobre una base comercial clara para mostrar como podria verse tu negocio online.',
+        note:
+          'Estas demos son ejemplos conceptuales y editables. No se presentan como casos reales ni como clientes activos.',
+        primaryCta: 'Explorar catalogo de demos',
+        secondaryCta: 'Pedir una version para mi negocio',
+        items: [
+          {
+            name: 'Barberia Premium',
+            category: 'Servicios presenciales',
+            description:
+              'Base pensada para citas, horarios, ubicacion, promos y una imagen mas premium.',
+            highlights: ['Servicios y precios', 'WhatsApp', 'Galeria'],
+            href: 'https://byteshark-dev.github.io/demos/barberia/',
+          },
+          {
+            name: 'Cafe / Restaurante',
+            category: 'Comida y bebida',
+            description:
+              'Menu digital, promos, pedidos o reservas y presencia visual enfocada en conversion.',
+            highlights: ['Menu digital', 'Promociones', 'Reservas o pedidos'],
+            href: 'https://byteshark-dev.github.io/demos/cafe-restaurante/',
+          },
+          {
+            name: 'Salud Profesional',
+            category: 'Consulta y bienestar',
+            description:
+              'Perfil profesional, servicios, modalidad online o presencial y FAQ con tono confiable.',
+            highlights: ['Presentacion profesional', 'Agenda por WhatsApp', 'FAQ'],
+            href: 'https://byteshark-dev.github.io/demos/salud-profesional/',
+          },
+          {
+            name: 'Despacho Contable',
+            category: 'Fiscal y administrativo',
+            description:
+              'Servicios fiscales, beneficios, FAQ y una presencia seria para captar mejores leads.',
+            highlights: ['Servicios fiscales', 'Beneficios', 'Seccion de confianza'],
+            href: 'https://byteshark-dev.github.io/demos/despacho-contable/',
           },
         ],
       },
@@ -256,6 +301,7 @@ const localizedContent = {
     navigation: [
       { label: 'Home', section: 'home' },
       { label: 'Services', section: 'services' },
+      { label: 'Demos', section: 'demos' },
       { label: 'Proof of Work', section: 'proof' },
       { label: 'Contact', section: 'contact' },
     ],
@@ -322,6 +368,7 @@ const localizedContent = {
       sectionEyebrows: {
         problems: 'PROBLEMS WE FIX',
         services: 'SERVICES',
+        demos: 'ADAPTABLE DEMOS',
         proof: 'PROOF OF WORK',
         contact: 'CONTACT',
       },
@@ -406,6 +453,49 @@ const localizedContent = {
               'Publishing and maintenance',
             ],
             cta: 'Quote an app',
+          },
+        ],
+      },
+      demos: {
+        title: 'Adaptable demos for business websites',
+        intro:
+          'Before building a fully custom website, ByteShark can ground your business category on a commercial base that shows how your brand could look online.',
+        note:
+          'These demos are conceptual and editable examples. They are not presented as real clients or live case studies.',
+        primaryCta: 'Explore demo catalog',
+        secondaryCta: 'Request a custom version',
+        items: [
+          {
+            name: 'Premium Barbershop',
+            category: 'Local services',
+            description:
+              'Built for bookings, hours, location, promotions and a more premium first impression.',
+            highlights: ['Services and pricing', 'WhatsApp', 'Gallery'],
+            href: 'https://byteshark-dev.github.io/demos/barberia/',
+          },
+          {
+            name: 'Cafe / Restaurant',
+            category: 'Food and beverage',
+            description:
+              'Digital menu, promotions, reservations or orders and a visual flow focused on conversion.',
+            highlights: ['Digital menu', 'Promotions', 'Reservations or orders'],
+            href: 'https://byteshark-dev.github.io/demos/cafe-restaurante/',
+          },
+          {
+            name: 'Professional Health',
+            category: 'Consultation and wellness',
+            description:
+              'Professional profile, services, online or in-person mode and a trust-oriented FAQ.',
+            highlights: ['Professional presentation', 'WhatsApp booking', 'FAQ'],
+            href: 'https://byteshark-dev.github.io/demos/salud-profesional/',
+          },
+          {
+            name: 'Accounting Firm',
+            category: 'Tax and operations',
+            description:
+              'Tax services, benefits, FAQ and a more serious digital presence for lead capture.',
+            highlights: ['Tax services', 'Benefits', 'Trust section'],
+            href: 'https://byteshark-dev.github.io/demos/despacho-contable/',
           },
         ],
       },
@@ -528,6 +618,7 @@ export const siteConfig = {
     aphidexPlay: aphidexPlayUrl,
     aphidexIos: aphidexIosUrl,
     reciclandoGoles: 'https://reciclando-goles.web.app',
+    demosCatalog: 'https://byteshark-dev.github.io/demos/',
     whatsappPhone: '524614220738',
     whatsappTemplates: {
       es: 'Hola Angel, vi tu pagina y me gustaria platicar sobre mi proyecto.',
