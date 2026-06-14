@@ -1,21 +1,29 @@
-function renderNavigationLinks(navigation, linkClass = '') {
-  return navigation
-    .map((item) => {
-      return `
+function getNavigationHref(item, content) {
+  if (item.page === 'privacy') {
+    return content.paths.privacyHref;
+  }
+
+  return content.paths.sectionHrefs[item.section];
+}
+
+function renderNavigationLinks(content, linkClass = '') {
+  return content.navigation
+    .map(
+      (item) => `
         <a
           class="${linkClass}"
-          href="#${item.section}"
+          href="${getNavigationHref(item, content)}"
         >
           ${item.label}
         </a>
-      `;
-    })
+      `,
+    )
     .join('');
 }
 
-export function renderNavbar(content, currentPage) {
+export function renderNavbar(content) {
   const mobileNavItems = renderNavigationLinks(
-    content.navigation,
+    content,
     'rounded-2xl border border-outline-variant/25 bg-surface-container-low/55 px-4 py-3 text-base font-semibold tracking-tight text-on-surface transition hover:border-primary-container/35 hover:bg-surface-container',
   );
   const localeButtons = content.supportedLocales
@@ -36,9 +44,6 @@ export function renderNavbar(content, currentPage) {
       `,
     )
     .join('');
-  const homeHref = '#home';
-  const quoteHref = '#contact';
-  const desktopCtaLabel = content.page.contact?.primaryCta ?? content.ui.mobileHeaderCta;
 
   return `
     <header class="site-navbar fixed inset-x-0 top-0 z-50" data-navbar>
@@ -50,12 +55,12 @@ export function renderNavbar(content, currentPage) {
       </a>
       <nav class="section-shell flex items-center justify-between gap-3 py-3.5 sm:gap-4 sm:py-4" aria-label="Primary">
         <a
-          class="flex min-w-0 items-center gap-2.5 font-headline text-lg font-bold tracking-tight text-primary sm:gap-3 sm:text-2xl"
-          href="${homeHref}"
+          class="flex min-w-0 items-center gap-3 font-headline text-lg font-bold tracking-tight text-on-surface sm:text-2xl"
+          href="${content.paths.homeHref}"
           aria-label="${content.ui.homeAria}"
         >
           <img
-            src="${content.brand.logoIcon}"
+            src="${content.assets.logoIcon}"
             alt=""
             aria-hidden="true"
             class="h-10 w-10 rounded-full object-contain"
@@ -63,10 +68,15 @@ export function renderNavbar(content, currentPage) {
             height="40"
             decoding="async"
           />
-          <span class="truncate">${content.brand.name}</span>
+          <span class="min-w-0">
+            <span class="block truncate">${content.brand.name}</span>
+            <span class="block text-[10px] uppercase tracking-[0.18em] text-secondary">
+              by ${content.brand.parentName}
+            </span>
+          </span>
         </a>
         <div class="flex items-center gap-3">
-          <a class="cta-primary px-4 py-2.5 text-[11px] sm:px-5 sm:text-xs" href="${quoteHref}">
+          <a class="cta-primary px-4 py-2.5 text-[11px] sm:px-5 sm:text-xs" href="${content.paths.downloadHref}">
             ${content.ui.mobileHeaderCta}
           </a>
           <button
@@ -97,8 +107,8 @@ export function renderNavbar(content, currentPage) {
           </div>
           <div class="mt-4 flex flex-col gap-3 font-label text-sm text-on-surface">
             ${mobileNavItems}
-            <a class="cta-primary mt-1" href="${quoteHref}">
-              ${desktopCtaLabel}
+            <a class="cta-primary mt-1" href="${content.paths.downloadHref}">
+              ${content.ui.mobileHeaderCta}
             </a>
           </div>
         </div>
@@ -107,15 +117,13 @@ export function renderNavbar(content, currentPage) {
   `;
 }
 
-export function renderFooter(content, currentPage) {
-  const homeHref = '#home';
-
+export function renderFooter(content) {
   return `
-    <footer class="border-t border-outline-variant/20 bg-surface-container-lowest/80 pb-28 pt-12 sm:py-12">
+    <footer class="border-t border-outline-variant/20 bg-surface-container-lowest/80 py-12">
       <div class="section-shell flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-        <a class="flex items-center gap-3 font-headline text-lg font-bold text-on-surface" href="${homeHref}">
+        <a class="flex items-center gap-3 font-headline text-lg font-bold text-on-surface" href="${content.paths.homeHref}">
           <img
-            src="${content.brand.logoIcon}"
+            src="${content.assets.logoIcon}"
             alt=""
             aria-hidden="true"
             class="h-9 w-9 rounded-full object-contain"
@@ -129,41 +137,20 @@ export function renderFooter(content, currentPage) {
           ${content.footer.copyright} ${content.footer.tagline}
         </p>
         <div class="grid grid-cols-2 gap-x-6 gap-y-3 font-label text-sm uppercase tracking-[0.18em] sm:flex sm:flex-wrap">
-          <a class="text-on-surface/58 transition hover:text-primary-container" href="${content.links.github}" target="_blank" rel="noreferrer">
-            ${content.footer.links.github}
+          <a class="text-on-surface/58 transition hover:text-primary-container" href="${content.links.byteSharkHome}" target="_blank" rel="noreferrer">
+            ${content.footer.links.byteShark}
           </a>
-          <a class="text-on-surface/58 transition hover:text-primary-container" href="${content.links.linkedin}" target="_blank" rel="noreferrer">
-            ${content.footer.links.linkedin}
+          <a class="text-on-surface/58 transition hover:text-primary-container" href="${content.paths.privacyHref}">
+            ${content.footer.links.privacy}
           </a>
-          <a class="text-on-surface/58 transition hover:text-primary-container" href="${content.links.playStoreDeveloper}" target="_blank" rel="noreferrer">
-            ${content.footer.links.playStoreDeveloper}
+          <a class="text-on-surface/58 transition hover:text-primary-container" href="${content.links.googlePlay}" target="_blank" rel="noreferrer">
+            ${content.footer.links.googlePlay}
           </a>
-          <a class="text-on-surface/58 transition hover:text-primary-container" href="${content.links.email}">
-            ${content.footer.links.email}
+          <a class="text-on-surface/58 transition hover:text-primary-container" href="${content.links.appStore}" target="_blank" rel="noreferrer">
+            ${content.footer.links.appStore}
           </a>
         </div>
       </div>
     </footer>
-  `;
-}
-
-export function renderWhatsAppShortcut(content) {
-  return `
-    <a
-      class="whatsapp-shortcut"
-      href="${content.links.whatsappQuote}"
-      target="_blank"
-      rel="noreferrer"
-      aria-label="${content.ui.whatsappShortcutAria}"
-      title="${content.ui.whatsappShortcutAria}"
-    >
-      <span class="whatsapp-shortcut__icon" aria-hidden="true">
-        <svg viewBox="0 0 32 32" class="h-6 w-6 fill-current" focusable="false">
-          <path d="M19.11 17.18c-.29-.14-1.69-.84-1.95-.94-.26-.09-.45-.14-.64.14-.19.29-.73.94-.89 1.13-.17.19-.33.21-.62.07-.29-.14-1.21-.45-2.31-1.44-.85-.76-1.43-1.7-1.59-1.98-.17-.28-.02-.43.12-.57.13-.12.29-.33.43-.5.14-.17.19-.29.29-.48.09-.19.05-.36-.02-.5-.07-.14-.64-1.55-.88-2.13-.24-.57-.48-.5-.64-.5h-.55c-.19 0-.5.07-.76.36-.26.29-1 1-1 2.43s1.02 2.82 1.17 3.01c.14.19 2 3.05 4.83 4.28.67.29 1.19.46 1.6.58.67.21 1.29.18 1.78.11.54-.08 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33Z"></path>
-          <path d="M16.02 3.2c-6.99 0-12.67 5.68-12.67 12.67 0 2.22.58 4.39 1.67 6.29L3.2 28.8l6.8-1.78a12.64 12.64 0 0 0 6.02 1.53h.01c6.99 0 12.67-5.68 12.67-12.67S23.01 3.2 16.02 3.2Zm0 23.2h-.01a10.5 10.5 0 0 1-5.36-1.47l-.38-.22-4.03 1.05 1.08-3.93-.24-.4a10.49 10.49 0 0 1-1.61-5.55c0-5.82 4.73-10.55 10.56-10.55 2.82 0 5.46 1.1 7.45 3.09a10.47 10.47 0 0 1 3.09 7.46c0 5.82-4.74 10.55-10.56 10.55Z"></path>
-        </svg>
-      </span>
-      <span class="whatsapp-shortcut__label">${content.ui.whatsappShortcut}</span>
-    </a>
   `;
 }

@@ -2,6 +2,8 @@
 
 Production build for the ByteShark portfolio site, powered by Vite and Tailwind CSS.
 
+`ByteShark_web` is the source repo. The old local `ByteShark_web_gh-pages` clone is no longer needed because GitHub Pages deployment is already automated from `main`.
+
 ## Development
 
 ```bash
@@ -19,15 +21,14 @@ The generated production files are written to `dist/`.
 
 ## GitHub Pages Deployment
 
-This repository is prepared for branch-based GitHub Pages deployment.
-
-- Production assets are built with Vite into `dist/`
-- The published site should be served from the `gh-pages` branch
-- The `gh-pages` branch should use the repository root as the Pages source
-- A `.nojekyll` file is included so GitHub Pages serves the build output as-is
+This repository deploys to GitHub Pages through the workflow in `.github/workflows/deploy.yml`.
 
 Typical deployment flow:
 
 1. Commit source changes on `main`
-2. Run `npm run build`
-3. Publish the contents of `dist/` to the `gh-pages` branch
+2. Push to GitHub
+3. Let GitHub Actions build `dist/` and publish it to Pages
+
+## Aphidex Extraction
+
+The standalone Aphidex landing is prepared in `aphidex-landing/` as a self-contained Vite project ready to move into its own repository and publish at `https://byteshark-dev.github.io/aphidex/`.

@@ -1,56 +1,80 @@
 <!doctype html>
-<html class="dark" lang="es">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>%PAGE_TITLE%</title>
-    <meta name="description" content="%PAGE_DESCRIPTION%" />
+    <title>Aphidex | Redirecting</title>
     <meta
-      name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      name="description"
+      content="The Aphidex landing page moved to its dedicated GitHub Pages project."
     />
-    <meta
-      name="googlebot"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-    />
-    <meta name="author" content="%PAGE_AUTHOR%" />
-    <meta name="theme-color" content="#081B34" />
-    <link rel="canonical" href="%PAGE_URL%" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/assets/images/byteshark_graphic_logo.png" />
-    <link rel="apple-touch-icon" href="/assets/images/byteshark_graphic_logo.png" />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://byteshark-dev.github.io/aphidex/" />
+    <link rel="icon" type="image/png" sizes="512x512" href="./assets/images/byteshark_graphic_logo.png" />
+    <meta http-equiv="refresh" content="0; url=https://byteshark-dev.github.io/aphidex/" />
+    <style>
+      :root {
+        color-scheme: dark;
+      }
 
-    <meta property="og:type" content="%OG_TYPE%" />
-    <meta property="og:site_name" content="%SITE_NAME%" />
-    <meta property="og:locale" content="%PAGE_LOCALE%" />
-    <meta property="og:url" content="%PAGE_URL%" />
-    <meta property="og:title" content="%PAGE_TITLE%" />
-    <meta property="og:description" content="%PAGE_DESCRIPTION%" />
-    <meta property="og:image" content="%PAGE_OG_IMAGE%" />
-    <meta property="og:image:alt" content="%PAGE_TITLE%" />
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at top, rgb(30 90 168 / 0.16), transparent 36%),
+          linear-gradient(180deg, #07111f 0%, #040d1a 48%, #071625 100%);
+        color: #ffffff;
+        font-family: Montserrat, Inter, Manrope, sans-serif;
+      }
 
-    <meta name="twitter:card" content="%TWITTER_CARD%" />
-    <meta name="twitter:title" content="%PAGE_TITLE%" />
-    <meta name="twitter:description" content="%PAGE_DESCRIPTION%" />
-    <meta name="twitter:image" content="%PAGE_OG_IMAGE%" />
-    <meta name="twitter:image:alt" content="%PAGE_TITLE%" />
+      main {
+        width: min(100% - 2rem, 40rem);
+        padding: 2.5rem;
+        border: 1px solid rgb(66 85 110 / 0.45);
+        border-radius: 1.75rem;
+        background: linear-gradient(180deg, rgb(13 31 59 / 0.8), rgb(8 21 40 / 0.94));
+        box-shadow: 0 24px 90px rgb(0 0 0 / 0.28);
+      }
 
-    <script id="structured-data" type="application/ld+json">
-      %STRUCTURED_DATA%
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 7vw, 3.25rem);
+        line-height: 0.96;
+      }
+
+      p {
+        margin: 1rem 0 0;
+        color: #a7b0ba;
+        line-height: 1.7;
+      }
+
+      a {
+        display: inline-flex;
+        margin-top: 1.5rem;
+        padding: 0.9rem 1.25rem;
+        border-radius: 999px;
+        background: #1e5aa8;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+    </style>
+    <script>
+      window.location.replace('https://byteshark-dev.github.io/aphidex/');
     </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-      rel="stylesheet"
-    />
   </head>
-  <body class="selection:bg-primary-container selection:text-on-primary-container">
-    <div id="app"></div>
-    <script type="module" src="/src/aphidex.js"></script>
+  <body>
+    <main>
+      <h1>Aphidex moved</h1>
+      <p>
+        The standalone Aphidex landing page now lives at its dedicated GitHub Pages URL.
+        You should be redirected automatically.
+      </p>
+      <a href="https://byteshark-dev.github.io/aphidex/">Open Aphidex</a>
+    </main>
   </body>
 </html>

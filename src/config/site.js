@@ -1,6 +1,11 @@
 export const defaultLocale = 'es';
 export const supportedLocales = ['es', 'en'];
 
+const aphidexProjectUrl = '/aphidex/';
+const aphidexCanonicalUrl = 'https://byteshark-dev.github.io/aphidex/';
+const aphidexPlayUrl = 'https://play.google.com/store/apps/details?id=com.byteshark.aphidex&hl=es_419';
+const aphidexIosUrl = 'https://apps.apple.com/mx/app/aphidex/id6766727089';
+
 const buildWhatsAppUrl = (locale) => {
   const messages = siteConfig.links.whatsappTemplates;
 
@@ -13,7 +18,6 @@ const localizedContent = {
       { label: 'Inicio', section: 'home' },
       { label: 'Servicios', section: 'services' },
       { label: 'Casos reales', section: 'proof' },
-      { label: 'Aphidex', page: 'aphidex' },
       { label: 'Contacto', section: 'contact' },
     ],
     footer: {
@@ -39,7 +43,6 @@ const localizedContent = {
         es: 'ES',
         en: 'EN',
       },
-      pageLead: 'Inicio',
     },
     home: {
       seo: {
@@ -174,25 +177,27 @@ const localizedContent = {
         items: [
           {
             name: 'Aphidex',
-            eyebrow: 'APP PUBLICADA',
-            description:
-              'App publicada para la comunidad de Grounded, disponible en Google Play y App Store, con soporte multilenguaje, datos offline y monetizacion integrada.',
-            highlights: [
-              'Publicada en Google Play',
-              'Disponible en iPhone',
-              'Flutter',
-              'Datos offline',
-              'ES / EN / RU',
-              'Preparacion para Grounded 2',
-              'Integracion con AdMob',
-              'Actualizaciones reales',
-            ],
+            eyebrow: 'APP DESTACADA',
+            description: 'Companion app para Grounded y Grounded 2.',
+            highlights: ['Android', 'iOS', 'ES / EN / RU', 'Grounded 2'],
             image: '/assets/images/Aphidex_logo.webp',
             imageAlt: 'Logo de Aphidex.',
-            primaryCtaLabel: 'Ver pagina de Aphidex',
-            primaryCtaHref: '/aphidex.html',
-            secondaryCtaLabel: 'Ver en Google Play',
-            secondaryCtaHref: 'https://play.google.com/store/apps/details?id=com.byteshark.aphidex&hl=es_419',
+            ctaLinks: [
+              {
+                label: 'Ver proyecto',
+                href: aphidexProjectUrl,
+              },
+              {
+                label: 'Google Play',
+                href: aphidexPlayUrl,
+                external: true,
+              },
+              {
+                label: 'App Store',
+                href: aphidexIosUrl,
+                external: true,
+              },
+            ],
           },
           {
             name: 'Reciclando Goles',
@@ -207,10 +212,18 @@ const localizedContent = {
             ],
             image: '',
             imageAlt: '',
-            primaryCtaLabel: 'Ver sitio publicado',
-            primaryCtaHref: 'https://reciclando-goles.web.app',
-            secondaryCtaLabel: 'Ver repositorio',
-            secondaryCtaHref: 'https://github.com/ByteShark-dev/reciclando-goles-web',
+            ctaLinks: [
+              {
+                label: 'Ver sitio publicado',
+                href: 'https://reciclando-goles.web.app',
+                external: true,
+              },
+              {
+                label: 'Ver repositorio',
+                href: 'https://github.com/ByteShark-dev/reciclando-goles-web',
+                external: true,
+              },
+            ],
           },
         ],
       },
@@ -238,171 +251,12 @@ const localizedContent = {
         },
       },
     },
-    aphidex: {
-      seo: {
-        title: 'Aphidex | App complementaria de Grounded',
-        description:
-          'Descarga Aphidex, una app complementaria no oficial de Grounded con debilidades, resistencias, ataques, efectos y datos offline para Grounded y Grounded 2.',
-      },
-      labels: {
-        overview: 'RESUMEN',
-        playerValue: 'VALOR PARA EL JUGADOR',
-        searchContent: 'CONTENIDO SEO',
-        searchTitle: 'Contenido util para jugadores que buscan ayuda sobre Grounded',
-        searchIntro:
-          'La pagina esta estructurada para posicionar con lenguaje natural sin dejar de explicar con claridad lo que hace la app.',
-        features: 'FUNCIONES',
-        screenshots: 'CAPTURAS',
-        stack: 'STACK',
-        monetization: 'MONETIZACION',
-        proof: 'LO QUE DEMUESTRA',
-        legal: 'AVISO LEGAL',
-        finalCta: 'BYTE SHARK',
-      },
-      hero: {
-        eyebrow: 'APP COMPLEMENTARIA DE GROUNDED \u00B7 ANDROID + IOS',
-        title: 'Aphidex - App complementaria de Grounded',
-        description:
-          'Una app complementaria movil para Grounded y Grounded 2, ahora disponible en Android y iPhone, con debilidades, resistencias, ataques, efectos y datos de supervivencia disponibles offline.',
-        primaryCta: 'Descargar en Google Play',
-        storeCta: 'Descargar en App Store',
-        secondaryCta: 'Quieres una app como Aphidex?',
-        badgeAlt: 'Insignia de Google Play para Aphidex',
-        storeBadgeAlt: 'Insignia de App Store para Aphidex',
-        storeNote: 'Ahora disponible en Android y iOS.',
-        sideCardTitle: 'Construida y publicada por ByteShark',
-        sideCardBody:
-          'Consulta criaturas mas rapido, entiende mejor sus debilidades y toma mejores decisiones de combate sin salirte de la partida, ahora tambien desde iPhone.',
-      },
-      overview: {
-        title: 'Que es Aphidex?',
-        body:
-          'Aphidex es una app complementaria no oficial para jugadores de Grounded. Te ayuda a consultar debilidades, resistencias, tipos de ataque, niveles, efectos e informacion util de combate sin tener que buscar en multiples paginas.',
-      },
-      problem: {
-        title: 'Que problema resuelve?',
-        body:
-          'Los jugadores de Grounded suelen saltar entre wikis, videos y notas dispersas para preparar combates. Aphidex concentra la informacion en una referencia movil que funciona offline y sigue siendo rapida cuando necesitas una respuesta en medio de una partida.',
-      },
-      searchSections: [
-        {
-          title: 'Debilidades y resistencias de criaturas en Grounded',
-          body:
-            'Aphidex ayuda a revisar que debilidades y resistencias importan antes de pelear. En lugar de abrir varias pestanas, puedes consultar tipos de dano, resistencias y counters en una sola guia movil pensada para decisiones rapidas.',
-        },
-        {
-          title: 'Guia de criaturas para Grounded 2',
-          body:
-            'La app se esta preparando para soportar contenido de Grounded 2 para que el handbook pueda crecer con nuevas criaturas, encuentros y necesidades de la comunidad. La capa de datos esta estructurada para expandirse sin reconstruir el producto desde cero.',
-        },
-        {
-          title: 'Handbook offline de Grounded',
-          body:
-            'Aphidex esta pensada como un handbook offline de Grounded. Los datos de criaturas siguen disponibles sin depender de un navegador ni de una conexion movil inestable mientras juegas o planeas builds.',
-        },
-        {
-          title: 'Ataques y efectos de insectos en Grounded',
-          body:
-            'Ademas de debilidades de criaturas, la app ayuda a entender ataques de insectos, efectos de combate y otra informacion que cambia como preparas equipo, curacion y estrategia.',
-        },
-      ],
-      features: {
-        title: 'Funciones',
-        items: [
-          'Debilidades y resistencias de criaturas',
-          'Tipos de ataque y datos de combate',
-          'Soporte para Grounded 1 y Grounded 2',
-          'Disponible en Android y iOS',
-          'Acceso offline',
-          'Interfaz multilenguaje: espanol, ingles y ruso',
-          'Busqueda rapida y filtros',
-          'Actualizaciones regulares',
-        ],
-      },
-      screenshots: {
-        title: 'Capturas',
-        items: [
-          {
-            src: '/assets/aphidex/IMG_20260428_231511.jpg',
-            alt: 'Pantalla principal de Aphidex con busqueda y filtros de enemigos.',
-            caption: 'Busca criaturas y filtra enemigos en segundos',
-          },
-          {
-            src: '/assets/aphidex/IMG_20260428_231525.jpg',
-            alt: 'Pantalla de detalle de criatura en Aphidex con descripcion, vida y debilidades.',
-            caption: 'Revisa vida, descripcion y debilidades antes de pelear',
-          },
-          {
-            src: '/assets/aphidex/IMG_20260428_231537.jpg',
-            alt: 'Pantalla de enciclopedia de efectos en Aphidex.',
-            caption: 'Entiende efectos y elementos sin abrir varias guias',
-          },
-        ],
-      },
-      architecture: {
-        title: 'Por que mejora la experiencia',
-        intro:
-          'Aphidex esta pensada para ayudarte a jugar con mas contexto, menos busqueda externa y decisiones mas rapidas dentro de Grounded.',
-        items: [
-          {
-            title: 'Menos tiempo buscando',
-            body: 'La informacion importante esta ordenada para que llegues rapido a debilidades, resistencias y datos clave sin perder ritmo.',
-          },
-          {
-            title: 'Mejores decisiones de combate',
-            body: 'Te ayuda a preparar armas, efectos y estrategias con mas claridad antes de entrar a una pelea complicada.',
-          },
-          {
-            title: 'Todo disponible offline',
-            body: 'Puedes consultar la app aunque no quieras depender de abrir el navegador o cargar varias paginas mientras juegas.',
-          },
-          {
-            title: 'Mas comoda para mas jugadores',
-            body: 'La interfaz multilenguaje hace que la informacion sea mas clara para jugadores en espanol, ingles y ruso.',
-          },
-          {
-            title: 'Lista para seguir creciendo',
-            body: 'La app esta preparada para sumar mas criaturas, efectos y contenido nuevo conforme evoluciona Grounded 2.',
-          },
-          {
-            title: 'Actualizaciones reales',
-            body: 'No es un mockup: es una app publicada que puede mantenerse, mejorar y recibir nuevas versiones con contenido util.',
-          },
-        ],
-      },
-      monetization: {
-        title: 'Monetizacion',
-        body:
-          'Aphidex integra AdMob como parte del producto publicado en Android y la base publica del proyecto tambien deja listo `app-ads.txt` para mantener correcta la autorizacion del inventario publicitario desde el dominio companion.',
-      },
-      proof: {
-        title: 'Lo que demuestra este proyecto',
-        items: [
-          'Desarrollo mobile real',
-          'Publicacion en tienda y flujo de release',
-          'Mantenimiento y actualizaciones',
-          'Internacionalizacion',
-          'Arquitectura de datos escalable',
-          'Monetizacion con AdMob',
-        ],
-      },
-      disclaimer:
-        'Aphidex es una app complementaria no oficial hecha por fans y no esta afiliada, avalada ni patrocinada por Obsidian Entertainment, Xbox Game Studios o Microsoft.',
-      finalCta: {
-        title: 'Quieres una app como Aphidex?',
-        body:
-          'ByteShark puede ayudarte a convertir una idea clara de producto en una app real con arquitectura, UX y criterios de despliegue desde el primer dia.',
-        primary: 'Quiero una app como Aphidex',
-        secondary: 'Ver servicios de ByteShark',
-      },
-    },
   },
   en: {
     navigation: [
       { label: 'Home', section: 'home' },
       { label: 'Services', section: 'services' },
       { label: 'Proof of Work', section: 'proof' },
-      { label: 'Aphidex', page: 'aphidex' },
       { label: 'Contact', section: 'contact' },
     ],
     footer: {
@@ -428,13 +282,12 @@ const localizedContent = {
         es: 'ES',
         en: 'EN',
       },
-      pageLead: 'Home',
     },
     home: {
       seo: {
         title: 'ByteShark | Websites, Apps & Digital Systems',
         description:
-          'ByteShark builds modern websites, mobile apps and digital systems for businesses that want to look professional, sell more and operate better.',
+          'ByteShark creates websites, apps and digital systems for businesses that want to look professional, sell more and operate better.',
       },
       hero: {
         eyebrow: 'DIGITAL STUDIO FOR GROWING BUSINESSES',
@@ -563,25 +416,27 @@ const localizedContent = {
         items: [
           {
             name: 'Aphidex',
-            eyebrow: 'PUBLISHED APP',
-            description:
-              'Published app for the Grounded community, now available on Google Play and the App Store, with multilingual support, offline data and integrated monetization.',
-            highlights: [
-              'Published on Google Play',
-              'Available on iPhone',
-              'Flutter',
-              'Offline data',
-              'ES / EN / RU',
-              'Grounded 2 preparation',
-              'AdMob integration',
-              'Real updates',
-            ],
+            eyebrow: 'FEATURED APP',
+            description: 'Companion app for Grounded and Grounded 2.',
+            highlights: ['Android', 'iOS', 'ES / EN / RU', 'Grounded 2'],
             image: '/assets/images/Aphidex_logo.webp',
             imageAlt: 'Aphidex logo.',
-            primaryCtaLabel: 'View Aphidex page',
-            primaryCtaHref: '/aphidex.html',
-            secondaryCtaLabel: 'View on Google Play',
-            secondaryCtaHref: 'https://play.google.com/store/apps/details?id=com.byteshark.aphidex&hl=es_419',
+            ctaLinks: [
+              {
+                label: 'View project',
+                href: aphidexProjectUrl,
+              },
+              {
+                label: 'Google Play',
+                href: aphidexPlayUrl,
+                external: true,
+              },
+              {
+                label: 'App Store',
+                href: aphidexIosUrl,
+                external: true,
+              },
+            ],
           },
           {
             name: 'Reciclando Goles',
@@ -596,10 +451,18 @@ const localizedContent = {
             ],
             image: '',
             imageAlt: '',
-            primaryCtaLabel: 'View live website',
-            primaryCtaHref: 'https://reciclando-goles.web.app',
-            secondaryCtaLabel: 'View repository',
-            secondaryCtaHref: 'https://github.com/ByteShark-dev/reciclando-goles-web',
+            ctaLinks: [
+              {
+                label: 'View live website',
+                href: 'https://reciclando-goles.web.app',
+                external: true,
+              },
+              {
+                label: 'View repository',
+                href: 'https://github.com/ByteShark-dev/reciclando-goles-web',
+                external: true,
+              },
+            ],
           },
         ],
       },
@@ -627,164 +490,6 @@ const localizedContent = {
         },
       },
     },
-    aphidex: {
-      seo: {
-        title: 'Aphidex | Grounded Handbook App',
-        description:
-          'Download Aphidex, an unofficial Grounded companion app with creature weaknesses, resistances, attacks, effects and offline handbook data for Grounded and Grounded 2.',
-      },
-      labels: {
-        overview: 'OVERVIEW',
-        playerValue: 'PLAYER VALUE',
-        searchContent: 'SEO LANDING CONTENT',
-        searchTitle: 'Useful content for players searching for Grounded help',
-        searchIntro:
-          'The page is structured to rank with natural language while still explaining what the app actually does.',
-        features: 'FEATURES',
-        screenshots: 'SCREENSHOTS',
-        stack: 'STACK',
-        monetization: 'MONETIZATION',
-        proof: 'PROOF',
-        legal: 'LEGAL DISCLAIMER',
-        finalCta: 'BYTE SHARK',
-      },
-      hero: {
-        eyebrow: 'GROUNDED COMPANION APP \u00B7 ANDROID + IOS',
-        title: 'Aphidex - Grounded Handbook App',
-        description:
-          'A mobile companion app for Grounded and Grounded 2, now available on Android and iPhone, with creature weaknesses, resistances, attacks, effects and survival data available offline.',
-        primaryCta: 'Download on Google Play',
-        storeCta: 'Download on the App Store',
-        secondaryCta: 'Want an app like Aphidex?',
-        badgeAlt: 'Google Play badge for Aphidex',
-        storeBadgeAlt: 'App Store badge for Aphidex',
-        storeNote: 'Now available on Android and iOS.',
-        sideCardTitle: 'Built and shipped by ByteShark',
-        sideCardBody:
-          'Check creatures faster, understand weaknesses better and make smarter combat decisions without leaving your session, now also on iPhone.',
-      },
-      overview: {
-        title: 'What is Aphidex?',
-        body:
-          'Aphidex is an unofficial companion handbook for Grounded players. It helps you check creature weaknesses, resistances, attack types, tiers, effects and useful combat information without needing to search across multiple pages.',
-      },
-      problem: {
-        title: 'What problem does it solve?',
-        body:
-          'Grounded players often jump between wikis, videos and scattered notes to prepare for fights. Aphidex puts combat data in one mobile reference that works offline and stays fast when you need an answer mid-session.',
-      },
-      searchSections: [
-        {
-          title: 'Grounded Creature Weaknesses and Resistances',
-          body:
-            'Aphidex helps players check which creature weaknesses and resistances matter before combat. Instead of opening multiple tabs, you can review damage types, resistances and counters in a single mobile guide built for quick decisions.',
-        },
-        {
-          title: 'Grounded 2 Creature Guide',
-          body:
-            'The app is being prepared to support Grounded 2 content so the handbook can grow with new creatures, combat encounters and community needs. The data layer is structured to expand without rebuilding the product from scratch.',
-        },
-        {
-          title: 'Offline Grounded Handbook',
-          body:
-            'Aphidex is designed as an offline Grounded handbook. Creature data stays available without needing to load a browser or depend on unstable mobile connectivity while playing or planning builds.',
-        },
-        {
-          title: 'Grounded Insect Attacks and Effects',
-          body:
-            'Beyond creature weaknesses, the app helps players understand insect attacks, combat effects and other information that changes how you approach equipment, healing and strategy.',
-        },
-      ],
-      features: {
-        title: 'Features',
-        items: [
-          'Creature weaknesses and resistances',
-          'Attack types and combat data',
-          'Grounded 1 and Grounded 2 support',
-          'Available on Android and iOS',
-          'Offline access',
-          'Multilanguage interface: Spanish, English and Russian',
-          'Fast search and filtering',
-          'Regular updates',
-        ],
-      },
-      screenshots: {
-        title: 'Screenshots',
-        items: [
-          {
-            src: '/assets/aphidex/IMG_20260428_231511.jpg',
-            alt: 'Aphidex main screen with enemy search and filters.',
-            caption: 'Find enemies and filter creatures fast',
-          },
-          {
-            src: '/assets/aphidex/IMG_20260428_231525.jpg',
-            alt: 'Aphidex creature detail screen with description, health and weaknesses.',
-            caption: 'Review health, description and weaknesses before a fight',
-          },
-          {
-            src: '/assets/aphidex/IMG_20260428_231537.jpg',
-            alt: 'Aphidex effects encyclopedia screen.',
-            caption: 'Understand effects and elements without opening multiple guides',
-          },
-        ],
-      },
-      architecture: {
-        title: 'Why it improves the experience',
-        intro:
-          'Aphidex is built to help players move faster, compare combat options more clearly and keep useful game knowledge in one place.',
-        items: [
-          {
-            title: 'Less time searching',
-            body: 'Important creature data is organized so you can get to weaknesses, resistances and combat notes without breaking your flow.',
-          },
-          {
-            title: 'Better combat choices',
-            body: 'It helps players prepare weapons, effects and strategies with more confidence before difficult encounters.',
-          },
-          {
-            title: 'Offline access',
-            body: 'Core information stays available even when you do not want to rely on opening a browser or loading external pages mid-session.',
-          },
-          {
-            title: 'More comfortable for more players',
-            body: 'The multilingual interface makes the app easier to use for Spanish, English and Russian players.',
-          },
-          {
-            title: 'Ready to grow',
-            body: 'The content model can keep expanding with more creatures, effects and Grounded 2 information over time.',
-          },
-          {
-            title: 'Real updates',
-            body: 'This is a published product that can keep improving with new releases instead of staying as a one-off prototype.',
-          },
-        ],
-      },
-      monetization: {
-        title: 'Monetization',
-        body:
-          'Aphidex integrates AdMob as part of the shipped Android product, and the public companion site also keeps `app-ads.txt` in place so ad inventory authorization is correctly published from the public domain.',
-      },
-      proof: {
-        title: 'What this project demonstrates',
-        items: [
-          'Real mobile app development',
-          'Store publication and release flow',
-          'Ongoing maintenance and updates',
-          'Internationalization',
-          'Scalable data architecture',
-          'Monetization with AdMob',
-        ],
-      },
-      disclaimer:
-        'Aphidex is an unofficial fan-made companion app and is not affiliated with, endorsed by, or sponsored by Obsidian Entertainment, Xbox Game Studios, or Microsoft.',
-      finalCta: {
-        title: 'Want an app like Aphidex?',
-        body:
-          'ByteShark can help you turn a focused product idea into a real mobile release with architecture, UX and deployment criteria from day one.',
-        primary: 'Want an app like Aphidex?',
-        secondary: 'View ByteShark services',
-      },
-    },
   },
 };
 
@@ -810,12 +515,6 @@ export const siteConfig = {
         twitterCard: 'summary_large_image',
         ogType: 'website',
       },
-      aphidex: {
-        path: '/aphidex.html',
-        ogImagePath: '/assets/images/project-aphidex.webp',
-        twitterCard: 'summary_large_image',
-        ogType: 'website',
-      },
     },
   },
   links: {
@@ -824,8 +523,10 @@ export const siteConfig = {
     email: 'mailto:byteshark098@gmail.com',
     emailAddress: 'byteshark098@gmail.com',
     playStoreDeveloper: 'https://play.google.com/store/apps/dev?id=7017575535426186313',
-    aphidexPlay: 'https://play.google.com/store/apps/details?id=com.byteshark.aphidex&hl=es_419',
-    aphidexIos: 'https://apps.apple.com/mx/app/aphidex/id6766727089',
+    aphidexProjectUrl,
+    aphidexCanonicalUrl,
+    aphidexPlay: aphidexPlayUrl,
+    aphidexIos: aphidexIosUrl,
     reciclandoGoles: 'https://reciclando-goles.web.app',
     whatsappPhone: '524614220738',
     whatsappTemplates: {
@@ -834,15 +535,6 @@ export const siteConfig = {
     },
     whatsappQuotePlaceholder:
       'https://api.whatsapp.com/send?phone=000000000000&text=Hello%20ByteShark%2C%20I%20want%20to%20request%20a%20quote%20for%20my%20project.',
-  },
-  assets: {
-    playBadge: '/assets/google-play-badge.svg',
-    appStoreBadge: '/assets/app-store-badge.svg',
-    aphidexScreenshots: [
-      '/assets/aphidex/screenshot-1.svg',
-      '/assets/aphidex/screenshot-2.svg',
-      '/assets/aphidex/screenshot-3.svg',
-    ],
   },
   socialLinks: [
     'https://github.com/byteshark-dev',
@@ -854,7 +546,6 @@ export const siteConfig = {
 
 const staticLocaleByPage = {
   home: 'es',
-  aphidex: 'es',
 };
 
 function getActiveLocale(locale) {
@@ -883,63 +574,25 @@ export function getPageSeo(pageKey, locale = defaultLocale) {
 export function getPageStructuredData(pageKey, locale = defaultLocale) {
   const activeLocale = getActiveLocale(locale);
   const content = getPageContent(pageKey, activeLocale);
-  const { brand, links, seo } = content;
-  const absoluteOgImage = new URL(seo.ogImagePath, seo.siteUrl).toString();
-  const organization = {
-    '@type': 'Organization',
-    name: brand.name,
-    url: seo.siteUrl,
-    logo: new URL(brand.logoIcon, seo.siteUrl).toString(),
-    slogan: brand.slogan,
-    sameAs: siteConfig.socialLinks,
-  };
-
-  const website = {
-    '@type': 'WebSite',
-    name: brand.name,
-    url: seo.siteUrl,
-    inLanguage: activeLocale,
-    description: localizedContent[activeLocale].home.seo.description,
-  };
-
-  if (pageKey !== 'aphidex') {
-    return {
-      '@context': 'https://schema.org',
-      '@graph': [organization, website],
-    };
-  }
-
-  const appData = localizedContent[activeLocale].aphidex;
+  const { brand, seo } = content;
 
   return {
     '@context': 'https://schema.org',
     '@graph': [
-      organization,
-      website,
       {
-        '@type': 'MobileApplication',
-        name: 'Aphidex',
-        operatingSystem: 'Android, iOS',
-        applicationCategory: 'GameApplication',
-        url: seo.pageUrl,
-        downloadUrl: links.aphidexPlay,
-        image: absoluteOgImage,
-        sameAs: [links.aphidexPlay, links.aphidexIos],
-        author: {
-          '@type': 'Organization',
-          name: brand.name,
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: brand.name,
-        },
-        description: appData.seo.description,
-        inLanguage: ['en', 'es', 'ru'],
-        offers: {
-          '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'USD',
-        },
+        '@type': 'Organization',
+        name: brand.name,
+        url: seo.siteUrl,
+        logo: new URL(brand.logoIcon, seo.siteUrl).toString(),
+        slogan: brand.slogan,
+        sameAs: siteConfig.socialLinks,
+      },
+      {
+        '@type': 'WebSite',
+        name: brand.name,
+        url: seo.siteUrl,
+        inLanguage: activeLocale,
+        description: localizedContent[activeLocale].home.seo.description,
       },
     ],
   };
@@ -958,7 +611,7 @@ export function getPageContent(pageKey, locale = defaultLocale) {
     locale: activeLocale,
     navigation: copy.navigation,
     footer: {
-      copyright: '© 2026 ByteShark.',
+      copyright: 'Copyright 2026 ByteShark.',
       ...copy.footer,
     },
     ui: copy.ui,

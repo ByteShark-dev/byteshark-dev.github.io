@@ -205,12 +205,25 @@ function renderProof({ proof }) {
                 .join('')}
             </div>
             <div class="flex flex-wrap gap-4">
-              <a class="cta-primary px-5 py-3 text-xs" href="${item.primaryCtaHref}" ${item.primaryCtaHref.startsWith('http') ? 'target="_blank" rel="noreferrer"' : ''}>
-                ${item.primaryCtaLabel}
-              </a>
-              <a class="cta-secondary px-5 py-3 text-xs" href="${item.secondaryCtaHref}" target="_blank" rel="noreferrer">
-                ${item.secondaryCtaLabel}
-              </a>
+              ${item.ctaLinks
+                .map((link, index) => {
+                  const isExternal = link.external ?? link.href.startsWith('http');
+                  const linkClass =
+                    index === 0
+                      ? 'cta-primary px-5 py-3 text-xs'
+                      : 'cta-secondary px-5 py-3 text-xs';
+
+                  return `
+                    <a
+                      class="${linkClass}"
+                      href="${link.href}"
+                      ${isExternal ? 'target="_blank" rel="noreferrer"' : ''}
+                    >
+                      ${link.label}
+                    </a>
+                  `;
+                })
+                .join('')}
             </div>
           </div>
         </article>
