@@ -181,6 +181,11 @@
     flex-shrink: 0;
   }
 
+  .whatsapp-shortcut__icon svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
   .whatsapp-shortcut__label {
     white-space: nowrap;
   }
