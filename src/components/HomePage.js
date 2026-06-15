@@ -176,14 +176,14 @@ function renderProof(content) {
   const featured = proof.items[0];
   const secondary = proof.items[1];
 
-  const renderActionLinks = (linksList, primaryOnly = false) =>
+  const renderActionLinks = (linksList, compact = false) =>
     linksList
       .map((link, index) => {
         const isExternal = link.external ?? link.href.startsWith('http');
         const linkClass =
-          index === 0 || primaryOnly
-            ? 'cta-primary px-5 py-3 text-xs'
-            : 'cta-secondary px-5 py-3 text-xs';
+          index === 0
+            ? `cta-primary ${compact ? 'px-4 py-3 text-[0.68rem]' : 'px-5 py-3 text-xs'}`
+            : `cta-secondary ${compact ? 'px-4 py-3 text-[0.68rem]' : 'px-5 py-3 text-xs'}`;
 
         return `
           <a
@@ -197,6 +197,65 @@ function renderProof(content) {
       })
       .join('');
 
+  const renderProofCard = (item, options = {}) => {
+    const { withImage = false } = options;
+
+    return `
+      <article class="flex h-full min-w-0 flex-col overflow-hidden rounded-[28px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
+        ${
+          withImage
+            ? `
+              <div class="relative flex min-h-[180px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.32),_rgba(7,17,31,0.96)_62%)] px-6 py-8 sm:min-h-[210px]">
+                <img
+                  src="${item.image}"
+                  alt="${item.imageAlt}"
+                  class="h-24 w-24 object-contain transition duration-500 hover:scale-[1.03] sm:h-32 sm:w-32"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            `
+            : `
+              <div class="border-b border-outline-variant/20 bg-[linear-gradient(135deg,rgba(18,36,62,0.96),rgba(12,24,44,0.92))] px-6 py-7 sm:px-7">
+                <span class="signal-chip">${item.eyebrow}</span>
+                <h3 class="mt-4 text-[clamp(1.8rem,5vw,2.45rem)] font-bold leading-tight text-on-surface">
+                  ${item.name}
+                </h3>
+                <p class="mt-3 max-w-xl text-sm leading-7 text-on-surface-variant">
+                  ${item.description}
+                </p>
+              </div>
+            `
+        }
+        <div class="flex min-w-0 flex-1 flex-col justify-between gap-6 p-6 sm:p-7">
+          <div class="space-y-4">
+            ${
+              withImage
+                ? `
+                  <div class="space-y-3">
+                    <span class="signal-chip">${item.eyebrow}</span>
+                    <div>
+                      <h3 class="text-[clamp(2rem,6vw,3.2rem)] font-bold leading-tight text-on-surface">${item.name}</h3>
+                      <p class="mt-3 max-w-xl text-base leading-7 text-on-surface-variant">${item.description}</p>
+                    </div>
+                  </div>
+                `
+                : ''
+            }
+            <div class="flex flex-wrap gap-2">
+              ${item.highlights
+                .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
+                .join('')}
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            ${renderActionLinks(item.ctaLinks, true)}
+          </div>
+        </div>
+      </article>
+    `;
+  };
+
   return `
     <section id="proof" class="scroll-mt-28 py-24 sm:py-28">
       <div class="section-shell">
@@ -206,70 +265,19 @@ function renderProof(content) {
             <h2 class="section-title">${proof.title}</h2>
             <p class="section-copy">${proof.intro}</p>
           </div>
-          <div class="grid items-start gap-6 xl:grid-cols-[minmax(0,0.98fr)_minmax(320px,0.74fr)]">
-            <article class="overflow-hidden rounded-[28px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_18px_60px_rgba(0,0,0,0.2)] xl:aspect-[1/1]">
-              ${
-                featured.image
-                  ? `
-                    <div class="relative flex min-h-[180px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.32),_rgba(7,17,31,0.96)_62%)] p-6 sm:min-h-[210px] xl:min-h-0 xl:h-[40%]">
-                      <img
-                        src="${featured.image}"
-                        alt="${featured.imageAlt}"
-                        class="h-24 w-24 object-contain transition duration-500 hover:scale-[1.03] sm:h-32 sm:w-32 xl:h-36 xl:w-36"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                  `
-                  : ''
-              }
-              <div class="space-y-5 p-6 sm:p-8 xl:flex xl:h-[60%] xl:flex-col xl:justify-between">
-                <div class="space-y-3">
-                  <span class="signal-chip">${featured.eyebrow}</span>
-                  <div>
-                    <h3 class="text-3xl font-bold text-on-surface sm:text-4xl">${featured.name}</h3>
-                    <p class="mt-3 max-w-xl text-base leading-7 text-on-surface-variant">${featured.description}</p>
-                  </div>
-                </div>
-                <div class="space-y-5">
-                  <div class="flex flex-wrap gap-2">
-                    ${featured.highlights
-                      .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
-                      .join('')}
-                  </div>
-                  <div class="flex flex-wrap gap-4">
-                    ${renderActionLinks(featured.ctaLinks)}
-                  </div>
-                </div>
-              </div>
-            </article>
-            <div class="flex min-w-0 flex-col gap-6">
-              <article class="overflow-hidden rounded-[28px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
-                <div class="space-y-5 p-6 xl:p-5">
-                  <div class="space-y-3">
-                    <span class="signal-chip">${secondary.eyebrow}</span>
-                    <div>
-                      <h3 class="text-2xl font-bold text-on-surface">${secondary.name}</h3>
-                      <p class="mt-3 text-sm leading-7 text-on-surface-variant">${secondary.description}</p>
-                    </div>
-                  </div>
-                  <div class="flex flex-wrap gap-2">
-                    ${secondary.highlights
-                      .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
-                      .join('')}
-                  </div>
-                  <div class="flex flex-wrap gap-4">
-                    ${renderActionLinks(secondary.ctaLinks)}
-                  </div>
-                </div>
-              </article>
-              <article id="demos" class="glass-panel overflow-hidden rounded-[28px] border border-outline-variant/30 p-6 xl:p-5 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
-                <div class="space-y-5">
+          <div class="space-y-6">
+            <div class="grid items-stretch gap-6 xl:grid-cols-2">
+              ${renderProofCard(featured, { withImage: true })}
+              ${renderProofCard(secondary)}
+            </div>
+            <article id="demos" class="glass-panel overflow-hidden rounded-[28px] border border-outline-variant/30 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)] sm:p-7">
+              <div class="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] xl:items-start">
+                <div class="min-w-0 space-y-5">
                   <div class="space-y-3">
                     <span class="signal-chip">${demos.eyebrow}</span>
                     <div>
-                      <h3 class="text-2xl font-bold text-on-surface">${demos.cardTitle}</h3>
-                      <p class="mt-3 text-sm leading-7 text-on-surface-variant">${demos.cardBody}</p>
+                      <h3 class="text-[clamp(1.85rem,4vw,2.6rem)] font-bold leading-tight text-on-surface">${demos.cardTitle}</h3>
+                      <p class="mt-3 max-w-2xl text-sm leading-7 text-on-surface-variant">${demos.cardBody}</p>
                     </div>
                   </div>
                   <div class="flex flex-wrap gap-2">
@@ -277,10 +285,12 @@ function renderProof(content) {
                       .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
                       .join('')}
                   </div>
+                </div>
+                <div class="space-y-4">
                   <div class="rounded-[20px] border border-outline-variant/25 bg-surface-container-low/80 p-4">
                     <p class="text-sm leading-7 text-on-surface-variant">${demos.note}</p>
                   </div>
-                  <div class="flex flex-wrap gap-4">
+                  <div class="flex flex-wrap gap-3">
                     <a class="cta-primary" href="${content.links.demosCatalog}">
                       ${demos.primaryCta}
                     </a>
@@ -289,8 +299,8 @@ function renderProof(content) {
                     </a>
                   </div>
                 </div>
-              </article>
-            </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
