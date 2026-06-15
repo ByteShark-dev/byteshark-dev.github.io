@@ -200,22 +200,22 @@ function renderProof(content) {
   return `
     <section id="proof" class="scroll-mt-28 py-24 sm:py-28">
       <div class="section-shell">
-        <div class="mx-auto max-w-6xl">
+        <div class="mx-auto max-w-[1180px]">
           <div class="mb-12 space-y-5">
             <span class="eyebrow">${proof.sectionEyebrow}</span>
             <h2 class="section-title">${proof.title}</h2>
             <p class="section-copy">${proof.intro}</p>
           </div>
-          <div class="grid gap-6 xl:grid-cols-[minmax(0,1.18fr)_minmax(320px,0.82fr)]">
-            <article class="overflow-hidden rounded-[28px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
+          <div class="grid items-start gap-6 xl:grid-cols-[minmax(0,0.98fr)_minmax(320px,0.74fr)]">
+            <article class="overflow-hidden rounded-[28px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_18px_60px_rgba(0,0,0,0.2)] xl:aspect-[1/1]">
               ${
                 featured.image
                   ? `
-                    <div class="relative flex min-h-[220px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.32),_rgba(7,17,31,0.96)_62%)] p-8">
+                    <div class="relative flex min-h-[180px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.32),_rgba(7,17,31,0.96)_62%)] p-6 sm:min-h-[210px] xl:min-h-0 xl:h-[40%]">
                       <img
                         src="${featured.image}"
                         alt="${featured.imageAlt}"
-                        class="h-32 w-32 object-contain transition duration-500 hover:scale-[1.03] sm:h-40 sm:w-40"
+                        class="h-24 w-24 object-contain transition duration-500 hover:scale-[1.03] sm:h-32 sm:w-32 xl:h-36 xl:w-36"
                         loading="lazy"
                         decoding="async"
                       />
@@ -223,27 +223,29 @@ function renderProof(content) {
                   `
                   : ''
               }
-              <div class="space-y-5 p-6 sm:p-8">
+              <div class="space-y-5 p-6 sm:p-8 xl:flex xl:h-[60%] xl:flex-col xl:justify-between">
                 <div class="space-y-3">
                   <span class="signal-chip">${featured.eyebrow}</span>
                   <div>
                     <h3 class="text-3xl font-bold text-on-surface sm:text-4xl">${featured.name}</h3>
-                    <p class="mt-3 max-w-2xl text-base leading-8 text-on-surface-variant">${featured.description}</p>
+                    <p class="mt-3 max-w-xl text-base leading-7 text-on-surface-variant">${featured.description}</p>
                   </div>
                 </div>
-                <div class="flex flex-wrap gap-2">
-                  ${featured.highlights
-                    .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
-                    .join('')}
-                </div>
-                <div class="flex flex-wrap gap-4">
-                  ${renderActionLinks(featured.ctaLinks)}
+                <div class="space-y-5">
+                  <div class="flex flex-wrap gap-2">
+                    ${featured.highlights
+                      .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
+                      .join('')}
+                  </div>
+                  <div class="flex flex-wrap gap-4">
+                    ${renderActionLinks(featured.ctaLinks)}
+                  </div>
                 </div>
               </div>
             </article>
             <div class="flex min-w-0 flex-col gap-6">
               <article class="overflow-hidden rounded-[28px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
-                <div class="space-y-5 p-6">
+                <div class="space-y-5 p-6 xl:p-5">
                   <div class="space-y-3">
                     <span class="signal-chip">${secondary.eyebrow}</span>
                     <div>
@@ -261,7 +263,7 @@ function renderProof(content) {
                   </div>
                 </div>
               </article>
-              <article id="demos" class="glass-panel overflow-hidden rounded-[28px] border border-outline-variant/30 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
+              <article id="demos" class="glass-panel overflow-hidden rounded-[28px] border border-outline-variant/30 p-6 xl:p-5 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
                 <div class="space-y-5">
                   <div class="space-y-3">
                     <span class="signal-chip">${demos.eyebrow}</span>
