@@ -171,137 +171,125 @@ function renderServices(content) {
   `;
 }
 
-function renderDemos(content) {
-  const { demos, sectionEyebrows } = content.page;
-  const { links, locale } = content;
-  const cardCta = locale === 'es' ? 'Ver demo' : 'View demo';
+function renderProof(content) {
+  const { proof, demos } = content.page;
+  const featured = proof.items[0];
+  const secondary = proof.items[1];
 
-  const cards = demos.items
-    .map(
-      (item) => `
-        <article class="glass-panel rounded-[24px] border border-outline-variant/28 p-6">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <span class="signal-chip">${item.category}</span>
-              <h3 class="mt-5 text-2xl font-bold text-on-surface">${item.name}</h3>
-            </div>
-            <span class="inline-flex h-14 w-14 rounded-2xl border border-outline-variant/35 bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.42),_rgba(8,21,40,0.92))]"></span>
-          </div>
-          <p class="mt-4 text-sm leading-7 text-on-surface-variant">${item.description}</p>
-          <div class="mt-6 flex flex-wrap gap-2">
-            ${item.highlights
-              .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
-              .join('')}
-          </div>
-          <div class="mt-7 flex flex-wrap gap-3">
-            <a class="cta-primary px-5 py-3 text-xs" href="${item.href}">
-              ${cardCta}
-            </a>
-          </div>
-        </article>
-      `,
-    )
-    .join('');
+  const renderActionLinks = (linksList, primaryOnly = false) =>
+    linksList
+      .map((link, index) => {
+        const isExternal = link.external ?? link.href.startsWith('http');
+        const linkClass =
+          index === 0 || primaryOnly
+            ? 'cta-primary px-5 py-3 text-xs'
+            : 'cta-secondary px-5 py-3 text-xs';
 
-  return `
-    <section id="demos" class="scroll-mt-28 py-24 sm:py-28">
-      <div class="section-shell">
-        <div class="mb-12 space-y-5">
-          <span class="eyebrow">${sectionEyebrows.demos}</span>
-          <h2 class="section-title">${demos.title}</h2>
-          <p class="section-copy">${demos.intro}</p>
-        </div>
-        <div class="grid gap-6 lg:grid-cols-2">
-          ${cards}
-        </div>
-        <div class="mt-8 rounded-[24px] border border-outline-variant/25 bg-surface-container-low/80 p-6">
-          <p class="text-sm leading-7 text-on-surface-variant">${demos.note}</p>
-        </div>
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a class="cta-primary" href="${links.demosCatalog}">
-            ${demos.primaryCta}
+        return `
+          <a
+            class="${linkClass}"
+            href="${link.href}"
+            ${isExternal ? 'target="_blank" rel="noreferrer"' : ''}
+          >
+            ${link.label}
           </a>
-          <a class="cta-secondary" href="${links.whatsappQuote}" target="_blank" rel="noreferrer">
-            ${demos.secondaryCta}
-          </a>
-        </div>
-      </div>
-    </section>
-  `;
-}
-
-function renderProof({ proof }) {
-  const cards = proof.items
-    .map(
-      (item) => `
-        <article class="overflow-hidden rounded-[24px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
-          ${
-            item.image
-              ? `
-                <div class="relative flex min-h-[180px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.28),_rgba(7,17,31,0.95)_62%)] p-6">
-                  <img
-                    src="${item.image}"
-                    alt="${item.imageAlt}"
-                    class="h-28 w-28 object-contain transition duration-500 hover:scale-[1.03] sm:h-32 sm:w-32"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              `
-              : ''
-          }
-          <div class="space-y-5 p-6">
-            <div class="space-y-3">
-              <span class="signal-chip">${item.eyebrow}</span>
-              <div>
-                <h3 class="text-2xl font-bold text-on-surface">${item.name}</h3>
-                <p class="mt-3 text-sm leading-7 text-on-surface-variant">${item.description}</p>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              ${item.highlights
-                .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
-                .join('')}
-            </div>
-            <div class="flex flex-wrap gap-4">
-              ${item.ctaLinks
-                .map((link, index) => {
-                  const isExternal = link.external ?? link.href.startsWith('http');
-                  const linkClass =
-                    index === 0
-                      ? 'cta-primary px-5 py-3 text-xs'
-                      : 'cta-secondary px-5 py-3 text-xs';
-
-                  return `
-                    <a
-                      class="${linkClass}"
-                      href="${link.href}"
-                      ${isExternal ? 'target="_blank" rel="noreferrer"' : ''}
-                    >
-                      ${link.label}
-                    </a>
-                  `;
-                })
-                .join('')}
-            </div>
-          </div>
-        </article>
-      `,
-    )
-    .join('');
+        `;
+      })
+      .join('');
 
   return `
     <section id="proof" class="scroll-mt-28 py-24 sm:py-28">
       <div class="section-shell">
         <div class="mx-auto max-w-6xl">
-        <div class="mb-12 space-y-5">
-          <span class="eyebrow">${proof.sectionEyebrow}</span>
-          <h2 class="section-title">${proof.title}</h2>
-          <p class="section-copy">${proof.intro}</p>
-        </div>
-        <div class="grid gap-6 lg:grid-cols-2">
-          ${cards}
-        </div>
+          <div class="mb-12 space-y-5">
+            <span class="eyebrow">${proof.sectionEyebrow}</span>
+            <h2 class="section-title">${proof.title}</h2>
+            <p class="section-copy">${proof.intro}</p>
+          </div>
+          <div class="grid gap-6 xl:grid-cols-[minmax(0,1.18fr)_minmax(320px,0.82fr)]">
+            <article class="overflow-hidden rounded-[28px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
+              ${
+                featured.image
+                  ? `
+                    <div class="relative flex min-h-[220px] items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(30,90,168,0.32),_rgba(7,17,31,0.96)_62%)] p-8">
+                      <img
+                        src="${featured.image}"
+                        alt="${featured.imageAlt}"
+                        class="h-32 w-32 object-contain transition duration-500 hover:scale-[1.03] sm:h-40 sm:w-40"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  `
+                  : ''
+              }
+              <div class="space-y-5 p-6 sm:p-8">
+                <div class="space-y-3">
+                  <span class="signal-chip">${featured.eyebrow}</span>
+                  <div>
+                    <h3 class="text-3xl font-bold text-on-surface sm:text-4xl">${featured.name}</h3>
+                    <p class="mt-3 max-w-2xl text-base leading-8 text-on-surface-variant">${featured.description}</p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  ${featured.highlights
+                    .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
+                    .join('')}
+                </div>
+                <div class="flex flex-wrap gap-4">
+                  ${renderActionLinks(featured.ctaLinks)}
+                </div>
+              </div>
+            </article>
+            <div class="flex min-w-0 flex-col gap-6">
+              <article class="overflow-hidden rounded-[28px] border border-outline-variant/30 bg-surface-container/82 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
+                <div class="space-y-5 p-6">
+                  <div class="space-y-3">
+                    <span class="signal-chip">${secondary.eyebrow}</span>
+                    <div>
+                      <h3 class="text-2xl font-bold text-on-surface">${secondary.name}</h3>
+                      <p class="mt-3 text-sm leading-7 text-on-surface-variant">${secondary.description}</p>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    ${secondary.highlights
+                      .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
+                      .join('')}
+                  </div>
+                  <div class="flex flex-wrap gap-4">
+                    ${renderActionLinks(secondary.ctaLinks)}
+                  </div>
+                </div>
+              </article>
+              <article id="demos" class="glass-panel overflow-hidden rounded-[28px] border border-outline-variant/30 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
+                <div class="space-y-5">
+                  <div class="space-y-3">
+                    <span class="signal-chip">${demos.eyebrow}</span>
+                    <div>
+                      <h3 class="text-2xl font-bold text-on-surface">${demos.cardTitle}</h3>
+                      <p class="mt-3 text-sm leading-7 text-on-surface-variant">${demos.cardBody}</p>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    ${demos.cardHighlights
+                      .map((highlight) => `<span class="signal-chip">${highlight}</span>`)
+                      .join('')}
+                  </div>
+                  <div class="rounded-[20px] border border-outline-variant/25 bg-surface-container-low/80 p-4">
+                    <p class="text-sm leading-7 text-on-surface-variant">${demos.note}</p>
+                  </div>
+                  <div class="flex flex-wrap gap-4">
+                    <a class="cta-primary" href="${content.links.demosCatalog}">
+                      ${demos.primaryCta}
+                    </a>
+                    <a class="cta-secondary" href="${content.links.whatsappQuote}" target="_blank" rel="noreferrer">
+                      ${demos.secondaryCta}
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -407,8 +395,13 @@ export function renderHomePage(content) {
       ${renderHero(content)}
       ${renderProblems(content.page)}
       ${renderServices(content)}
-      ${renderDemos(content)}
-      ${renderProof({ proof: proofContent })}
+      ${renderProof({
+        ...content,
+        page: {
+          ...content.page,
+          proof: proofContent,
+        },
+      })}
       ${renderContact(content)}
     </main>
     ${renderFooter(content, 'home')}

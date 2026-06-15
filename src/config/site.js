@@ -180,6 +180,11 @@ const localizedContent = {
           'Estas demos son ejemplos conceptuales y editables. No se presentan como casos reales ni como clientes activos.',
         primaryCta: 'Explorar catalogo de demos',
         secondaryCta: 'Pedir una version para mi negocio',
+        eyebrow: 'DEMOS ADAPTABLES',
+        cardTitle: 'Explora demos listas para adaptar',
+        cardBody:
+          'Si quieres ver propuestas por giro, entra al catalogo de demos y revisa bases comerciales pensadas para negocios reales.',
+        cardHighlights: ['Barberia', 'Cafe / restaurante', 'Salud profesional', 'Despacho contable'],
         items: [
           {
             name: 'Barberia Premium',
@@ -464,6 +469,11 @@ const localizedContent = {
           'These demos are conceptual and editable examples. They are not presented as real clients or live case studies.',
         primaryCta: 'Explore demo catalog',
         secondaryCta: 'Request a custom version',
+        eyebrow: 'ADAPTABLE DEMOS',
+        cardTitle: 'Browse demos ready to adapt',
+        cardBody:
+          'If you want to review business-specific concepts, open the demo catalog and explore commercial bases built for real businesses.',
+        cardHighlights: ['Barbershop', 'Cafe / restaurant', 'Professional health', 'Accounting firm'],
         items: [
           {
             name: 'Premium Barbershop',
