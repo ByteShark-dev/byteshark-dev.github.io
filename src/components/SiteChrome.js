@@ -1,10 +1,26 @@
-function renderNavigationLinks(navigation, linkClass = '') {
+function resolveNavigationHref(item, currentPage) {
+  if (currentPage === 'home') {
+    return `#${item.section}`;
+  }
+
+  if (item.section === 'demos') {
+    return '/demos/';
+  }
+
+  if (item.section === 'proof') {
+    return '/casos-reales/';
+  }
+
+  return `/#${item.section}`;
+}
+
+function renderNavigationLinks(navigation, currentPage, linkClass = '') {
   return navigation
     .map((item) => {
       return `
         <a
           class="${linkClass}"
-          href="#${item.section}"
+          href="${resolveNavigationHref(item, currentPage)}"
         >
           ${item.label}
         </a>
@@ -16,6 +32,7 @@ function renderNavigationLinks(navigation, linkClass = '') {
 export function renderNavbar(content, currentPage) {
   const mobileNavItems = renderNavigationLinks(
     content.navigation,
+    currentPage,
     'rounded-2xl border border-outline-variant/25 bg-surface-container-low/55 px-4 py-3 text-base font-semibold tracking-tight text-on-surface transition hover:border-primary-container/35 hover:bg-surface-container',
   );
   const localeButtons = content.supportedLocales
@@ -36,8 +53,8 @@ export function renderNavbar(content, currentPage) {
       `,
     )
     .join('');
-  const homeHref = '#home';
-  const quoteHref = '#contact';
+  const homeHref = currentPage === 'home' ? '#home' : '/#home';
+  const quoteHref = currentPage === 'home' ? '#contact' : '/#contact';
   const desktopCtaLabel = content.page.contact?.primaryCta ?? content.ui.mobileHeaderCta;
 
   return `
@@ -108,7 +125,7 @@ export function renderNavbar(content, currentPage) {
 }
 
 export function renderFooter(content, currentPage) {
-  const homeHref = '#home';
+  const homeHref = currentPage === 'home' ? '#home' : '/#home';
 
   return `
     <footer class="border-t border-outline-variant/20 bg-surface-container-lowest/80 pb-28 pt-12 sm:py-12">

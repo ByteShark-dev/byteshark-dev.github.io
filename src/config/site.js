@@ -5,6 +5,10 @@ const aphidexProjectUrl = '/aphidex/';
 const aphidexCanonicalUrl = 'https://byteshark-dev.github.io/aphidex/';
 const aphidexPlayUrl = 'https://play.google.com/store/apps/details?id=com.byteshark.aphidex&hl=es_419';
 const aphidexIosUrl = 'https://apps.apple.com/mx/app/aphidex/id6766727089';
+const transformandoMiSerUrl = 'https://transformandomiser.com';
+const gmAsesoresUrl = 'https://gmasesoresennegocios.com';
+const reciclandoGolesUrl = 'https://reciclando-goles.web.app';
+const reciclandoGolesRepoUrl = 'https://github.com/ByteShark-dev/reciclando-goles-web';
 
 const buildWhatsAppUrl = (locale) => {
   const messages = siteConfig.links.whatsappTemplates;
@@ -44,6 +48,136 @@ const localizedContent = {
         es: 'ES',
         en: 'EN',
       },
+    },
+    collections: {
+      realCases: [
+        {
+          slug: 'transformando-mi-ser',
+          name: 'Transformando Mi Ser',
+          category: 'Web para psicologia / marca personal',
+          description:
+            'Sitio profesional para presentar servicios, generar confianza y facilitar el contacto para agendar sesiones.',
+          tags: ['Cliente real', 'Web publicada', 'Psicologia', 'Agenda y contacto'],
+          accent: {
+            from: '#7FDBFF',
+            to: '#1E5AA8',
+            halo: 'rgba(127, 219, 255, 0.24)',
+          },
+          ctaLinks: [
+            {
+              label: 'Ver sitio',
+              href: transformandoMiSerUrl,
+              external: true,
+            },
+          ],
+        },
+        {
+          slug: 'gm-asesores-en-negocios',
+          name: 'GM Asesores en Negocios',
+          category: 'Web corporativa / despacho contable',
+          description:
+            'Sitio empresarial para presentar servicios contables, fiscales y de asesoria con una imagen mas profesional.',
+          tags: ['Cliente real', 'Web publicada', 'Despacho contable', 'Servicios profesionales'],
+          accent: {
+            from: '#8FC0FF',
+            to: '#C9A86A',
+            halo: 'rgba(143, 192, 255, 0.22)',
+          },
+          ctaLinks: [
+            {
+              label: 'Ver sitio',
+              href: gmAsesoresUrl,
+              external: true,
+            },
+          ],
+        },
+        {
+          slug: 'reciclando-goles',
+          name: 'Reciclando Goles',
+          category: 'Web publica + impacto social',
+          description:
+            'Proyecto social con web publica, branding digital y presencia online para recolectar reciclaje y apoyar una causa benefica.',
+          tags: ['Proyecto real', 'Web publicada', 'Impacto social', 'Branding digital'],
+          accent: {
+            from: '#34D399',
+            to: '#1E5AA8',
+            halo: 'rgba(52, 211, 153, 0.22)',
+          },
+          ctaLinks: [
+            {
+              label: 'Ver sitio publicado',
+              href: reciclandoGolesUrl,
+              external: true,
+            },
+            {
+              label: 'Ver repositorio',
+              href: reciclandoGolesRepoUrl,
+              external: true,
+            },
+          ],
+        },
+      ],
+      commercialDemos: [
+        {
+          name: 'Barberia Premium',
+          category: 'Servicios presenciales',
+          description:
+            'Base pensada para citas, horarios, ubicacion, promos y una imagen mas premium.',
+          highlights: ['Servicios y precios', 'WhatsApp', 'Galeria'],
+          href: 'https://byteshark-dev.github.io/demos/barberia/',
+        },
+        {
+          name: 'Cafe / Restaurante',
+          category: 'Comida y bebida',
+          description:
+            'Menu digital, promos, pedidos o reservas y presencia visual enfocada en conversion.',
+          highlights: ['Menu digital', 'Promociones', 'Reservas o pedidos'],
+          href: 'https://byteshark-dev.github.io/demos/cafe-restaurante/',
+        },
+        {
+          name: 'Salud Profesional',
+          category: 'Consulta y bienestar',
+          description:
+            'Perfil profesional, servicios, modalidad online o presencial y FAQ con tono confiable.',
+          highlights: ['Presentacion profesional', 'Agenda por WhatsApp', 'FAQ'],
+          href: 'https://byteshark-dev.github.io/demos/salud-profesional/',
+        },
+        {
+          name: 'Despacho Contable',
+          category: 'Fiscal y administrativo',
+          description:
+            'Servicios fiscales, beneficios, FAQ y una presencia seria para captar mejores leads.',
+          highlights: ['Servicios fiscales', 'Beneficios', 'Seccion de confianza'],
+          href: 'https://byteshark-dev.github.io/demos/despacho-contable/',
+        },
+      ],
+      ownSoftware: [
+        {
+          slug: 'aphidex',
+          name: 'Aphidex',
+          category: 'App destacada',
+          description: 'Companion app para Grounded y Grounded 2.',
+          tags: ['Android', 'iOS', 'ES / EN / RU', 'Grounded 2'],
+          image: '/assets/images/Aphidex_logo.webp',
+          imageAlt: 'Logo de Aphidex.',
+          ctaLinks: [
+            {
+              label: 'Ver proyecto',
+              href: aphidexProjectUrl,
+            },
+            {
+              label: 'Google Play',
+              href: aphidexPlayUrl,
+              external: true,
+            },
+            {
+              label: 'App Store',
+              href: aphidexIosUrl,
+              external: true,
+            },
+          ],
+        },
+      ],
     },
     home: {
       seo: {
@@ -180,102 +314,35 @@ const localizedContent = {
           'Estas demos son ejemplos conceptuales y editables. No se presentan como casos reales ni como clientes activos.',
         primaryCta: 'Explorar catalogo de demos',
         secondaryCta: 'Pedir una version para mi negocio',
-        eyebrow: 'DEMOS ADAPTABLES',
-        cardTitle: 'Explora demos listas para adaptar',
-        cardBody:
-          'Si quieres ver propuestas por giro, entra al catalogo de demos y revisa bases comerciales pensadas para negocios reales.',
-        cardHighlights: ['Barberia', 'Cafe / restaurante', 'Salud profesional', 'Despacho contable'],
-        items: [
-          {
-            name: 'Barberia Premium',
-            category: 'Servicios presenciales',
-            description:
-              'Base pensada para citas, horarios, ubicacion, promos y una imagen mas premium.',
-            highlights: ['Servicios y precios', 'WhatsApp', 'Galeria'],
-            href: 'https://byteshark-dev.github.io/demos/barberia/',
-          },
-          {
-            name: 'Cafe / Restaurante',
-            category: 'Comida y bebida',
-            description:
-              'Menu digital, promos, pedidos o reservas y presencia visual enfocada en conversion.',
-            highlights: ['Menu digital', 'Promociones', 'Reservas o pedidos'],
-            href: 'https://byteshark-dev.github.io/demos/cafe-restaurante/',
-          },
-          {
-            name: 'Salud Profesional',
-            category: 'Consulta y bienestar',
-            description:
-              'Perfil profesional, servicios, modalidad online o presencial y FAQ con tono confiable.',
-            highlights: ['Presentacion profesional', 'Agenda por WhatsApp', 'FAQ'],
-            href: 'https://byteshark-dev.github.io/demos/salud-profesional/',
-          },
-          {
-            name: 'Despacho Contable',
-            category: 'Fiscal y administrativo',
-            description:
-              'Servicios fiscales, beneficios, FAQ y una presencia seria para captar mejores leads.',
-            highlights: ['Servicios fiscales', 'Beneficios', 'Seccion de confianza'],
-            href: 'https://byteshark-dev.github.io/demos/despacho-contable/',
-          },
-        ],
       },
       proof: {
-        title: 'Casos reales',
+        title: 'Casos reales, demos y software propio',
         intro:
-          'Trabajo aplicado en productos publicados y proyectos con uso real, no ejercicios inventados para llenar un portfolio.',
-        items: [
-          {
-            name: 'Aphidex',
-            eyebrow: 'APP DESTACADA',
-            description: 'Companion app para Grounded y Grounded 2.',
-            highlights: ['Android', 'iOS', 'ES / EN / RU', 'Grounded 2'],
-            image: '/assets/images/Aphidex_logo.webp',
-            imageAlt: 'Logo de Aphidex.',
-            ctaLinks: [
-              {
-                label: 'Ver proyecto',
-                href: aphidexProjectUrl,
-              },
-              {
-                label: 'Google Play',
-                href: aphidexPlayUrl,
-                external: true,
-              },
-              {
-                label: 'App Store',
-                href: aphidexIosUrl,
-                external: true,
-              },
-            ],
-          },
-          {
-            name: 'Reciclando Goles',
-            eyebrow: 'WEB PUBLICA + IMPACTO SOCIAL',
-            description:
-              'Proyecto social con web publica, branding digital y presencia online para recolectar reciclaje y apoyar una causa benefica.',
-            highlights: [
-              'Web real publicada',
-              'Branding y comunicacion',
-              'Proyecto con impacto comunitario',
-              'Enfoque en transparencia y difusion',
-            ],
-            image: '',
-            imageAlt: '',
-            ctaLinks: [
-              {
-                label: 'Ver sitio publicado',
-                href: 'https://reciclando-goles.web.app',
-                external: true,
-              },
-              {
-                label: 'Ver repositorio',
-                href: 'https://github.com/ByteShark-dev/reciclando-goles-web',
-                external: true,
-              },
-            ],
-          },
-        ],
+          'Un resumen compacto para validar trabajo publicado, explorar propuestas comerciales y ver productos propios sin convertir la home en catalogo.',
+        realCases: {
+          eyebrow: 'CASOS REALES',
+          title: 'Casos reales publicados',
+          description:
+            'Sitios y proyectos reales desarrollados para clientes, marcas y campanas con presencia digital activa.',
+          tags: ['Clientes reales', 'Web publicada', 'Marca profesional', 'Presencia digital'],
+          primaryCta: 'Ver casos reales',
+          secondaryCta: 'Hablar con ByteShark',
+          mockupItems: ['Transformando Mi Ser', 'GM Asesores', 'Reciclando Goles'],
+        },
+        demosSummary: {
+          eyebrow: 'DEMOS ADAPTABLES',
+          title: 'Demos listas para adaptar',
+          description:
+            'Explora propuestas visuales y funcionales pensadas para distintos tipos de negocio.',
+          tags: ['Landing pages', 'Agendas', 'ERP / CRM', 'Negocios locales'],
+          primaryCta: 'Explorar demos',
+        },
+        ownSoftware: {
+          eyebrow: 'SOFTWARE PROPIO',
+          title: 'Apps y softwares propios',
+          description:
+            'Productos propios publicados o preparados para crecer como lineas independientes de ByteShark.',
+        },
       },
       contact: {
         title: 'Tu negocio necesita una presencia que venda y una operacion que escale.',
@@ -299,6 +366,28 @@ const localizedContent = {
           githubValue: '@byteshark-dev',
           linkedinValue: 'Angel Arenas Patino',
         },
+      },
+    },
+    cases: {
+      seo: {
+        title: 'Casos reales | ByteShark',
+        description:
+          'Proyectos publicados para clientes, marcas y campanas reales desarrollados por ByteShark.',
+      },
+      hero: {
+        badge: 'Portafolio publicado',
+        title: 'Casos reales',
+        subtitle: 'Proyectos publicados para clientes, marcas y campanas reales.',
+        auxiliaryText:
+          'Cada caso muestra trabajo aplicado con presencia digital activa, no ejemplos conceptuales ni ejercicios de demo.',
+        primaryCta: 'Hablar con ByteShark',
+        secondaryCta: 'Volver al inicio',
+      },
+      catalog: {
+        eyebrow: 'PORTAFOLIO ACTIVO',
+        title: 'Proyectos con presencia digital activa',
+        note:
+          'Estos casos no pertenecen al catalogo de demos. Son trabajos publicados o proyectos reales con enlaces verificables.',
       },
     },
   },
@@ -333,6 +422,136 @@ const localizedContent = {
         es: 'ES',
         en: 'EN',
       },
+    },
+    collections: {
+      realCases: [
+        {
+          slug: 'transformando-mi-ser',
+          name: 'Transformando Mi Ser',
+          category: 'Psychology website / personal brand',
+          description:
+            'Professional website to present services, build trust and make session booking contact easier.',
+          tags: ['Real client', 'Published website', 'Psychology', 'Booking and contact'],
+          accent: {
+            from: '#7FDBFF',
+            to: '#1E5AA8',
+            halo: 'rgba(127, 219, 255, 0.24)',
+          },
+          ctaLinks: [
+            {
+              label: 'View website',
+              href: transformandoMiSerUrl,
+              external: true,
+            },
+          ],
+        },
+        {
+          slug: 'gm-asesores-en-negocios',
+          name: 'GM Asesores en Negocios',
+          category: 'Corporate website / accounting firm',
+          description:
+            'Business website to present accounting, tax and advisory services with a more professional image.',
+          tags: ['Real client', 'Published website', 'Accounting firm', 'Professional services'],
+          accent: {
+            from: '#8FC0FF',
+            to: '#C9A86A',
+            halo: 'rgba(143, 192, 255, 0.22)',
+          },
+          ctaLinks: [
+            {
+              label: 'View website',
+              href: gmAsesoresUrl,
+              external: true,
+            },
+          ],
+        },
+        {
+          slug: 'reciclando-goles',
+          name: 'Reciclando Goles',
+          category: 'Public website + social impact',
+          description:
+            'Social project with a public website, digital branding and online presence to collect recycling and support a charitable cause.',
+          tags: ['Real project', 'Published website', 'Social impact', 'Digital branding'],
+          accent: {
+            from: '#34D399',
+            to: '#1E5AA8',
+            halo: 'rgba(52, 211, 153, 0.22)',
+          },
+          ctaLinks: [
+            {
+              label: 'View published site',
+              href: reciclandoGolesUrl,
+              external: true,
+            },
+            {
+              label: 'View repository',
+              href: reciclandoGolesRepoUrl,
+              external: true,
+            },
+          ],
+        },
+      ],
+      commercialDemos: [
+        {
+          name: 'Premium Barbershop',
+          category: 'Local services',
+          description:
+            'Built for bookings, hours, location, promotions and a more premium first impression.',
+          highlights: ['Services and pricing', 'WhatsApp', 'Gallery'],
+          href: 'https://byteshark-dev.github.io/demos/barberia/',
+        },
+        {
+          name: 'Cafe / Restaurant',
+          category: 'Food and beverage',
+          description:
+            'Digital menu, promotions, reservations or orders and a visual flow focused on conversion.',
+          highlights: ['Digital menu', 'Promotions', 'Reservations or orders'],
+          href: 'https://byteshark-dev.github.io/demos/cafe-restaurante/',
+        },
+        {
+          name: 'Professional Health',
+          category: 'Consultation and wellness',
+          description:
+            'Professional profile, services, online or in-person mode and a trust-oriented FAQ.',
+          highlights: ['Professional presentation', 'WhatsApp booking', 'FAQ'],
+          href: 'https://byteshark-dev.github.io/demos/salud-profesional/',
+        },
+        {
+          name: 'Accounting Firm',
+          category: 'Tax and operations',
+          description:
+            'Tax services, benefits, FAQ and a more serious digital presence for lead capture.',
+          highlights: ['Tax services', 'Benefits', 'Trust section'],
+          href: 'https://byteshark-dev.github.io/demos/despacho-contable/',
+        },
+      ],
+      ownSoftware: [
+        {
+          slug: 'aphidex',
+          name: 'Aphidex',
+          category: 'Featured app',
+          description: 'Companion app for Grounded and Grounded 2.',
+          tags: ['Android', 'iOS', 'ES / EN / RU', 'Grounded 2'],
+          image: '/assets/images/Aphidex_logo.webp',
+          imageAlt: 'Aphidex logo.',
+          ctaLinks: [
+            {
+              label: 'View project',
+              href: aphidexProjectUrl,
+            },
+            {
+              label: 'Google Play',
+              href: aphidexPlayUrl,
+              external: true,
+            },
+            {
+              label: 'App Store',
+              href: aphidexIosUrl,
+              external: true,
+            },
+          ],
+        },
+      ],
     },
     home: {
       seo: {
@@ -469,102 +688,35 @@ const localizedContent = {
           'These demos are conceptual and editable examples. They are not presented as real clients or live case studies.',
         primaryCta: 'Explore demo catalog',
         secondaryCta: 'Request a custom version',
-        eyebrow: 'ADAPTABLE DEMOS',
-        cardTitle: 'Browse demos ready to adapt',
-        cardBody:
-          'If you want to review business-specific concepts, open the demo catalog and explore commercial bases built for real businesses.',
-        cardHighlights: ['Barbershop', 'Cafe / restaurant', 'Professional health', 'Accounting firm'],
-        items: [
-          {
-            name: 'Premium Barbershop',
-            category: 'Local services',
-            description:
-              'Built for bookings, hours, location, promotions and a more premium first impression.',
-            highlights: ['Services and pricing', 'WhatsApp', 'Gallery'],
-            href: 'https://byteshark-dev.github.io/demos/barberia/',
-          },
-          {
-            name: 'Cafe / Restaurant',
-            category: 'Food and beverage',
-            description:
-              'Digital menu, promotions, reservations or orders and a visual flow focused on conversion.',
-            highlights: ['Digital menu', 'Promotions', 'Reservations or orders'],
-            href: 'https://byteshark-dev.github.io/demos/cafe-restaurante/',
-          },
-          {
-            name: 'Professional Health',
-            category: 'Consultation and wellness',
-            description:
-              'Professional profile, services, online or in-person mode and a trust-oriented FAQ.',
-            highlights: ['Professional presentation', 'WhatsApp booking', 'FAQ'],
-            href: 'https://byteshark-dev.github.io/demos/salud-profesional/',
-          },
-          {
-            name: 'Accounting Firm',
-            category: 'Tax and operations',
-            description:
-              'Tax services, benefits, FAQ and a more serious digital presence for lead capture.',
-            highlights: ['Tax services', 'Benefits', 'Trust section'],
-            href: 'https://byteshark-dev.github.io/demos/despacho-contable/',
-          },
-        ],
       },
       proof: {
-        title: 'Proof of Work',
+        title: 'Real projects, demos and owned software',
         intro:
-          'Applied work on shipped products and real-use projects, not invented exercises created to fill a portfolio.',
-        items: [
-          {
-            name: 'Aphidex',
-            eyebrow: 'FEATURED APP',
-            description: 'Companion app for Grounded and Grounded 2.',
-            highlights: ['Android', 'iOS', 'ES / EN / RU', 'Grounded 2'],
-            image: '/assets/images/Aphidex_logo.webp',
-            imageAlt: 'Aphidex logo.',
-            ctaLinks: [
-              {
-                label: 'View project',
-                href: aphidexProjectUrl,
-              },
-              {
-                label: 'Google Play',
-                href: aphidexPlayUrl,
-                external: true,
-              },
-              {
-                label: 'App Store',
-                href: aphidexIosUrl,
-                external: true,
-              },
-            ],
-          },
-          {
-            name: 'Reciclando Goles',
-            eyebrow: 'PUBLIC WEBSITE + SOCIAL IMPACT',
-            description:
-              'Social initiative with a public website, digital branding and online presence to collect recycling and support a charitable cause.',
-            highlights: [
-              'Real published website',
-              'Branding and communication',
-              'Community impact project',
-              'Transparency and outreach focus',
-            ],
-            image: '',
-            imageAlt: '',
-            ctaLinks: [
-              {
-                label: 'View live website',
-                href: 'https://reciclando-goles.web.app',
-                external: true,
-              },
-              {
-                label: 'View repository',
-                href: 'https://github.com/ByteShark-dev/reciclando-goles-web',
-                external: true,
-              },
-            ],
-          },
-        ],
+          'A compact overview to validate published work, explore commercial proposals and see ByteShark-owned products without turning the home page into a catalog.',
+        realCases: {
+          eyebrow: 'REAL PROJECTS',
+          title: 'Published real projects',
+          description:
+            'Real sites and projects built for clients, brands and campaigns with active digital presence.',
+          tags: ['Real clients', 'Published web', 'Professional brand', 'Digital presence'],
+          primaryCta: 'View real projects',
+          secondaryCta: 'Talk to ByteShark',
+          mockupItems: ['Transformando Mi Ser', 'GM Asesores', 'Reciclando Goles'],
+        },
+        demosSummary: {
+          eyebrow: 'ADAPTABLE DEMOS',
+          title: 'Demos ready to adapt',
+          description:
+            'Explore visual and functional proposals designed for different types of business.',
+          tags: ['Landing pages', 'Bookings', 'ERP / CRM', 'Local businesses'],
+          primaryCta: 'Explore demos',
+        },
+        ownSoftware: {
+          eyebrow: 'OWN SOFTWARE',
+          title: 'Owned apps and software',
+          description:
+            'ByteShark-owned products published or prepared to grow as independent product lines.',
+        },
       },
       contact: {
         title: 'Your business needs a presence that sells and an operation that scales.',
@@ -588,6 +740,28 @@ const localizedContent = {
           githubValue: '@byteshark-dev',
           linkedinValue: 'Angel Arenas Patino',
         },
+      },
+    },
+    cases: {
+      seo: {
+        title: 'Real Projects | ByteShark',
+        description:
+          'Published projects for real clients, brands and campaigns developed by ByteShark.',
+      },
+      hero: {
+        badge: 'Published portfolio',
+        title: 'Real projects',
+        subtitle: 'Published projects for real clients, brands and campaigns.',
+        auxiliaryText:
+          'Each case shows applied work with active digital presence, not conceptual examples or demo exercises.',
+        primaryCta: 'Talk to ByteShark',
+        secondaryCta: 'Back home',
+      },
+      catalog: {
+        eyebrow: 'ACTIVE PORTFOLIO',
+        title: 'Projects with active digital presence',
+        note:
+          'These cases do not belong to the demo catalog. They are published work or real projects with verifiable links.',
       },
     },
   },
@@ -615,6 +789,12 @@ export const siteConfig = {
         twitterCard: 'summary_large_image',
         ogType: 'website',
       },
+      cases: {
+        path: '/casos-reales/',
+        ogImagePath: '/assets/social/og-image.png',
+        twitterCard: 'summary_large_image',
+        ogType: 'website',
+      },
     },
   },
   links: {
@@ -627,8 +807,12 @@ export const siteConfig = {
     aphidexCanonicalUrl,
     aphidexPlay: aphidexPlayUrl,
     aphidexIos: aphidexIosUrl,
-    reciclandoGoles: 'https://reciclando-goles.web.app',
-    demosCatalog: 'https://byteshark-dev.github.io/demos/',
+    transformandoMiSer: transformandoMiSerUrl,
+    gmAsesores: gmAsesoresUrl,
+    reciclandoGoles: reciclandoGolesUrl,
+    reciclandoGolesRepo: reciclandoGolesRepoUrl,
+    casesCatalog: '/casos-reales/',
+    demosCatalog: '/demos/',
     whatsappPhone: '524614220738',
     whatsappTemplates: {
       es: 'Hola Angel, vi tu pagina y me gustaria platicar sobre mi proyecto.',
@@ -647,6 +831,7 @@ export const siteConfig = {
 
 const staticLocaleByPage = {
   home: 'es',
+  cases: 'es',
 };
 
 function getActiveLocale(locale) {
@@ -720,6 +905,7 @@ export function getPageContent(pageKey, locale = defaultLocale) {
       ...siteConfig.links,
       whatsappQuote: buildWhatsAppUrl(activeLocale),
     },
+    collections: copy.collections,
     seo: getPageSeo(pageKey, activeLocale),
     pageKey,
     page: copy[pageKey],

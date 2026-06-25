@@ -9,8 +9,21 @@ import {
   siteConfig,
 } from './src/config/site.js';
 
-function buildMetaTokens() {
-  const pageKey = 'home';
+function getPageKeyFromFilename(filename = '') {
+  const normalizedFilename = filename.replaceAll('\\', '/');
+
+  if (normalizedFilename.endsWith('casos-reales/index.html')) {
+    return 'cases';
+  }
+
+  if (normalizedFilename.endsWith('index.html')) {
+    return 'home';
+  }
+
+  return null;
+}
+
+function buildMetaTokens(pageKey) {
   const locale = getStaticLocale(pageKey);
   const seo = getPageSeo(pageKey, locale);
   const structuredData = JSON.stringify(getPageStructuredData(pageKey, locale), null, 2);
@@ -37,6 +50,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        cases: resolve(__dirname, 'casos-reales/index.html'),
         aphidexFile: resolve(__dirname, 'aphidex.html'),
       },
     },
@@ -45,13 +59,13 @@ export default defineConfig({
     {
       name: 'byteshark-meta',
       transformIndexHtml(html, context) {
-        const filename = context?.filename?.replaceAll('\\', '/');
+        const pageKey = getPageKeyFromFilename(context?.filename);
 
-        if (!filename?.endsWith('/index.html')) {
+        if (!pageKey) {
           return html;
         }
 
-        const metaTokens = buildMetaTokens();
+        const metaTokens = buildMetaTokens(pageKey);
 
         return Object.entries(metaTokens).reduce(
           (output, [token, value]) => output.replaceAll(token, value),
