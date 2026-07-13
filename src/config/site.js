@@ -880,6 +880,18 @@ export function getPageStructuredData(pageKey, locale = defaultLocale) {
         inLanguage: activeLocale,
         description: localizedContent[activeLocale].home.seo.description,
       },
+      {
+        '@type': 'WebPage',
+        name: seo.title,
+        url: seo.pageUrl,
+        description: seo.description,
+        inLanguage: activeLocale,
+        isPartOf: {
+          '@type': 'WebSite',
+          name: brand.name,
+          url: seo.siteUrl,
+        },
+      },
     ],
   };
 }

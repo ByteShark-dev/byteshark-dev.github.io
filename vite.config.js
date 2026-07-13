@@ -3,11 +3,14 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
 import {
+  getPageContent,
   getPageSeo,
   getPageStructuredData,
   getStaticLocale,
   siteConfig,
 } from './src/config/site.js';
+import { renderCasesPage } from './src/components/CasesPage.js';
+import { renderHomePage } from './src/components/HomePage.js';
 
 function getPageKeyFromFilename(filename = '') {
   const normalizedFilename = filename.replaceAll('\\', '/');
@@ -44,6 +47,13 @@ function buildMetaTokens(pageKey) {
   };
 }
 
+function renderStaticPage(pageKey) {
+  const locale = getStaticLocale(pageKey);
+  const content = getPageContent(pageKey, locale);
+
+  return pageKey === 'cases' ? renderCasesPage(content) : renderHomePage(content);
+}
+
 export default defineConfig({
   base: './',
   build: {
@@ -57,7 +67,7 @@ export default defineConfig({
   },
   plugins: [
     {
-      name: 'byteshark-meta',
+      name: 'byteshark-static-pages',
       transformIndexHtml(html, context) {
         const pageKey = getPageKeyFromFilename(context?.filename);
 
@@ -65,9 +75,12 @@ export default defineConfig({
           return html;
         }
 
-        const metaTokens = buildMetaTokens(pageKey);
+        const tokens = {
+          ...buildMetaTokens(pageKey),
+          '%PAGE_CONTENT%': renderStaticPage(pageKey),
+        };
 
-        return Object.entries(metaTokens).reduce(
+        return Object.entries(tokens).reduce(
           (output, [token, value]) => output.replaceAll(token, value),
           html,
         );
