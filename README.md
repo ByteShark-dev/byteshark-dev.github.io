@@ -31,4 +31,4 @@ Typical deployment flow:
 
 ## Aphidex Extraction
 
-The standalone Aphidex landing is prepared in `aphidex-landing/` as a self-contained Vite project ready to move into its own repository and publish at `https://byteshark-dev.github.io/aphidex/`.
+The standalone Aphidex landing is prepared in `aphidex-landing/` as a self-contained Vite project ready to move into its own repository and publish at `https://byteshark.app/aphidex/`.

@@ -2,7 +2,7 @@ export const defaultLocale = 'es';
 export const supportedLocales = ['es', 'en'];
 
 const aphidexProjectUrl = '/aphidex/';
-const aphidexCanonicalUrl = 'https://byteshark-dev.github.io/aphidex/';
+const aphidexCanonicalUrl = 'https://byteshark.app/aphidex/';
 const aphidexPlayUrl = 'https://play.google.com/store/apps/details?id=com.byteshark.aphidex&hl=es_419';
 const aphidexIosUrl = 'https://apps.apple.com/mx/app/aphidex/id6766727089';
 const transformandoMiSerUrl = 'https://transformandomiser.com';
@@ -124,7 +124,7 @@ const localizedContent = {
           description:
             'Base pensada para citas, horarios, ubicacion, promos y una imagen mas premium.',
           highlights: ['Servicios y precios', 'WhatsApp', 'Galeria'],
-          href: 'https://byteshark-dev.github.io/demos/barberia/',
+          href: 'https://byteshark.app/demos/barberia/',
         },
         {
           name: 'Cafe / Restaurante',
@@ -132,7 +132,7 @@ const localizedContent = {
           description:
             'Menu digital, promos, pedidos o reservas y presencia visual enfocada en conversion.',
           highlights: ['Menu digital', 'Promociones', 'Reservas o pedidos'],
-          href: 'https://byteshark-dev.github.io/demos/cafe-restaurante/',
+          href: 'https://byteshark.app/demos/cafe-restaurante/',
         },
         {
           name: 'Salud Profesional',
@@ -140,7 +140,7 @@ const localizedContent = {
           description:
             'Perfil profesional, servicios, modalidad online o presencial y FAQ con tono confiable.',
           highlights: ['Presentacion profesional', 'Agenda por WhatsApp', 'FAQ'],
-          href: 'https://byteshark-dev.github.io/demos/salud-profesional/',
+          href: 'https://byteshark.app/demos/salud-profesional/',
         },
         {
           name: 'Despacho Contable',
@@ -148,7 +148,7 @@ const localizedContent = {
           description:
             'Servicios fiscales, beneficios, FAQ y una presencia seria para captar mejores leads.',
           highlights: ['Servicios fiscales', 'Beneficios', 'Seccion de confianza'],
-          href: 'https://byteshark-dev.github.io/demos/despacho-contable/',
+          href: 'https://byteshark.app/demos/despacho-contable/',
         },
       ],
       ownSoftware: [
@@ -498,7 +498,7 @@ const localizedContent = {
           description:
             'Built for bookings, hours, location, promotions and a more premium first impression.',
           highlights: ['Services and pricing', 'WhatsApp', 'Gallery'],
-          href: 'https://byteshark-dev.github.io/demos/barberia/',
+          href: 'https://byteshark.app/demos/barberia/',
         },
         {
           name: 'Cafe / Restaurant',
@@ -506,7 +506,7 @@ const localizedContent = {
           description:
             'Digital menu, promotions, reservations or orders and a visual flow focused on conversion.',
           highlights: ['Digital menu', 'Promotions', 'Reservations or orders'],
-          href: 'https://byteshark-dev.github.io/demos/cafe-restaurante/',
+          href: 'https://byteshark.app/demos/cafe-restaurante/',
         },
         {
           name: 'Professional Health',
@@ -514,7 +514,7 @@ const localizedContent = {
           description:
             'Professional profile, services, online or in-person mode and a trust-oriented FAQ.',
           highlights: ['Professional presentation', 'WhatsApp booking', 'FAQ'],
-          href: 'https://byteshark-dev.github.io/demos/salud-profesional/',
+          href: 'https://byteshark.app/demos/salud-profesional/',
         },
         {
           name: 'Accounting Firm',
@@ -522,7 +522,7 @@ const localizedContent = {
           description:
             'Tax services, benefits, FAQ and a more serious digital presence for lead capture.',
           highlights: ['Tax services', 'Benefits', 'Trust section'],
-          href: 'https://byteshark-dev.github.io/demos/despacho-contable/',
+          href: 'https://byteshark.app/demos/despacho-contable/',
         },
       ],
       ownSoftware: [
@@ -780,7 +780,7 @@ export const siteConfig = {
     logoNeutral: '/assets/images/byteshark_graphic_logo_google.png',
   },
   seo: {
-    siteUrl: 'https://byteshark-dev.github.io/',
+    siteUrl: 'https://byteshark.app/',
     defaultOgImagePath: '/assets/social/og-image.png',
     pages: {
       home: {
@@ -800,8 +800,8 @@ export const siteConfig = {
   links: {
     github: 'https://github.com/byteshark-dev',
     linkedin: 'https://www.linkedin.com/in/angel-arenas-pati%C3%B1o-534372402/',
-    email: 'mailto:byteshark098@gmail.com',
-    emailAddress: 'byteshark098@gmail.com',
+    email: 'mailto:contacto@byteshark.app',
+    emailAddress: 'contacto@byteshark.app',
     playStoreDeveloper: 'https://play.google.com/store/apps/dev?id=7017575535426186313',
     aphidexProjectUrl,
     aphidexCanonicalUrl,
