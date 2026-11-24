@@ -1,81 +1,28 @@
+import { renderDigitalMatter } from './DigitalMatterView.js';
 import { renderFooter, renderNavbar, renderWhatsAppShortcut } from './SiteChrome.js';
 
 function renderHero(content) {
-  const { hero } = content.page;
-  const { links, brand } = content;
-  const statusHighlights = hero.statusHighlights
-    .map(
-      (item, index) => `
-        <div class="info-card bg-surface-container-low/80 p-5 ${index === hero.statusHighlights.length - 1 ? 'sm:col-span-2' : ''}">
-          <p class="font-label text-xs uppercase tracking-[0.18em] text-secondary">${item.label}</p>
-          <p class="mt-3 text-lg font-semibold text-on-surface text-wrap-anywhere">${item.value}</p>
-        </div>
-      `,
-    )
-    .join('');
-
-  const bullets = hero.bullets
-    .map(
-      (item) => `
-        <li class="flex items-start gap-3">
-          <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary-container/15 text-primary-container">
-            <span class="material-symbols-outlined text-sm" aria-hidden="true">bolt</span>
-          </span>
-          <span>${item}</span>
-        </li>
-      `,
-    )
-    .join('');
-
+  const {hero}=content.page;
+  const es=content.locale==='es';
   return `
-    <section id="home" class="relative overflow-hidden pt-28 sm:pt-32">
-      
-      <div class="section-shell relative grid gap-14 pb-20 pt-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:items-center lg:pb-28">
-        <div class="min-w-0 space-y-8">
-          <div class="space-y-5">
-            <span class="eyebrow">${hero.eyebrow}</span>
-            <h1 class="max-w-4xl font-headline text-[clamp(3rem,11vw,4.75rem)] font-bold leading-[0.95] tracking-tight text-on-surface lg:text-7xl">
-              ${hero.title}
-            </h1>
-            <p class="max-w-2xl text-lg leading-8 text-on-surface-variant sm:text-xl">
-              ${hero.description}
-            </p>
+    <section id="home" class="digital-hero">
+      <div class="section-shell digital-hero-grid">
+        <div class="digital-copy">
+          <p class="digital-kicker"><span></span>${es?'ESTUDIO DE SOFTWARE INDEPENDIENTE':'INDEPENDENT SOFTWARE STUDIO'}</p>
+          <h1>${es?'Construimos<br>lo que sigue.':'We build<br>what’s next.'}</h1>
+          <p class="digital-lead">${hero.description}</p>
+          <div class="digital-actions">
+            <a class="cta-primary" href="#proof">${es?'Ver proyectos':'Explore projects'} <span aria-hidden="true">↗</span></a>
+            <a class="cta-secondary" href="#contact">${es?'Hablemos':'Let’s talk'}</a>
           </div>
-          <div class="flex flex-wrap gap-4">
-            <a class="cta-primary" href="${links.whatsappQuote}" target="_blank" rel="noreferrer">
-              ${hero.primaryCta}
-            </a>
-            <a class="cta-secondary" href="#proof">
-              ${hero.secondaryCta}
-            </a>
-          </div>
-          <ul class="grid gap-4 text-sm leading-6 text-on-surface-variant sm:grid-cols-2">
-            ${bullets}
-          </ul>
+          <p class="digital-footnote">${es?'DISEÑO / INGENIERÍA / PRODUCTO':'DESIGN / ENGINEERING / PRODUCT'}</p>
         </div>
-        <aside class="glass-panel relative min-w-0 overflow-hidden rounded-[28px] border border-outline-variant/30 p-6 sm:p-7 shadow-[0_24px_90px_rgba(0,0,0,0.28)]">
-          <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1 bg-primary-container"></div>
-          <div class="flex items-start justify-between gap-6">
-            <div class="min-w-0">
-              <p class="font-label text-xs uppercase tracking-[0.22em] text-primary-container">${brand.name}</p>
-              <h2 class="mt-3 text-2xl font-bold text-on-surface">${hero.statusCardTitle}</h2>
-            </div>
-            <img
-              src="${brand.logoMark}"
-              alt="${brand.name} logo"
-              class="h-14 w-14 object-contain"
-              width="56"
-              height="56"
-              decoding="async"
-            />
-          </div>
-          <p class="mt-5 max-w-sm text-base leading-7 text-on-surface-variant">
-            ${hero.statusCardBody}
-          </p>
-          <div class="mt-8 grid gap-4 sm:grid-cols-2">
-            ${statusHighlights}
-          </div>
-        </aside>
+        ${renderDigitalMatter(content)}
+      </div>
+      <div class="section-shell digital-impact" aria-label="${es?'Resultados':'Impact'}">
+        <div><strong>3,400+</strong><span>${es?'Descargas Android · Aphidex':'Android downloads · Aphidex'}</span></div>
+        <div><strong>02</strong><span>${es?'Productos propios':'Independent products'}</span></div>
+        <div><strong>ES / EN</strong><span>${es?'Experiencias digitales':'Digital experiences'}</span></div>
       </div>
     </section>
   `;
@@ -290,6 +237,25 @@ function renderProof(content) {
             <p class="section-copy">${proof.intro}</p>
           </div>
           <div class="grid gap-4">
+            <div id="products" class="product-portfolio">
+              <div class="mb-6">
+                <span class="eyebrow">${proof.ownSoftware.eyebrow}</span>
+                <h3 class="section-title mt-3">${proof.ownSoftware.title}</h3>
+                <p class="section-copy mt-3">${proof.ownSoftware.description}</p>
+              </div>
+              <div class="grid gap-5 md:grid-cols-2">
+                ${ownSoftware.map(software => `
+                  <article class="info-card product-card">
+                    <img class="product-logo" src="${software.image}" alt="${software.imageAlt}" loading="lazy" decoding="async"/>
+                    <p class="text-sm text-secondary mt-5">${software.category}</p>
+                    <h4 class="mt-2 text-2xl font-bold text-on-surface">${software.name}</h4>
+                    <p class="mt-3 text-sm leading-7 text-on-surface-variant">${software.description}</p>
+                    <div class="mt-4 flex flex-wrap gap-2">${renderChips(software.tags)}</div>
+                    <div class="mt-6 flex flex-wrap gap-3 product-actions">${renderActionLinks(software.ctaLinks,true)}</div>
+                  </article>
+                `).join('')}
+              </div>
+            </div>
             <article class="compact-showcase compact-showcase--featured">
               <div class="min-w-0 space-y-4">
                 <div class="space-y-2.5">
@@ -335,25 +301,7 @@ function renderProof(content) {
               ${renderMosaic(demoPreviewItems, 'demos')}
             </article>
 
-            <div class="product-portfolio">
-              <div class="mb-6">
-                <span class="eyebrow">${proof.ownSoftware.eyebrow}</span>
-                <h3 class="section-title mt-3">${proof.ownSoftware.title}</h3>
-                <p class="section-copy mt-3">${proof.ownSoftware.description}</p>
-              </div>
-              <div class="grid gap-5 md:grid-cols-2">
-                ${ownSoftware.map(software => `
-                  <article class="info-card product-card">
-                    <img class="product-logo" src="${software.image}" alt="${software.imageAlt}" loading="lazy" decoding="async"/>
-                    <p class="text-sm text-secondary mt-5">${software.category}</p>
-                    <h4 class="mt-2 text-2xl font-bold text-on-surface">${software.name}</h4>
-                    <p class="mt-3 text-sm leading-7 text-on-surface-variant">${software.description}</p>
-                    <div class="mt-4 flex flex-wrap gap-2">${renderChips(software.tags)}</div>
-                    <div class="mt-6 flex flex-wrap gap-3 product-actions">${renderActionLinks(software.ctaLinks,true)}</div>
-                  </article>
-                `).join('')}
-              </div>
-            </div>
+
           </div>
         </div>
       </div>

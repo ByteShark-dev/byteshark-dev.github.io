@@ -82,6 +82,9 @@ export function renderNavbar(content, currentPage) {
           />
           <span class="truncate">${content.brand.name}</span>
         </a>
+        <div class="desktop-nav">
+          ${renderNavigationLinks(content.navigation, currentPage)}
+        </div>
         <div class="flex items-center gap-3">
           <a class="cta-primary px-4 py-2.5 text-[11px] sm:px-5 sm:text-xs" href="${quoteHref}">
             ${content.ui.mobileHeaderCta}

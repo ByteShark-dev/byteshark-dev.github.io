@@ -19,7 +19,7 @@ const buildWhatsAppUrl = (locale) => {
 const localizedContent = {
   es: {
     navigation: [
-      { label: 'Inicio', section: 'home' },
+      { label: 'Productos', section: 'products' },
       { label: 'Servicios', section: 'services' },
       { label: 'Demos', section: 'demos' },
       { label: 'Casos reales', section: 'proof' },
@@ -393,7 +393,7 @@ const localizedContent = {
   },
   en: {
     navigation: [
-      { label: 'Home', section: 'home' },
+      { label: 'Products', section: 'products' },
       { label: 'Services', section: 'services' },
       { label: 'Demos', section: 'demos' },
       { label: 'Proof of Work', section: 'proof' },
