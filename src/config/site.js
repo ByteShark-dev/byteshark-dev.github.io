@@ -156,8 +156,8 @@ const localizedContent = {
           slug: 'aphidex',
           name: 'Aphidex',
           category: 'App destacada',
-          description: 'Companion app para Grounded y Grounded 2.',
-          tags: ['Android', 'iOS', 'ES / EN / RU', 'Grounded 2'],
+          description: 'Guía móvil de Grounded y Grounded 2: mapas, criaturas, equipo y recomendaciones de combate.',
+          tags: ['3,400+ Android', 'iOS', 'ES / EN / RU'],
           image: '/assets/images/Aphidex_logo.webp',
           imageAlt: 'Logo de Aphidex.',
           ctaLinks: [
@@ -530,8 +530,8 @@ const localizedContent = {
           slug: 'aphidex',
           name: 'Aphidex',
           category: 'Featured app',
-          description: 'Companion app for Grounded and Grounded 2.',
-          tags: ['Android', 'iOS', 'ES / EN / RU', 'Grounded 2'],
+          description: 'Mobile guide for Grounded and Grounded 2: maps, creatures, gear and combat recommendations.',
+          tags: ['3,400+ Android', 'iOS', 'ES / EN / RU'],
           image: '/assets/images/Aphidex_logo.webp',
           imageAlt: 'Aphidex logo.',
           ctaLinks: [
@@ -766,6 +766,34 @@ const localizedContent = {
     },
   },
 };
+
+
+// Portfolio entries are intentionally explicit about release status.
+const portfolioRefresh = {
+  es: {
+    minty: { slug:'minty-goals', name:'Minty Goals', category:'Finanzas personales', description:'Organiza movimientos, billeteras, presupuestos y metas; visualiza tu progreso como un jardín. Funciones básicas sin conexión.', tags:['Android / iOS','Offline-first','En preparación'], image:'/minty-goals/assets/images/minty-goals-logo.webp', imageAlt:'Minty Goals', ctaLinks:[{label:'Conocer Minty Goals',href:'/minty-goals/'}] },
+    oak: { slug:'oak-road-digital', name:'OAK Road Digital', category:'Sistema de gestión de eventos', description:'Plataforma para inscripciones, control de ventas, boletos QR por correo, entrega de kits, roles y administración de contenidos. En preparación para la carrera; cobros aún no habilitados.', tags:['Inscripciones','Boletos QR','Gestión de ventas','En preparación'], accent:{from:'#7FDBFF',to:'#1E5AA8',halo:'rgba(127,219,255,.15)'}, ctaLinks:[] },
+    title:'Diseñamos software que resuelve problemas reales.', description:'Sitios web, aplicaciones móviles y sistemas de gestión. Desde la primera idea hasta una experiencia lista para tus usuarios.',
+    highlights:[{label:'Aphidex · Android',value:'3,400+ descargas'},{label:'Productos propios',value:'Aphidex y Minty Goals'},{label:'Sistemas',value:'OAK Road Digital · en preparación'}],
+  },
+  en: {
+    minty: { slug:'minty-goals', name:'Minty Goals', category:'Personal finance', description:'Organize transactions, wallets, budgets and goals; visualize your progress as a garden. Basic features work offline.', tags:['Android / iOS','Offline-first','In preparation'], image:'/minty-goals/assets/images/minty-goals-logo.webp', imageAlt:'Minty Goals', ctaLinks:[{label:'Explore Minty Goals',href:'/minty-goals/'}] },
+    oak: { slug:'oak-road-digital', name:'OAK Road Digital', category:'Event management system', description:'Registration, sales tracking, QR tickets by email, kit collection, roles and content management. Preparing for the race; payments are not enabled yet.', tags:['Registration','QR tickets','Sales tracking','In preparation'], accent:{from:'#7FDBFF',to:'#1E5AA8',halo:'rgba(127,219,255,.15)'}, ctaLinks:[] },
+    title:'We design software that solves real problems.', description:'Websites, mobile apps and management systems. From the first idea to a user-ready experience.',
+    highlights:[{label:'Aphidex · Android',value:'3,400+ downloads'},{label:'Our products',value:'Aphidex and Minty Goals'},{label:'Systems',value:'OAK Road Digital · in preparation'}],
+  },
+};
+for (const locale of ['es','en']) {
+  const refresh = portfolioRefresh[locale];
+  const copy = localizedContent[locale];
+  copy.collections.ownSoftware.push(refresh.minty);
+  copy.collections.realCases.push(refresh.oak);
+  copy.home.hero.title = refresh.title;
+  copy.home.hero.description = refresh.description;
+  copy.home.hero.statusHighlights = refresh.highlights;
+  copy.home.hero.statusCardTitle = locale === 'es' ? 'Proyectos y resultados' : 'Projects and results';
+  copy.home.hero.statusCardBody = locale === 'es' ? 'Productos propios y soluciones digitales para organizaciones y negocios.' : 'Our own products and digital solutions for organizations and businesses.';
+}
 
 export const siteConfig = {
   defaultLocale,

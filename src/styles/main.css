@@ -10,9 +10,7 @@
 
   body {
     overflow-x: hidden;
-    background:
-      radial-gradient(circle at top, rgb(30 90 168 / 0.14), transparent 36%),
-      linear-gradient(180deg, #07111f 0%, #040d1a 48%, #071625 100%);
+    background: #07111f;
     color: #ffffff;
     font-family: Montserrat, Inter, Manrope, sans-serif;
   }
@@ -53,15 +51,13 @@
 
 @layer components {
   .glass-panel {
-    background: linear-gradient(180deg, rgb(13 31 59 / 0.78), rgb(8 21 40 / 0.92));
+    background: #0d1f3b;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
 
   .site-navbar {
-    background:
-      linear-gradient(to bottom, rgb(18 41 80 / 0.96), rgb(4 13 26 / 0.84)),
-      rgb(4 13 26 / 0.72);
+    background: #0d1f3b;
     box-shadow: 0 0 40px rgb(30 90 168 / 0.12);
     transition:
       background-color 200ms ease,
@@ -72,9 +68,7 @@
   }
 
   .site-navbar.is-scrolled {
-    background:
-      linear-gradient(to bottom, rgb(18 41 80 / 0.99), rgb(4 13 26 / 0.95)),
-      rgb(4 13 26 / 0.96);
+    background: #0d1f3b;
     box-shadow: 0 0 48px rgb(30 90 168 / 0.18);
   }
 
@@ -118,9 +112,7 @@
     overflow: hidden;
     border: 1px solid rgb(66 85 110 / 0.3);
     border-radius: 24px;
-    background:
-      radial-gradient(circle at top right, rgb(30 90 168 / 0.14), transparent 34%),
-      linear-gradient(180deg, rgb(13 31 59 / 0.82), rgb(8 21 40 / 0.94));
+    background: #0d1f3b;
     padding: 1.2rem;
     box-shadow:
       0 18px 60px rgb(0 0 0 / 0.2),
@@ -128,21 +120,15 @@
   }
 
   .compact-showcase--featured {
-    background:
-      radial-gradient(circle at top right, rgb(127 219 255 / 0.12), transparent 34%),
-      linear-gradient(180deg, rgb(13 31 59 / 0.82), rgb(8 21 40 / 0.94));
+    background: #0d1f3b;
   }
 
   .compact-showcase--demos {
-    background:
-      radial-gradient(circle at top right, rgb(199 157 119 / 0.1), transparent 34%),
-      linear-gradient(180deg, rgb(13 31 59 / 0.82), rgb(8 21 40 / 0.94));
+    background: #0d1f3b;
   }
 
   .compact-showcase--software {
-    background:
-      radial-gradient(circle at top right, rgb(52 211 153 / 0.12), transparent 34%),
-      linear-gradient(180deg, rgb(13 31 59 / 0.84), rgb(8 21 40 / 0.95));
+    background: #0d1f3b;
   }
 
   .compact-mosaic {
@@ -153,22 +139,16 @@
     min-height: 10rem;
     border-radius: 18px;
     border: 1px solid rgb(255 255 255 / 0.08);
-    background:
-      radial-gradient(circle at top left, rgb(127 219 255 / 0.16), transparent 36%),
-      linear-gradient(145deg, rgb(6 15 30 / 0.84), rgb(18 41 80 / 0.58));
+    background: #0d1f3b;
     padding: 0.75rem;
   }
 
   .compact-mosaic--demos {
-    background:
-      radial-gradient(circle at top right, rgb(199 157 119 / 0.13), transparent 34%),
-      linear-gradient(145deg, rgb(6 15 30 / 0.84), rgb(14 39 74 / 0.62));
+    background: #0d1f3b;
   }
 
   .compact-mosaic--software {
-    background:
-      radial-gradient(circle at top right, rgb(76 29 149 / 0.16), transparent 36%),
-      linear-gradient(145deg, rgb(6 15 30 / 0.84), rgb(14 39 74 / 0.62));
+    background: #0d1f3b;
   }
 
   .compact-mosaic__tile {
@@ -177,10 +157,7 @@
     align-items: flex-end;
     border-radius: 0.95rem;
     border: 1px solid rgb(255 255 255 / 0.08);
-    background:
-      radial-gradient(circle at top right, var(--tile-halo, rgb(30 90 168 / 0.16)), transparent 42%),
-      linear-gradient(145deg, color-mix(in srgb, var(--tile-from, #1e5aa8) 28%, transparent), color-mix(in srgb, var(--tile-to, #09162a) 58%, transparent)),
-      rgb(9 22 42 / 0.72);
+    background: #122950;
     padding: 0.75rem;
     color: rgb(255 255 255 / 0.92);
     font-size: 0.72rem;
@@ -191,9 +168,7 @@
 
   .compact-mosaic__tile.is-featured {
     grid-row: span 2;
-    background:
-      radial-gradient(circle at top right, var(--tile-halo, rgb(127 219 255 / 0.2)), transparent 42%),
-      linear-gradient(145deg, color-mix(in srgb, var(--tile-from, #1e5aa8) 50%, #09162a), color-mix(in srgb, var(--tile-to, #09162a) 65%, #040d1a));
+    background: #122950;
   }
 
   .compact-mosaic__tile img {
@@ -208,10 +183,7 @@
     min-height: 11.5rem;
     border-radius: 20px;
     border: 1px solid rgb(255 255 255 / 0.08);
-    background:
-      radial-gradient(circle at top right, rgb(76 29 149 / 0.22), transparent 36%),
-      radial-gradient(circle at left 20% top 24%, rgb(52 211 153 / 0.18), transparent 30%),
-      linear-gradient(145deg, rgb(7 17 31 / 0.92), rgb(18 41 80 / 0.72));
+    background: #0d1f3b;
     padding: 0.9rem;
     box-shadow:
       inset 0 0 0 1px rgb(255 255 255 / 0.02),
@@ -234,9 +206,7 @@
     min-height: 9.7rem;
     border-radius: 18px;
     border: 1px solid rgb(255 255 255 / 0.1);
-    background:
-      radial-gradient(circle at 18% 20%, rgb(52 211 153 / 0.1), transparent 22%),
-      linear-gradient(180deg, rgb(9 22 42 / 0.96), rgb(7 17 31 / 0.98));
+    background: #0d1f3b;
   }
 
   .aphidex-app-mockup__bar {
@@ -313,22 +283,16 @@
     min-height: 2.15rem;
     border-radius: 0.8rem;
     border: 1px solid rgb(255 255 255 / 0.08);
-    background:
-      linear-gradient(180deg, rgb(255 255 255 / 0.05), rgb(255 255 255 / 0.02)),
-      rgb(13 31 59 / 0.72);
+    background: #0d1f3b;
   }
 
   .aphidex-app-mockup__panel.is-large {
     min-height: 4.95rem;
-    background:
-      radial-gradient(circle at top right, rgb(52 211 153 / 0.16), transparent 48%),
-      linear-gradient(180deg, rgb(52 211 153 / 0.26), rgb(13 31 59 / 0.82));
+    background: #0d1f3b;
   }
 
   .aphidex-app-mockup__panel.is-green {
-    background:
-      linear-gradient(135deg, rgb(52 211 153 / 0.28), rgb(76 29 149 / 0.18)),
-      rgb(13 31 59 / 0.78);
+    background: #0d1f3b;
   }
 
   .cases-hero__aside {
@@ -350,9 +314,7 @@
     overflow: hidden;
     border-radius: 24px;
     border: 1px solid rgb(66 85 110 / 0.34);
-    background:
-      linear-gradient(180deg, rgb(10 24 45 / 0.96), rgb(7 17 31 / 0.98)),
-      rgb(4 13 26 / 0.82);
+    background: #0d1f3b;
     box-shadow:
       0 22px 50px rgb(0 0 0 / 0.24),
       0 0 0 1px rgb(255 255 255 / 0.02);
@@ -363,9 +325,7 @@
     min-height: 11.25rem;
     overflow: hidden;
     border-bottom: 1px solid rgb(255 255 255 / 0.06);
-    background:
-      radial-gradient(circle at top right, var(--case-halo, rgb(30 90 168 / 0.2)), transparent 34%),
-      linear-gradient(135deg, rgb(18 41 80 / 0.94), rgb(4 13 26 / 0.98));
+    background: #0d1f3b;
   }
 
   .portfolio-card__preview::after {
@@ -392,9 +352,7 @@
     overflow: hidden;
     border-radius: 1.1rem;
     border: 1px solid rgb(255 255 255 / 0.1);
-    background:
-      radial-gradient(circle at top right, var(--case-halo, rgb(30 90 168 / 0.22)), transparent 34%),
-      linear-gradient(145deg, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.03));
+    background: #0d1f3b;
     box-shadow: 0 24px 50px rgb(0 0 0 / 0.22);
   }
 
@@ -424,8 +382,7 @@
     width: 4.1rem;
     height: 4.1rem;
     border-radius: 1rem;
-    background:
-      linear-gradient(135deg, var(--case-from, #1e5aa8), var(--case-to, #7fdbff));
+    background: #122950;
     color: #ffffff;
     font-size: 1.35rem;
     font-weight: 800;
@@ -531,16 +488,12 @@
   }
 
   .hero-grid {
-    background-image:
-      linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+    background-image: none;
     background-size: 48px 48px;
   }
 
   .radial-ring {
-    background:
-      radial-gradient(circle at center, rgb(30 90 168 / 0.34), transparent 54%),
-      radial-gradient(circle at center, rgb(255 255 255 / 0.06), transparent 66%);
+    background: #0d1f3b;
   }
 
   .material-symbols-outlined {
@@ -565,7 +518,7 @@
     align-items: center;
     gap: 0.75rem;
     border-radius: 9999px;
-    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+    background: #128c7e;
     color: #f8fffb;
     padding: 0.85rem 1rem 0.85rem 0.85rem;
     font-family: Montserrat, Inter, Manrope, sans-serif;
@@ -689,3 +642,28 @@
     }
   }
 }
+
+/* Minimal ByteShark design system: original navy and blue, solid surfaces. */
+body { background:#07111f; font-family:Inter,Montserrat,system-ui,sans-serif; }
+.site-navbar,.site-navbar.is-scrolled { background:#07111f; box-shadow:none; border-bottom:1px solid #263a55; }
+.glass-panel,.info-card,.compact-showcase,.portfolio-card { background:#0d1f3b; box-shadow:none; backdrop-filter:none; }
+.info-card,.compact-showcase,.portfolio-card { border-radius:18px; }
+.eyebrow,.signal-chip { text-transform:none; letter-spacing:.055em; }
+.eyebrow { border:0; background:transparent; padding:0; }
+.cta-primary,.cta-secondary { border-radius:12px; text-transform:none; letter-spacing:0; }
+.section-shell { max-width:1160px; }
+.section-title { font-size:clamp(1.9rem,4vw,3rem); line-height:1.15; }
+#home h1 { font-size:clamp(2.65rem,6.2vw,4.6rem); line-height:1.06; }
+#home .section-shell { gap:clamp(2rem,5vw,4rem); padding-bottom:4rem; }
+#home aside { box-shadow:none; }
+#services,#problems,#proof { padding-block:clamp(3rem,7vw,6rem); }
+.hero-grid,.radial-ring { display:none; }
+.compact-mosaic { background:#09162a; }
+.compact-mosaic__tile,.compact-mosaic__tile.is-featured { background:#122950; box-shadow:none; }
+.product-portfolio { margin-top:2rem; }
+.product-card { display:flex; flex-direction:column; align-items:flex-start; }
+.product-logo { height:64px; width:auto; max-width:200px; object-fit:contain; object-position:left; }
+.product-actions { margin-top:auto; padding-top:1.25rem; }
+.portfolio-card__preview::after { display:none; }
+.whatsapp-shortcut,.whatsapp-shortcut:hover { box-shadow:none; }
+@media(max-width:640px){#home .section-shell{padding-bottom:2rem}.product-logo{height:52px}.product-actions a{max-width:100%}}

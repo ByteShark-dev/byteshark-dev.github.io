@@ -29,8 +29,7 @@ function renderHero(content) {
 
   return `
     <section id="home" class="relative overflow-hidden pt-28 sm:pt-32">
-      <div aria-hidden="true" class="hero-grid absolute inset-0 opacity-[0.18]"></div>
-      <div aria-hidden="true" class="absolute left-1/2 top-12 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full radial-ring blur-3xl"></div>
+      
       <div class="section-shell relative grid gap-14 pb-20 pt-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:items-center lg:pb-28">
         <div class="min-w-0 space-y-8">
           <div class="space-y-5">
@@ -55,7 +54,7 @@ function renderHero(content) {
           </ul>
         </div>
         <aside class="glass-panel relative min-w-0 overflow-hidden rounded-[28px] border border-outline-variant/30 p-6 sm:p-7 shadow-[0_24px_90px_rgba(0,0,0,0.28)]">
-          <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-container via-white/70 to-primary-container"></div>
+          <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1 bg-primary-container"></div>
           <div class="flex items-start justify-between gap-6">
             <div class="min-w-0">
               <p class="font-label text-xs uppercase tracking-[0.22em] text-primary-container">${brand.name}</p>
@@ -174,7 +173,6 @@ function renderServices(content) {
 function renderProof(content) {
   const { proof, sectionEyebrows } = content.page;
   const { realCases, ownSoftware } = content.collections;
-  const software = ownSoftware[0];
   const demoPreviewItems = [
     {
       label: 'Bruma Cafe',
@@ -337,29 +335,25 @@ function renderProof(content) {
               ${renderMosaic(demoPreviewItems, 'demos')}
             </article>
 
-            <article class="compact-showcase compact-showcase--software">
-              <div class="min-w-0 space-y-4">
-                <div class="space-y-2.5">
-                  <span class="signal-chip">${proof.ownSoftware.eyebrow}</span>
-                  <div>
-                    <h3 class="text-[clamp(1.75rem,4vw,2.35rem)] font-bold leading-tight text-on-surface">${proof.ownSoftware.title}</h3>
-                    <p class="mt-2 max-w-2xl text-sm leading-7 text-on-surface-variant">${proof.ownSoftware.description}</p>
-                  </div>
-                </div>
-                <div>
-                  <span class="signal-chip">${software.category}</span>
-                  <h4 class="mt-3 text-2xl font-bold text-on-surface">${software.name}</h4>
-                  <p class="mt-2 max-w-2xl text-sm leading-7 text-on-surface-variant">${software.description}</p>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  ${renderChips(software.tags)}
-                </div>
-                <div class="flex flex-wrap gap-3">
-                  ${renderActionLinks(software.ctaLinks, true)}
-                </div>
+            <div class="product-portfolio">
+              <div class="mb-6">
+                <span class="eyebrow">${proof.ownSoftware.eyebrow}</span>
+                <h3 class="section-title mt-3">${proof.ownSoftware.title}</h3>
+                <p class="section-copy mt-3">${proof.ownSoftware.description}</p>
               </div>
-              ${renderAphidexMockup(software)}
-            </article>
+              <div class="grid gap-5 md:grid-cols-2">
+                ${ownSoftware.map(software => `
+                  <article class="info-card product-card">
+                    <img class="product-logo" src="${software.image}" alt="${software.imageAlt}" loading="lazy" decoding="async"/>
+                    <p class="text-sm text-secondary mt-5">${software.category}</p>
+                    <h4 class="mt-2 text-2xl font-bold text-on-surface">${software.name}</h4>
+                    <p class="mt-3 text-sm leading-7 text-on-surface-variant">${software.description}</p>
+                    <div class="mt-4 flex flex-wrap gap-2">${renderChips(software.tags)}</div>
+                    <div class="mt-6 flex flex-wrap gap-3 product-actions">${renderActionLinks(software.ctaLinks,true)}</div>
+                  </article>
+                `).join('')}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -459,9 +453,9 @@ export function renderHomePage(content) {
     ${renderNavbar(content, 'home')}
     <main id="main-content">
       ${renderHero(content)}
-      ${renderProblems(content.page)}
-      ${renderServices(content)}
       ${renderProof(content)}
+      ${renderServices(content)}
+      ${renderProblems(content.page)}
       ${renderContact(content)}
     </main>
     ${renderFooter(content, 'home')}
