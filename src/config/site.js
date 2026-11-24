@@ -795,6 +795,40 @@ for (const locale of ['es','en']) {
   copy.home.hero.statusCardBody = locale === 'es' ? 'Productos propios y soluciones digitales para organizaciones y negocios.' : 'Our own products and digital solutions for organizations and businesses.';
 }
 
+
+const projectPalettes = {
+  'aphidex': { from:'#7ce0a7', to:'#a82d98', surface:'#0d2328', logoSurface:'#142c27', halo:'rgba(124,224,167,.14)' },
+  'minty-goals': { from:'#5fbd8a', to:'#174f32', surface:'#12271e', logoSurface:'#fdfbf6', halo:'rgba(95,189,138,.14)' },
+  'transformando-mi-ser': { from:'#f4dce4', to:'#a82d68', surface:'#2c1925', halo:'rgba(168,45,104,.16)' },
+  'gm-asesores-en-negocios': { from:'#c6ccd4', to:'#7d111b', surface:'#041c32', halo:'rgba(11,91,146,.18)' },
+  'reciclando-goles': { from:'#ffd41f', to:'#173d7a', surface:'#142746', halo:'rgba(255,212,31,.12)' },
+  'oak-road-digital': { from:'#3A88DC', to:'#2BBE49', surface:'#0C2959', halo:'rgba(43,190,73,.12)' },
+  'barberia': { from:'#dec29f', to:'#58181f', surface:'#1c1b1b' },
+  'cafe-restaurante': { from:'#fbf9f5', to:'#a03f29', surface:'#4b3621' },
+  'salud-profesional': { from:'#c9ebd0', to:'#436277', surface:'#304d39' },
+  'despacho-contable': { from:'#c9a86a', to:'#49935c', surface:'#131b2e' },
+  'business-manager': { from:'#8cf4e7', to:'#0f766e', surface:'#142c30' },
+  'booking-manager': { from:'#d4f3ed', to:'#0891b2', surface:'#0f2931' },
+};
+for (const locale of supportedLocales) {
+  const copy = localizedContent[locale];
+  for (const item of [...copy.collections.ownSoftware, ...copy.collections.realCases]) {
+    item.accent = projectPalettes[item.slug] ?? item.accent;
+  }
+  for (const item of copy.collections.commercialDemos) {
+    const slug = item.href.split('/').filter(Boolean).pop();
+    item.accent = projectPalettes[slug];
+  }
+  copy.collections.commercialDemos.push(
+    { name:'Business Manager', category:locale==='es'?'Gestión empresarial':'Business management', href:'https://byteshark.app/demos/business-manager/', accent:projectPalettes['business-manager'] },
+    { name:'Booking Manager', category:locale==='es'?'Reservas y agenda':'Bookings and scheduling', href:'https://byteshark.app/demos/booking-manager/', accent:projectPalettes['booking-manager'] },
+  );
+  copy.home.proof.ownSoftware.title = locale==='es'?'Aplicaciones propias':'Our applications';
+  copy.home.proof.realCases.title = locale==='es'?'Proyectos reales':'Real projects';
+  copy.home.proof.realCases.description = locale==='es'?'Soluciones desarrolladas para organizaciones y clientes: sitios publicados y sistemas en preparación.':'Solutions built for organizations and clients: published websites and systems in preparation.';
+  copy.home.proof.demosSummary.title = locale==='es'?'Explora nuestras demos':'Explore our demos';
+}
+
 export const siteConfig = {
   defaultLocale,
   supportedLocales,

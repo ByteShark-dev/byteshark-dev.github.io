@@ -59,7 +59,7 @@ function renderCaseCard(item) {
   return `
     <article
       class="portfolio-card"
-      style="--case-from: ${item.accent.from}; --case-to: ${item.accent.to}; --case-halo: ${item.accent.halo};"
+      style="--case-from: ${item.accent.from}; --case-to: ${item.accent.to}; --case-halo: ${item.accent.halo}; --case-surface: ${item.accent.surface};"
     >
       <div class="portfolio-card__preview">
         ${renderCasePreview(item)}

@@ -12,7 +12,7 @@ function renderHero(content) {
           <h1>${es?'Construimos<br>lo que sigue.':'We build<br>what’s next.'}</h1>
           <p class="digital-lead">${hero.description}</p>
           <div class="digital-actions">
-            <a class="cta-primary" href="#proof">${es?'Ver proyectos':'Explore projects'} <span aria-hidden="true">↗</span></a>
+            <a class="cta-primary" href="#products">${es?'Ver proyectos':'Explore projects'} <span aria-hidden="true">↗</span></a>
             <a class="cta-secondary" href="#contact">${es?'Hablemos':'Let’s talk'}</a>
           </div>
           <p class="digital-footnote">${es?'DISEÑO / INGENIERÍA / PRODUCTO':'DESIGN / ENGINEERING / PRODUCT'}</p>
@@ -117,193 +117,77 @@ function renderServices(content) {
   `;
 }
 
+// Portfolio groups are sibling sections, not nested cards. Each uses its source brand palette.
 function renderProof(content) {
-  const { proof, sectionEyebrows } = content.page;
-  const { realCases, ownSoftware } = content.collections;
-  const demoPreviewItems = [
-    {
-      label: 'Bruma Cafe',
-      accent: {
-        from: '#C79D77',
-        to: '#4A2C24',
-        halo: 'rgba(199, 157, 119, 0.18)',
-      },
-    },
-    {
-      label: 'Business Manager',
-      accent: {
-        from: '#1E5AA8',
-        to: '#16C7D8',
-        halo: 'rgba(22, 199, 216, 0.16)',
-      },
-    },
-    {
-      label: 'Booking Manager',
-      accent: {
-        from: '#1E5AA8',
-        to: '#7C5CFF',
-        halo: 'rgba(124, 92, 255, 0.16)',
-      },
-    },
-  ];
-
-  const renderChips = (items) =>
-    items.map((item) => `<span class="signal-chip">${item}</span>`).join('');
-
-  const renderActionLinks = (linksList, compact = false) =>
-    linksList
-      .map((link, index) => {
-        const isExternal = link.external ?? link.href.startsWith('http');
-        const linkClass =
-          index === 0
-            ? `cta-primary ${compact ? 'px-4 py-3 text-[0.68rem]' : 'px-5 py-3 text-xs'}`
-            : `cta-secondary ${compact ? 'px-4 py-3 text-[0.68rem]' : 'px-5 py-3 text-xs'}`;
-
-        return `
-          <a
-            class="${linkClass}"
-            href="${link.href}"
-            ${isExternal ? 'target="_blank" rel="noreferrer"' : ''}
-          >
-            ${link.label}
-          </a>
-        `;
-      })
-      .join('');
-
-  const renderMosaic = (items, variant = 'blue') => {
-    return `
-      <div class="compact-mosaic compact-mosaic--${variant}" aria-hidden="true">
-        ${items
-          .map((item, index) => {
-            const label = typeof item === 'string' ? item : item.label;
-            const accent = typeof item === 'string' ? null : item.accent;
-            const image = typeof item === 'string' ? null : item.image;
-            const style = accent
-              ? `style="--tile-from: ${accent.from}; --tile-to: ${accent.to}; --tile-halo: ${accent.halo};"`
-              : '';
-
-            return `
-              <div class="compact-mosaic__tile ${index === 0 ? 'is-featured' : ''}" ${style}>
-                ${image ? `<img src="${image}" alt="" aria-hidden="true" loading="lazy" decoding="async" />` : ''}
-                <span>${label}</span>
-              </div>
-            `;
-          })
-          .join('')}
-      </div>
-    `;
-  };
-
-  const renderAphidexMockup = (item) => {
-    return `
-      <div class="aphidex-app-mockup" aria-hidden="true">
-        <div class="aphidex-app-mockup__window">
-          <div class="aphidex-app-mockup__bar">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="aphidex-app-mockup__content">
-            <div class="aphidex-app-mockup__header">
-              <img src="${item.image}" alt="" loading="lazy" decoding="async" />
-              <div class="aphidex-app-mockup__lines">
-                <span class="is-green"></span>
-                <span></span>
-                <span class="is-short"></span>
-              </div>
-            </div>
-            <div class="aphidex-app-mockup__body">
-              <div class="aphidex-app-mockup__panel is-large"></div>
-              <div class="aphidex-app-mockup__side">
-                <div class="aphidex-app-mockup__panel"></div>
-                <div class="aphidex-app-mockup__panel is-green"></div>
-              </div>
-            </div>
-            <div class="aphidex-app-mockup__footer"></div>
-          </div>
-        </div>
-      </div>
-    `;
-  };
-
+  const {proof}=content.page;
+  const {realCases,ownSoftware,commercialDemos}=content.collections;
+  const es=content.locale==='es';
+  const theme=item=>`--brand-accent:${item.accent.from};--brand-secondary:${item.accent.to};--brand-surface:${item.accent.surface};--logo-surface:${item.accent.logoSurface??item.accent.surface};`;
+  const chips=items=>items.map(item=>`<span class="signal-chip">${item}</span>`).join('');
+  const links=items=>items.map((link,i)=>`<a class="${i===0?'cta-primary':'cta-secondary'}" href="${link.href}" ${(link.external??link.href.startsWith('http'))?'target="_blank" rel="noreferrer"':''}>${link.label}</a>`).join('');
+  const heading=(copy,index)=>`<header class="portfolio-section-heading"><span class="eyebrow">${index} / ${copy.eyebrow}</span><h2 class="section-title">${copy.title}</h2><p class="section-copy">${copy.description}</p></header>`;
+  const swatches=item=>`<span class="brand-swatches" aria-hidden="true"><i></i><i></i></span>`;
   return `
-    <section id="proof" class="scroll-mt-28 py-16 sm:py-20">
+    <section id="products" class="portfolio-section portfolio-section--products">
       <div class="section-shell">
-        <div class="mx-auto max-w-[1180px]">
-          <div class="mb-8 space-y-4">
-            <span class="eyebrow">${sectionEyebrows.proof}</span>
-            <h2 class="section-title">${proof.title}</h2>
-            <p class="section-copy">${proof.intro}</p>
-          </div>
-          <div class="grid gap-4">
-            <div id="products" class="product-portfolio">
-              <div class="mb-6">
-                <span class="eyebrow">${proof.ownSoftware.eyebrow}</span>
-                <h3 class="section-title mt-3">${proof.ownSoftware.title}</h3>
-                <p class="section-copy mt-3">${proof.ownSoftware.description}</p>
+        ${heading(proof.ownSoftware,'01')}
+        <div class="grid gap-5 md:grid-cols-2">
+          ${ownSoftware.map(item=>`
+            <article class="info-card product-card brand-card" style="${theme(item)}">
+              <div class="brand-logo-stage brand-logo-stage--${item.slug}">
+                <img class="product-logo" src="${item.image}" alt="${item.imageAlt}" loading="lazy" decoding="async"/>
+                ${swatches(item)}
               </div>
-              <div class="grid gap-5 md:grid-cols-2">
-                ${ownSoftware.map(software => `
-                  <article class="info-card product-card">
-                    <img class="product-logo" src="${software.image}" alt="${software.imageAlt}" loading="lazy" decoding="async"/>
-                    <p class="text-sm text-secondary mt-5">${software.category}</p>
-                    <h4 class="mt-2 text-2xl font-bold text-on-surface">${software.name}</h4>
-                    <p class="mt-3 text-sm leading-7 text-on-surface-variant">${software.description}</p>
-                    <div class="mt-4 flex flex-wrap gap-2">${renderChips(software.tags)}</div>
-                    <div class="mt-6 flex flex-wrap gap-3 product-actions">${renderActionLinks(software.ctaLinks,true)}</div>
-                  </article>
-                `).join('')}
-              </div>
-            </div>
-            <article class="compact-showcase compact-showcase--featured">
-              <div class="min-w-0 space-y-4">
-                <div class="space-y-2.5">
-                  <span class="signal-chip">${proof.realCases.eyebrow}</span>
-                  <div>
-                    <h3 class="text-[clamp(1.75rem,4vw,2.45rem)] font-bold leading-tight text-on-surface">${proof.realCases.title}</h3>
-                    <p class="mt-2 max-w-2xl text-sm leading-7 text-on-surface-variant">${proof.realCases.description}</p>
-                  </div>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  ${renderChips(proof.realCases.tags)}
-                </div>
-                <div class="flex flex-wrap gap-3">
-                  <a class="cta-primary" href="${content.links.casesCatalog}">
-                    ${proof.realCases.primaryCta}
-                  </a>
-                  <a class="cta-secondary" href="${content.links.whatsappQuote}" target="_blank" rel="noreferrer">
-                    ${proof.realCases.secondaryCta}
-                  </a>
-                </div>
-              </div>
-              ${renderMosaic(realCases.map((item) => ({ label: item.name, accent: item.accent })), 'cases')}
+              <p class="brand-category">${item.category}</p>
+              <h3 class="brand-title">${item.name}</h3>
+              <p class="brand-description">${item.description}</p>
+              <div class="brand-tags">${chips(item.tags)}</div>
+              <div class="product-actions brand-actions">${links(item.ctaLinks)}</div>
             </article>
-
-            <article id="demos" class="compact-showcase compact-showcase--demos">
-              <div class="min-w-0 space-y-4">
-                <div class="space-y-2.5">
-                  <span class="signal-chip">${proof.demosSummary.eyebrow}</span>
-                  <div>
-                    <h3 class="text-[clamp(1.75rem,4vw,2.35rem)] font-bold leading-tight text-on-surface">${proof.demosSummary.title}</h3>
-                    <p class="mt-2 max-w-2xl text-sm leading-7 text-on-surface-variant">${proof.demosSummary.description}</p>
-                  </div>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  ${renderChips(proof.demosSummary.tags)}
-                </div>
-                <div class="flex flex-wrap gap-3">
-                  <a class="cta-primary" href="${content.links.demosCatalog}">
-                    ${proof.demosSummary.primaryCta}
-                  </a>
-                </div>
-              </div>
-              ${renderMosaic(demoPreviewItems, 'demos')}
-            </article>
-
-
-          </div>
+          `).join('')}
         </div>
+      </div>
+    </section>
+    <section id="proof" class="portfolio-section portfolio-section--cases">
+      <div class="section-shell">
+        ${heading(proof.realCases,'02')}
+        <div class="grid gap-4 md:grid-cols-2">
+          ${realCases.map(item=>`
+            <article class="brand-card case-teaser" style="${theme(item)}">
+              <div class="brand-preview">
+                <span class="brand-preview-mark" aria-hidden="true">${item.name.split(/\s+/).slice(0,2).map(word=>word[0]).join('')}</span>
+                ${swatches(item)}
+              </div>
+              <div class="case-teaser-body">
+                <p class="brand-category">${item.category}</p>
+                <h3 class="brand-title">${item.name}</h3>
+                <p class="brand-description">${item.description}</p>
+                <div class="brand-tags">${chips(item.tags.slice(0,3))}</div>
+                ${item.ctaLinks.length?`<div class="brand-actions">${links(item.ctaLinks.slice(0,1))}</div>`:''}
+              </div>
+            </article>
+          `).join('')}
+        </div>
+        <div class="portfolio-section-actions">
+          <a class="cta-primary" href="${content.links.casesCatalog}">${proof.realCases.primaryCta}</a>
+          <a class="cta-secondary" href="#contact">${proof.realCases.secondaryCta}</a>
+        </div>
+      </div>
+    </section>
+    <section id="demos" class="portfolio-section portfolio-section--demos">
+      <div class="section-shell">
+        ${heading(proof.demosSummary,'03')}
+        <div class="demo-brand-grid">
+          ${commercialDemos.map(item=>`
+            <a class="brand-card demo-brand-card" style="${theme(item)}" href="${item.href}">
+              ${swatches(item)}
+              <span class="brand-category">${item.category}</span>
+              <h3 class="brand-title">${item.name}</h3>
+              <span class="demo-link">${es?'Ver demo':'View demo'} <span aria-hidden="true">↗</span></span>
+            </a>
+          `).join('')}
+        </div>
+        <div class="portfolio-section-actions"><a class="cta-primary" href="${content.links.demosCatalog}">${proof.demosSummary.primaryCta}</a></div>
       </div>
     </section>
   `;

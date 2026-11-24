@@ -827,3 +827,62 @@ html,body { background:var(--matter-bg); color:var(--matter-ink); font-family:Ge
   .matter-hint { padding:9px 10px 12px; font-size:.58rem; }
 }
 @media(max-width:360px) { .matter-toolbar [data-matter-status] { display:none; } }
+
+/* Portfolio v1.2: separate product, client and demo groups; retain each brand's own palette. */
+.portfolio-section { padding-block:clamp(3.5rem,7vw,6rem); border-bottom:1px solid var(--matter-line); scroll-margin-top:86px; }
+#proof.portfolio-section { padding-block:clamp(3.5rem,7vw,6rem); }
+.portfolio-section--products { background:#080b10; }
+.portfolio-section--cases { background:#0d131b; }
+.portfolio-section--demos { background:#080b10; }
+.portfolio-section-heading { margin-bottom:clamp(1.6rem,4vw,2.8rem); max-width:760px; }
+.portfolio-section-heading h2 { margin-top:12px; }
+.portfolio-section-heading p { margin-top:12px; }
+.brand-card { background:#121923; border:1px solid color-mix(in srgb,var(--brand-accent) 28%,#2b3441); border-radius:12px; min-width:0; overflow:hidden; }
+.brand-card.product-card { padding:20px; }
+.brand-logo-stage { position:relative; width:100%; min-height:130px; display:flex; align-items:center; justify-content:center; padding:22px; border-radius:8px; background:var(--logo-surface); border:1px solid color-mix(in srgb,var(--brand-accent) 25%,transparent); }
+.brand-logo-stage .product-logo { height:76px; width:auto; max-width:90%; object-position:center; }
+.brand-logo-stage--aphidex .product-logo { border-radius:14px; height:92px; box-shadow:0 0 0 1px rgba(124,224,167,.28); }
+.brand-logo-stage--minty-goals .product-logo { height:auto; width:min(100%,255px); }
+.brand-swatches { display:inline-flex; gap:4px; align-items:center; flex-shrink:0; }
+.brand-swatches i { width:12px; height:12px; border-radius:3px; background:var(--brand-accent); box-shadow:0 0 0 1px rgba(255,255,255,.18); }
+.brand-swatches i+i { background:var(--brand-secondary); }
+.brand-logo-stage .brand-swatches { position:absolute; right:10px; bottom:10px; }
+.brand-category { color:color-mix(in srgb,var(--brand-accent) 78%,white); font-size:.75rem; line-height:1.45; margin-top:16px; }
+.brand-title { margin-top:6px; font-size:clamp(1.25rem,2.3vw,1.65rem); font-weight:650; letter-spacing:-.035em; line-height:1.2; color:#f3f5f8; }
+.brand-description { color:#aab4c1; line-height:1.65; font-size:.9rem; margin-top:10px; }
+.brand-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:16px; }
+.brand-tags .signal-chip { color:color-mix(in srgb,var(--brand-accent) 75%,white); border-color:color-mix(in srgb,var(--brand-accent) 28%,#2b3441); background:color-mix(in srgb,var(--brand-accent) 9%,#121923); font-size:.68rem; letter-spacing:0; }
+.brand-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+.brand-actions .cta-primary,.brand-actions .cta-secondary { padding:9px 14px; font-size:.75rem; min-height:42px; }
+.brand-actions .cta-primary { background:color-mix(in srgb,var(--brand-accent) 65%,white); color:#080b10; }
+.brand-actions .cta-secondary { border-color:color-mix(in srgb,var(--brand-accent) 28%,#475364); }
+.product-card .product-actions { margin-top:auto; padding-top:20px; }
+.case-teaser { display:flex; flex-direction:column; }
+.brand-preview { background:var(--brand-surface); display:flex; align-items:center; justify-content:space-between; padding:20px; border-bottom:3px solid var(--brand-secondary); min-height:78px; }
+.brand-preview-mark { font-family:"Geist Mono",monospace; color:var(--brand-accent); font-size:1.65rem; font-weight:600; letter-spacing:-.06em; }
+.case-teaser-body { padding:18px 20px 20px; display:flex; flex-direction:column; flex:1; align-items:flex-start; }
+.case-teaser-body .brand-category { margin-top:0; }
+.case-teaser-body .brand-actions { margin-top:auto; padding-top:16px; }
+.portfolio-section-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+.demo-brand-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.demo-brand-card { display:flex; flex-direction:column; align-items:flex-start; padding:18px; min-height:152px; background:var(--brand-surface); border-top:3px solid var(--brand-secondary); transition:border-color .2s,transform .2s; }
+.demo-brand-card:hover { border-color:var(--brand-accent); transform:translateY(-2px); }
+.demo-brand-card .brand-category { color:color-mix(in srgb,var(--brand-accent) 65%,white); margin-top:14px; }
+.demo-brand-card .brand-title { font-size:1.06rem; margin-bottom:12px; }
+.demo-link { color:color-mix(in srgb,var(--brand-accent) 65%,white); font-size:.75rem; margin-top:auto; }
+/* The full case catalogue shares the same brand colors. */
+.portfolio-card__preview { background:var(--case-surface,#121923); border-bottom:3px solid var(--case-to); }
+.portfolio-card { border-color:color-mix(in srgb,var(--case-from) 28%,#2b3441); }
+.portfolio-preview__mark { background:var(--case-surface,#121923); color:var(--case-from); box-shadow:none; border:1px solid color-mix(in srgb,var(--case-from) 35%,transparent); }
+.portfolio-preview__browser { background:#121923; box-shadow:none; }
+.portfolio-card__category,.portfolio-card__tag { color:color-mix(in srgb,var(--case-from) 80%,white); border-color:color-mix(in srgb,var(--case-from) 28%,#2b3441); }
+@media(max-width:767px) {
+  .portfolio-section { padding-block:3.25rem; }
+  .brand-card.product-card { padding:15px; }
+  .brand-logo-stage { min-height:132px; }
+  .demo-brand-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .demo-brand-card { padding:14px; min-height:150px; }
+  .demo-brand-card .brand-title { font-size:1rem; overflow-wrap:anywhere; }
+}
+@media(max-width:360px) { .demo-brand-grid { grid-template-columns:1fr; } }
+@media(prefers-reduced-motion:reduce) { .demo-brand-card { transition:none; } .demo-brand-card:hover { transform:none; } }
