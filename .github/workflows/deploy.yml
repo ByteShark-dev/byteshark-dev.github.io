@@ -37,6 +37,31 @@ jobs:
       - name: Build site
         run: npm run build
 
+      # Build the standalone Aphidex source at a reviewed revision.
+      # Bump this ref when publishing a new Aphidex web release.
+      - name: Checkout Aphidex website
+        uses: actions/checkout@v4
+        with:
+          repository: ByteShark-dev/aphidex-web
+          ref: 06bdc86311285623af15e45afee33cdd34dd75b5
+          path: aphidex-source
+          persist-credentials: false
+
+      - name: Build Aphidex
+        working-directory: aphidex-source
+        run: |
+          npm ci
+          npm run build
+
+      - name: Publish Aphidex under /aphidex/
+        run: |
+          mkdir -p dist/aphidex
+          cp -a aphidex-source/dist/. dist/aphidex/
+          test -f dist/aphidex/index.html
+          test -f dist/aphidex/privacy/index.html
+          grep -q 'https://byteshark.app/aphidex/' dist/aphidex/index.html
+          if [ -f dist/aphidex/app-ads.txt ] && [ ! -f dist/app-ads.txt ]; then cp dist/aphidex/app-ads.txt dist/app-ads.txt; fi
+
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v4
