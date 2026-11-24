@@ -1,4 +1,5 @@
 import './styles/main.css';
+import { initDigitalMatter } from './components/DigitalMatter.js';
 
 import {
   defaultLocale,
@@ -28,7 +29,7 @@ function syncSeo(pageKey, content) {
   const metaSelectors = [
     ['meta[name="description"]', content.seo.description, 'content'],
     ['meta[name="author"]', content.brand.owner, 'content'],
-    ['meta[name="theme-color"]', '#081B34', 'content'],
+    ['meta[name="theme-color"]', '#080b10', 'content'],
     ['link[rel="canonical"]', content.seo.pageUrl, 'href'],
     ['meta[property="og:type"]', content.seo.ogType, 'content'],
     ['meta[property="og:site_name"]', content.brand.name, 'content'],
@@ -144,12 +145,15 @@ export function mountPage({ pageKey, render }) {
   }
 
   let currentLocale = getInitialLocale();
+  let cleanupMatter = () => {};
 
   const mount = (nextLocale = currentLocale) => {
     currentLocale = nextLocale;
     const content = getPageContent(pageKey, currentLocale);
 
+    cleanupMatter();
     app.innerHTML = render(content);
+    cleanupMatter = initDigitalMatter(app.querySelector('[data-digital-matter]'));
     syncSeo(pageKey, content);
     initNavbarScroll();
     initLocaleToggle(mount);
