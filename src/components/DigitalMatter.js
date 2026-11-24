@@ -69,7 +69,7 @@ export function initDigitalMatter(root){
   const controls=Array.from(root.querySelectorAll('[data-matter-select]'));
   const toggle=root.querySelector('[data-matter-toggle]'), name=root.querySelector('[data-matter-name]');
   const status=root.querySelector('[data-matter-status]');
-  const labels=root.dataset.locale==='es'?{pause:'Pausar',play:'Reproducir',ready:'Identidad digital',static:'Vista estática'}:{pause:'Pause',play:'Play',ready:'Digital identity',static:'Static view'};
+  const labels=root.dataset.locale==='es'?{pause:'Pausar animación',play:'Reproducir animación',ready:'Identidad digital',static:'Vista estática'}:{pause:'Pause animation',play:'Play animation',ready:'Digital identity',static:'Static view'};
   const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
   const mobile=window.matchMedia('(max-width: 767px)').matches;
   const count=mobile?1000:1900;
@@ -81,7 +81,10 @@ export function initDigitalMatter(root){
   const updateControls=()=>{
     controls.forEach((el,i)=>el.setAttribute('aria-pressed',String(i===active)));
     name.textContent=LOGOS[active].name;
-    toggle.textContent=playing?labels.pause:labels.play;
+    // Keep the SVG icons mounted and expose the current action to assistive technology.
+    const action=playing?labels.pause:labels.play;
+    toggle.setAttribute('aria-label',action);
+    toggle.setAttribute('title',action);
     toggle.setAttribute('aria-pressed',String(!playing));
     fallback.src=LOGOS[active].src;
     fallback.alt=LOGOS[active].name;
@@ -112,7 +115,7 @@ export function initDigitalMatter(root){
   function draw(){
     if(!ready||!ctx||disposed)return;
     ctx.clearRect(0,0,w,h);
-    const scale=Math.min(w,h)*.34, color=currentColor(), t=ease(transition);
+    const scale=Math.min(w,h)*(mobile?.385:.36), color=currentColor(), t=ease(transition);
     const scatter=playing&&!motion.matches?Math.sin(Math.PI*t):0;
     // Subtle yaw/pitch plus pointer drag. True 3D projection, no CSS image spin.
     const ry=(playing?Math.sin(angle)*.46:0)+dragX+scatter*.72;
