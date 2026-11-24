@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ByteShark-dev/aphidex-web
-          ref: 06bdc86311285623af15e45afee33cdd34dd75b5
+          ref: 2fe788fa3c054aee405dbe0c7dea0cc272b74fed
           path: aphidex-source
           persist-credentials: false
 
