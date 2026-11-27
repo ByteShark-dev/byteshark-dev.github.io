@@ -149,6 +149,7 @@ export function renderFooter(content, currentPage) {
           ${content.footer.copyright} ${content.footer.tagline}
         </p>
         <div class="grid grid-cols-2 gap-x-6 gap-y-3 font-label text-sm uppercase tracking-[0.18em] sm:flex sm:flex-wrap">
+          <a class="text-on-surface/58 transition hover:text-primary-container" href="/trust/">Trust Center</a>
           <a class="text-on-surface/58 transition hover:text-primary-container" href="${content.links.github}" target="_blank" rel="noreferrer">
             ${content.footer.links.github}
           </a>
